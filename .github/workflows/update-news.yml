@@ -8,15 +8,18 @@ on:
 permissions:
   contents: write            # lets the workflow save the new page to the repo
 
+env:
+  CF_PAGES_PROJECT: trending-news   # <-- change to your Cloudflare Pages project name
+
 jobs:
   update:
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Kolkata       # show times on the page in IST
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -37,3 +40,10 @@ jobs:
           git add public
           git diff --staged --quiet || git commit -m "Update news $(date +'%d %b %Y %H:%M IST')"
           git push
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=${{ env.CF_PAGES_PROJECT }} --branch=main --commit-dirty=true
