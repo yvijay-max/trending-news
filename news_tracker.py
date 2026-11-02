@@ -21,8 +21,8 @@ from urllib.request import Request, urlopen
 import feedparser
 
 HOURS_BACK = 24           # only keep news from the last 24 hours
-MAX_PER_GROUP = 40        # max headlines shown per group
-USER_AGENT = "Mozilla/5.0 (compatible; NewsTracker/1.0)"
+MAX_PER_GROUP = 0         # 0 = no limit, show every story from the last HOURS_BACK hours
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
 # ---------------------------------------------------------------------------
 # 1. SOURCES  -  add / remove feeds here. Format: (source name, RSS url)
@@ -35,16 +35,18 @@ FEEDS = {
         ("Google Trends - US", "https://trends.google.com/trending/rss?geo=US"),
     ],
     "India": [
+        # These sites block automated requests from cloud servers like GitHub Actions,
+        # so we read their latest stories through Google News instead (same articles).
+        ("Inc42", "https://news.google.com/rss/search?q=site:inc42.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
+        ("YourStory", "https://news.google.com/rss/search?q=site:yourstory.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
+        ("Economic Times", "https://news.google.com/rss/search?q=site:economictimes.indiatimes.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
         ("Google News - India", "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en"),
         ("Google Trends - India", "https://trends.google.com/trending/rss?geo=IN"),
-        ("Inc42", "https://inc42.com/feed/"),
-        ("YourStory", "https://yourstory.com/feed"),
-        ("Economic Times", "https://economictimes.indiatimes.com/rssfeedstopstories.cms"),
     ],
     "Bangalore": [
         ("Google News - Bengaluru", "https://news.google.com/rss/search?q=Bengaluru+OR+Bangalore+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
         ("Google News - Bengaluru startups", "https://news.google.com/rss/search?q=Bengaluru+startup+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
-        ("Reddit r/bangalore", "https://www.reddit.com/r/bangalore/hot/.rss"),
+        ("Reddit r/bangalore", "https://www.reddit.com/r/bangalore/hot/.rss?limit=100"),
     ],
 }
 
@@ -102,8 +104,9 @@ def collect():
 
     for group, sources in FEEDS.items():
         for source, url in sources:
-            print(f"-> {group:<10} {source}")
-            for e in fetch_feed(url):
+            entries = fetch_feed(url)
+            print(f"-> {group:<10} {source:<34} {len(entries)} items")
+            for e in entries:
                 title = (e.get("title") or "").strip()
                 if not title:
                     continue
@@ -146,7 +149,8 @@ def regroup(groups):
             item["hot"] = any(re.search(rf"\b{re.escape(k)}\b", t) for k in WATCH_KEYWORDS)
             item["time"] = datetime.fromtimestamp(item["timestamp"]).strftime("%d %b, %I:%M %p")
         groups[name].sort(key=lambda x: x["timestamp"], reverse=True)
-        groups[name] = groups[name][:MAX_PER_GROUP]
+        if MAX_PER_GROUP:
+            groups[name] = groups[name][:MAX_PER_GROUP]
     return groups
 
 
