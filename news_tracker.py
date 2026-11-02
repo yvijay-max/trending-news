@@ -13,6 +13,7 @@ Run:     python news_tracker.py
 import calendar
 import html
 import json
+import math
 import re
 import time
 from datetime import datetime
@@ -189,6 +190,15 @@ def clean_summary(raw, title, limit=220):
     return text if len(text) <= limit else text[:limit].rsplit(" ", 1)[0] + "…"
 
 
+def parse_traffic(text):
+    """Google Trends gives traffic like '200+', '10K+', '2M+'. Return a number."""
+    m = re.match(r"\s*([\d.,]+)\s*([KkMm]?)", str(text or ""))
+    if not m:
+        return 0
+    num = float(m.group(1).replace(",", ""))
+    return int(num * {"k": 1_000, "m": 1_000_000}.get(m.group(2).lower(), 1))
+
+
 def collect():
     cutoff = time.time() - HOURS_BACK * 3600
     groups = {name: [] for name in FEEDS}
@@ -212,8 +222,16 @@ def collect():
                 link = e.get("link", "")
                 if not link.startswith("http"):
                     continue
+                raw_summary = e.get("summary", "") or ""
+                src_info = e.get("source") or {}
+                publisher = (src_info.get("title") if isinstance(src_info, dict) else "") or ""
+                if not publisher and " - " in title:
+                    publisher = title.rsplit(" - ", 1)[1]
                 groups[group].append({
                     "title": title,
+                    "publisher": publisher.strip() or source,
+                    "related": raw_summary.lower().count("<li"),
+                    "traffic": parse_traffic(e.get("ht_approx_traffic", "")),
                     "link": link,
                     "summary": clean_summary(e.get("summary", ""), title),
                     "source": source,
@@ -246,6 +264,180 @@ def regroup(groups):
         groups[name].sort(key=lambda x: x["timestamp"], reverse=True)
         if MAX_PER_GROUP:
             groups[name] = groups[name][:MAX_PER_GROUP]
+    return groups
+
+
+# ---------------------------------------------------------------------------
+# 3b. SCORE  -  rank every story 0-100 by how trending and important it is
+# ---------------------------------------------------------------------------
+# Weights (must add up to 1.0). Change these to tune the ranking.
+SCORE_WEIGHTS = {
+    "coverage": 0.30,     # how many different publishers are covering the same story
+    "recency": 0.20,      # newer stories score higher (half-life about 8 hours)
+    "trending": 0.15,     # story matches what people are searching on Google Trends
+    "momentum": 0.15,     # coverage growing fast since the last update
+    "spread": 0.07,       # story appears in more than one region (Worldwide / India / Bangalore)
+    "persistence": 0.05,  # story has stayed in the news across several updates
+    "source": 0.05,       # story comes from a major publisher
+    "keywords": 0.03,     # story matches your WATCH_KEYWORDS
+}
+MOMENTUM_FOR_MAX = 5      # +5 new publishers since the last update = full momentum score
+PERSISTENCE_FOR_MAX = 4   # seen in 4+ updates in a row = full persistence score
+PREVIOUS_DATA = "public/news.json"   # last run's output, used for momentum and persistence
+
+# Stories with these words are flagged "Sensitive": not suitable for brand / marketing posts
+SENSITIVE_WORDS = ["death*", "dead", "dies", "died", "killed", "kill*", "murder*", "suicide*",
+                   "rape*", "accident*", "crash*", "tragedy", "tragic", "disaster*", "war",
+                   "attack*", "terror*", "blast*", "explosion*", "shooting*", "stampede*",
+                   "molest*", "assault*", "victim*", "funeral*", "collapse*", "earthquake*",
+                   "flood*", "riot*", "violence"]
+RECENCY_HALF_LIFE_HOURS = 8
+COVERAGE_FOR_MAX = 10   # 10+ publishers covering a story = full coverage score
+
+MAJOR_PUBLISHERS = [
+    "reuters", "bloomberg", "associated press", "ap news", "bbc", "cnn", "new york times",
+    "wall street journal", "financial times", "the guardian", "cnbc", "the economist",
+    "techcrunch", "the verge", "economic times", "livemint", "mint", "moneycontrol",
+    "business standard", "the hindu", "hindustan times", "times of india", "ndtv",
+    "indian express", "deccan herald", "inc42", "yourstory", "the print", "scroll",
+]
+
+STOPWORDS = set("""a an the and or but of to in on at for from by with as is are was were be been
+it its this that these those after before over under into out up down new says say said will
+can could would should may might has have had not no more most than then how why what when who
+which where amid via vs per about against during while just also live updates news today""".split())
+
+
+def _tokens(title):
+    words = re.findall(r"[a-z0-9]+", normalise(title))
+    return {w for w in words if len(w) > 2 and w not in STOPWORDS}
+
+
+def _same_story(a, b):
+    common = a & b
+    return len(common) >= 3 and len(common) / max(1, min(len(a), len(b))) >= 0.6
+
+
+def load_previous(path=PREVIOUS_DATA):
+    """Last run's stories, so we can measure momentum and persistence."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        items = [i for group in data.values() for i in group]
+        print(f"Loaded {len(items)} stories from the previous update")
+        return items
+    except Exception:
+        print("No previous update found: momentum and persistence start from zero")
+        return []
+
+
+def score_stories(groups, previous=None):
+    now = time.time()
+    everything = [(g, i) for g, items in groups.items() for i in items]
+    prev = [(_tokens(p.get("title", "")), p) for p in (previous or [])]
+    prev = [(t, p) for t, p in prev if len(t) >= 3]
+    sensitive_pat = _pattern(SENSITIVE_WORDS)
+
+    # Google Trends searches right now (term -> search volume)
+    trend_terms = {}
+    for _, item in everything:
+        if item["source"].startswith("Google Trends") and item["traffic"]:
+            term = item["title"].strip().lower()
+            if len(term) >= 4:
+                trend_terms[term] = max(trend_terms.get(term, 0), item["traffic"])
+    trend_patterns = [(re.compile(rf"\b{re.escape(t)}\b"), v) for t, v in trend_terms.items()]
+
+    # Cluster headlines about the same story across all feeds
+    toks = [_tokens(i["title"]) for _, i in everything]
+    parent = list(range(len(everything)))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    for a in range(len(everything)):
+        if len(toks[a]) < 3:
+            continue
+        for b in range(a + 1, len(everything)):
+            if len(toks[b]) >= 3 and _same_story(toks[a], toks[b]):
+                parent[find(a)] = find(b)
+
+    clusters = {}
+    for idx in range(len(everything)):
+        clusters.setdefault(find(idx), []).append(idx)
+
+    def traffic_score(volume):
+        return min(1.0, math.log10(volume + 1) / 6) if volume else 0.0   # 1M+ searches = 1.0
+
+    for root, members in clusters.items():
+        publishers = {everything[m][1]["publisher"].lower() for m in members}
+        regions = sorted({everything[m][0] for m in members})
+        cluster_tokens = [toks[m] for m in members if len(toks[m]) >= 3]
+        matches = [p for t, p in prev if any(_same_story(t, ct) for ct in cluster_tokens)]
+        prev_cov = max((p.get("coverage", 1) for p in matches), default=None)
+        first_seen = min((p.get("first_seen", p.get("timestamp", now)) for p in matches), default=now)
+        runs = max((p.get("runs", 1) for p in matches), default=0) + 1
+        for m in members:
+            item = everything[m][1]
+            coverage = max(len(publishers), max(everything[x][1]["related"] for x in members), 1)
+            cov_s = min(1.0, math.log(1 + coverage) / math.log(1 + COVERAGE_FOR_MAX))
+            age_h = max(0.0, (now - item["timestamp"]) / 3600)
+            rec_s = 0.5 ** (age_h / RECENCY_HALF_LIFE_HOURS)
+            if item["traffic"]:
+                volume = item["traffic"]
+            else:
+                text = item["title"].lower()
+                volume = max((v for pat, v in trend_patterns if pat.search(text)), default=0)
+            trend_s = traffic_score(volume)
+            pub = item["publisher"].lower()
+            src_s = 1.0 if any(p in pub for p in MAJOR_PUBLISHERS) else 0.4
+            kw_s = 1.0 if item.get("hot") else 0.0
+            growth = coverage - prev_cov if prev_cov is not None else (coverage - 1 if previous else 0)
+            mom_s = min(1.0, max(0, growth) / MOMENTUM_FOR_MAX)
+            spread_s = (len(regions) - 1) / 2
+            pers_s = min(1.0, (runs - 1) / (PERSISTENCE_FOR_MAX - 1))
+            w = SCORE_WEIGHTS
+            item["score"] = round(100 * (w["coverage"] * cov_s + w["recency"] * rec_s +
+                                         w["trending"] * trend_s + w["momentum"] * mom_s +
+                                         w["spread"] * spread_s + w["persistence"] * pers_s +
+                                         w["source"] * src_s + w["keywords"] * kw_s))
+            item["coverage"] = coverage
+            item["growth"] = max(0, growth)
+            item["regions"] = regions
+            item["runs"] = runs
+            item["first_seen"] = first_seen
+            item["sensitive"] = bool(sensitive_pat.search(f"{item['title']} {item.get('summary', '')}"))
+            item["searches"] = volume
+            item["cluster"] = root
+
+    # Inside each group show each story once: keep the best version, list the others
+    for name, items in groups.items():
+        best = {}
+        for item in items:
+            c = item["cluster"]
+            if c not in best or (item["score"], item["timestamp"]) > (best[c]["score"], best[c]["timestamp"]):
+                best[c] = item
+        kept = []
+        for c, top in best.items():
+            others = [i for i in items if i["cluster"] == c and i is not top]
+            top["more"] = [{"publisher": o["publisher"], "link": o["link"]} for o in others[:4]]
+            merged = set(top["categories"])
+            for o in others:
+                merged.update(o["categories"])
+            if len(merged) > 1:
+                merged.discard(OTHER)
+            top["sensitive"] = top["sensitive"] or any(o["sensitive"] for o in others)
+            order = list(CATEGORIES) + [OTHER]
+            top["categories"] = sorted(merged, key=order.index)
+            kept.append(top)
+        for i in kept:
+            i["label"] = "Hot" if i["score"] >= 65 else "Rising" if i["score"] >= 50 else ""
+            for k in ("cluster", "related", "traffic"):
+                i.pop(k, None)
+        kept.sort(key=lambda x: (x["score"], x["timestamp"]), reverse=True)
+        groups[name] = kept
     return groups
 
 
@@ -298,6 +490,24 @@ h1 { margin:0; font-size:28px; }
 button:focus-visible, #search:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .tags { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px; }
 .tag { font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:6px; padding:2px 8px; }
+#sort { display:flex; gap:6px; margin-left:auto; }
+#sort button { border:1px solid var(--line); background:transparent; color:var(--muted);
+               padding:6px 12px; border-radius:8px; font-size:13px; cursor:pointer; }
+#sort button.active { color:var(--text); border-color:var(--text); font-weight:600; }
+.toprow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.head { display:flex; gap:14px; align-items:flex-start; }
+.score { flex:none; width:46px; height:46px; border-radius:10px; display:flex; flex-direction:column;
+         align-items:center; justify-content:center; border:1px solid var(--line); }
+.score b { font-size:17px; line-height:1; }
+.score small { font-size:10px; color:var(--muted); margin-top:3px; }
+.score.hot { background:var(--accent); border-color:var(--accent); color:var(--accent-text); }
+.score.hot small { color:var(--accent-text); opacity:.85; }
+.score.rising { border-color:var(--accent); color:var(--accent); }
+.safe { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--muted); cursor:pointer; }
+.sens { font-size:12px; border:1px dashed var(--muted); color:var(--muted); border-radius:6px; padding:2px 8px; }
+.signals { font-size:12px; color:var(--muted); margin:-4px 0 10px; }
+.also { font-size:12px; color:var(--muted); margin:0 0 10px; }
+.also a { color:var(--muted); text-decoration:underline; }
 #search { width:100%; margin:8px 0 16px; padding:11px 14px; border-radius:10px;
           border:1px solid var(--line); background:var(--card); color:var(--text); font-size:15px; }
 .card { background:var(--card); border:1px solid var(--line); border-radius:12px;
@@ -313,8 +523,8 @@ button:focus-visible, #search:focus-visible { outline:2px solid var(--accent); o
 </style></head>
 <body><div class="wrap">
   <h1>Trending News</h1>
-  <p class="sub">Updated __GENERATED__ · last __HOURS__ hours · highlighted stories match your watch keywords</p>
-  <div class="bar"><div id="tabs"></div><div id="cats"></div></div>
+  <p class="sub">Updated __GENERATED__ · last __HOURS__ hours · ranked by trending score</p>
+  <div class="bar"><div class="toprow"><div id="tabs"></div><label class="safe" style="margin-left:auto"><input type="checkbox" id="safeOnly"> Brand-safe only</label><div id="sort" style="margin-left:0"><button data-sort="top" class="active">Top</button><button data-sort="rising">Rising fast</button><button data-sort="latest">Latest</button></div></div><div id="cats"></div></div>
   <input id="search" type="search" placeholder="Search headlines…">
   <div id="list"></div>
 </div>
@@ -327,6 +537,10 @@ const CATS = __CATS__;
 const catBar = document.getElementById("cats");
 let current = Object.keys(DATA)[0];
 let cat = "All";
+let sortBy = "top";
+const sortBar = document.getElementById("sort");
+const safeOnly = document.getElementById("safeOnly");
+const ago = t => { const h = (Date.now() / 1000 - t) / 3600; return h < 1 ? "under 1h" : Math.round(h) + "h"; };
 
 function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -349,13 +563,34 @@ function render() {
   const q = search.value.trim().toLowerCase();
   const items = (DATA[current] || []).filter(i =>
     (cat === "All" || (i.categories || []).includes(cat)) &&
+    (!safeOnly.checked || !i.sensitive) &&
     (!q || i.title.toLowerCase().includes(q) || (i.summary || "").toLowerCase().includes(q)));
+  items.sort((a, b) => sortBy === "top"
+    ? (b.score - a.score) || (b.timestamp - a.timestamp)
+    : sortBy === "rising"
+    ? ((b.growth || 0) - (a.growth || 0)) || (b.score - a.score)
+    : b.timestamp - a.timestamp);
+  sortBar.querySelectorAll("button").forEach(b => b.classList.toggle("active", b.dataset.sort === sortBy));
+  const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + "M" : n >= 1e3 ? Math.round(n / 1e3) + "K" : n;
   list.innerHTML = items.length ? items.map(i => `
     <article class="card ${i.hot ? "hot" : ""}">
-      <div class="meta">${esc(i.source)} · ${esc(i.time)}${i.hot ? ' · <span class="badge">Watch</span>' : ""}</div>
-      <h3>${esc(i.title)}</h3>
+      <div class="head">
+        <div class="score ${i.label === "Hot" ? "hot" : i.label === "Rising" ? "rising" : ""}" title="Trending score out of 100"><b>${i.score ?? "–"}</b><small>${esc(i.label || "score")}</small></div>
+        <div>
+          <div class="meta">${esc(i.publisher || i.source)} · ${esc(i.time)}${i.hot ? ' · <span class="badge">Watch</span>' : ""}</div>
+          <h3>${esc(i.title)}</h3>
+        </div>
+      </div>
+      <div class="signals">${[
+        i.coverage > 1 ? `Covered by ${i.coverage} sources` : "",
+        i.growth ? `+${i.growth} sources since last update` : "",
+        i.searches ? `${fmt(i.searches)}+ Google searches` : "",
+        (i.regions || []).length > 1 ? `In ${i.regions.join(" + ")}` : "",
+        i.runs > 1 ? `In the news for ${ago(i.first_seen)} (${i.runs} updates)` : ""
+      ].filter(Boolean).join(" · ")}</div>
       ${i.summary ? `<p>${esc(i.summary)}</p>` : ""}
-      <div class="tags">${(i.categories || []).map(c => `<span class="tag">${esc(c)}</span>`).join("")}</div>
+      ${(i.more || []).length ? `<div class="also">Also on: ${i.more.map(m => `<a href="${esc(m.link)}" target="_blank" rel="noopener">${esc(m.publisher)}</a>`).join(", ")}</div>` : ""}
+      <div class="tags">${(i.categories || []).map(c => `<span class="tag">${esc(c)}</span>`).join("")}${i.sensitive ? '<span class="sens">Sensitive: not for brand posts</span>' : ""}</div>
       <a class="more" href="${esc(i.link)}" target="_blank" rel="noopener">Read more →</a>
     </article>`).join("")
     : '<p class="empty">No news found here.</p>';
@@ -367,11 +602,16 @@ tabs.addEventListener("click", e => {
   const b = e.target.closest("button");
   if (b) { current = b.dataset.group; cat = "All"; search.value = ""; render(); window.scrollTo(0, 0); }
 });
+sortBar.addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (b) { sortBy = b.dataset.sort; render(); }
+});
 catBar.addEventListener("click", e => {
   const b = e.target.closest("button");
   if (b) { cat = b.dataset.cat; render(); window.scrollTo(0, 0); }
 });
 search.addEventListener("input", render);
+safeOnly.addEventListener("change", render);
 render();
 </script>
 </body></html>
@@ -385,7 +625,8 @@ def write_json(groups, path="news_report.json"):
 
 
 if __name__ == "__main__":
-    data = regroup(collect())
+    previous = load_previous()
+    data = score_stories(regroup(collect()), previous)
     for name, items in data.items():
         print(f"   {name}: {len(items)} headlines")
     write_html(data)
