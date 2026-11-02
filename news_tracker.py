@@ -1,5 +1,5 @@
 """
-Trending News Tracker: Worldwide / India / Bangalore
+Trending News Tracker: Worldwide / India / Bangalore, sorted into topics
 ----------------------------------------------------
 Pulls headlines from RSS feeds, keeps the last N hours, removes duplicates,
 groups them into 3 buckets and writes:
@@ -25,27 +25,48 @@ MAX_PER_GROUP = 0         # 0 = no limit, show every story from the last HOURS_B
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
 # ---------------------------------------------------------------------------
-# 1. SOURCES  -  add / remove feeds here. Format: (source name, RSS url)
+# 1. SOURCES  -  add / remove feeds here.
+#    Format: (source name, RSS url)  or  (source name, RSS url, category)
+#    The optional category tags every story from that feed (e.g. a Health feed).
 # ---------------------------------------------------------------------------
+GN = "https://news.google.com/rss"
 FEEDS = {
     "Worldwide": [
-        ("Google News - World", "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"),
-        ("Google News - Tech", "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en"),
-        ("Google News - Business", "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en"),
+        ("Google News - World", f"{GN}/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"),
+        ("Google News - Tech", f"{GN}/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en", "Tech & AI"),
+        ("Google News - Business", f"{GN}/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en", "Business & Markets"),
+        ("Google News - Health", f"{GN}/headlines/section/topic/HEALTH?hl=en-US&gl=US&ceid=US:en", "Healthcare"),
+        ("Google News - Sports", f"{GN}/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en", "Sports"),
+        ("Google News - Entertainment", f"{GN}/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en", "Entertainment"),
+        ("Google News - Fintech", f"{GN}/search?q=fintech+OR+payments+when:1d&hl=en-US&gl=US&ceid=US:en", "Fintech"),
+        ("Google News - Crypto", f"{GN}/search?q=crypto+OR+bitcoin+when:1d&hl=en-US&gl=US&ceid=US:en", "Crypto"),
+        ("Google News - Banking", f"{GN}/search?q=banking+OR+%22central+bank%22+when:1d&hl=en-US&gl=US&ceid=US:en", "Banking & Finance"),
         ("Google Trends - US", "https://trends.google.com/trending/rss?geo=US"),
     ],
     "India": [
-        # These sites block automated requests from cloud servers like GitHub Actions,
+        # Inc42, YourStory and ET block requests from cloud servers like GitHub Actions,
         # so we read their latest stories through Google News instead (same articles).
-        ("Inc42", "https://news.google.com/rss/search?q=site:inc42.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
-        ("YourStory", "https://news.google.com/rss/search?q=site:yourstory.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
-        ("Economic Times", "https://news.google.com/rss/search?q=site:economictimes.indiatimes.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
-        ("Google News - India", "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en"),
+        ("Inc42", f"{GN}/search?q=site:inc42.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Startups & Funding"),
+        ("YourStory", f"{GN}/search?q=site:yourstory.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Startups & Funding"),
+        ("Economic Times", f"{GN}/search?q=site:economictimes.indiatimes.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
+        ("Google News - India", f"{GN}?hl=en-IN&gl=IN&ceid=IN:en"),
+        ("Google News - India Business", f"{GN}/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en", "Business & Markets"),
+        ("Google News - India Tech", f"{GN}/headlines/section/topic/TECHNOLOGY?hl=en-IN&gl=IN&ceid=IN:en", "Tech & AI"),
+        ("Google News - India Health", f"{GN}/headlines/section/topic/HEALTH?hl=en-IN&gl=IN&ceid=IN:en", "Healthcare"),
+        ("Google News - India Sports", f"{GN}/headlines/section/topic/SPORTS?hl=en-IN&gl=IN&ceid=IN:en", "Sports"),
+        ("Google News - India Entertainment", f"{GN}/headlines/section/topic/ENTERTAINMENT?hl=en-IN&gl=IN&ceid=IN:en", "Entertainment"),
+        ("Google News - India Fintech", f"{GN}/search?q=India+fintech+OR+UPI+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Fintech"),
+        ("Google News - India Crypto", f"{GN}/search?q=India+crypto+OR+bitcoin+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Crypto"),
+        ("Google News - India Banking", f"{GN}/search?q=RBI+OR+bank+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Banking & Finance"),
         ("Google Trends - India", "https://trends.google.com/trending/rss?geo=IN"),
     ],
     "Bangalore": [
-        ("Google News - Bengaluru", "https://news.google.com/rss/search?q=Bengaluru+OR+Bangalore+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
-        ("Google News - Bengaluru startups", "https://news.google.com/rss/search?q=Bengaluru+startup+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
+        ("Google News - Bengaluru", f"{GN}/search?q=Bengaluru+OR+Bangalore+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
+        ("Google News - Bengaluru startups", f"{GN}/search?q=Bengaluru+startup+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Startups & Funding"),
+        ("Google News - Bengaluru crime", f"{GN}/search?q=Bengaluru+crime+OR+police+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Crime & Safety"),
+        ("Google News - Bengaluru traffic", f"{GN}/search?q=Bengaluru+traffic+OR+metro+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Traffic & Transport"),
+        ("Google News - Bengaluru health", f"{GN}/search?q=Bengaluru+hospital+OR+health+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Healthcare"),
+        ("Google News - Bengaluru weather", f"{GN}/search?q=Bengaluru+rain+OR+weather+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Weather & Environment"),
         ("Reddit r/bangalore", "https://www.reddit.com/r/bangalore/hot/.rss?limit=100"),
     ],
 }
@@ -56,6 +77,77 @@ BANGALORE_KEYWORDS = [
     "whitefield", "indiranagar", "hsr layout", "electronic city", "silk board",
     "outer ring road", "hebbal", "jayanagar", "marathahalli",
 ]
+
+# ---------------------------------------------------------------------------
+# CATEGORIES - a story gets every category whose keywords appear in its
+# headline or summary. "word*" matches any word starting with "word"
+# (arrest* -> arrested, arrests); a plain word must match exactly.
+# The order here is the order the filter buttons appear in.
+# ---------------------------------------------------------------------------
+CATEGORIES = {
+    "Fintech": ["fintech*", "upi", "digital payment*", "payment gateway*", "payments", "neobank*",
+                "paytm", "phonepe", "razorpay", "bnpl", "buy now pay later", "insurtech*",
+                "wealthtech*", "lending app*", "paypal", "stripe"],
+    "Banking & Finance": ["bank*", "rbi", "reserve bank", "federal reserve", "fed", "sebi", "loan*",
+                          "interest rate*", "repo rate", "inflation", "mutual fund*", "insurance",
+                          "credit card*", "nbfc*", "rupee", "rate cut*", "rate hike*", "gdp"],
+    "Crypto": ["crypto*", "bitcoin*", "btc", "ethereum", "blockchain*", "web3", "stablecoin*",
+               "binance", "coinbase", "solana", "nft", "nfts", "defi", "memecoin*"],
+    "Startups & Funding": ["startup*", "start-up*", "funding", "raises", "raised", "series a",
+                           "series b", "series c", "seed round", "ipo", "ipos", "unicorn*",
+                           "valuation*", "acqui*", "venture capital", "layoff*"],
+    "Tech & AI": ["ai", "artificial intelligence", "openai", "chatgpt", "gemini", "anthropic",
+                  "nvidia", "chip", "chips", "semiconductor*", "smartphone*", "iphone*", "apple",
+                  "google", "microsoft", "software", "cyber*", "hacker*", "hacked", "data breach*",
+                  "robot*", "5g", "isro", "spacex", "satellite*"],
+    "Business & Markets": ["sensex", "nifty", "stock*", "shares", "share price*", "market*",
+                           "earnings", "profit*", "revenue*", "quarterly", "merger*", "tariff*",
+                           "trade deal*", "economy", "economic*", "oil price*", "gold price*"],
+    "Healthcare": ["hospital*", "health*", "doctor*", "patient*", "medical", "medicine*",
+                   "vaccine*", "disease*", "virus*", "cancer", "covid*", "dengue", "outbreak*",
+                   "pharma*", "surgery", "aiims", "mental health"],
+    "Crime & Safety": ["crime*", "criminal*", "murder*", "killed", "arrest*", "police", "cops",
+                       "theft", "stolen", "robbery", "robbed", "scam*", "fraud*", "assault*",
+                       "rape*", "shooting*", "shot dead", "kidnap*", "stabbed", "jail*",
+                       "custody", "accident*", "molest*"],
+    "Politics & Law": ["election*", "minister*", "government", "govt", "parliament", "congress",
+                       "bjp", "president", "prime minister", "policy", "court*", "supreme court",
+                       "high court", "lawsuit*", "vote*", "cabinet", "senate", "chief minister",
+                       "trump", "modi"],
+    "Traffic & Transport": ["traffic", "metro", "namma metro", "flight*", "airport*", "airline*",
+                            "railway*", "train", "trains", "bus", "buses", "bmtc", "highway*",
+                            "pothole*", "uber", "ola", "rapido", "ev", "evs", "electric vehicle*"],
+    "Weather & Environment": ["weather", "rain", "rains", "rainfall", "flood*", "monsoon",
+                              "heatwave*", "heat wave", "cyclone*", "storm*", "earthquake*",
+                              "pollution", "aqi", "air quality", "climate", "temperature*",
+                              "wildfire*"],
+    "Sports": ["cricket", "ipl", "rcb", "world cup", "football", "soccer", "nba", "nfl", "tennis",
+               "olympic*", "fifa", "kohli", "chess", "f1", "formula 1", "match", "tournament*"],
+    "Entertainment": ["movie*", "film*", "box office", "bollywood", "sandalwood", "actor*",
+                      "actress*", "celebrit*", "netflix", "music", "album*", "concert*",
+                      "trailer*", "oscar*"],
+}
+OTHER = "Other"
+
+
+def _pattern(words):
+    parts = [rf"\b{re.escape(w[:-1])}" if w.endswith("*") else rf"\b{re.escape(w)}\b" for w in words]
+    return re.compile("|".join(parts), re.IGNORECASE)
+
+
+CATEGORY_PATTERNS = {name: _pattern(words) for name, words in CATEGORIES.items()}
+
+
+def categorise(item):
+    text = f"{item['title']} {item.get('summary', '')}"
+    cats = [name for name, pat in CATEGORY_PATTERNS.items() if pat.search(text)]
+    hint = item.get("hint")
+    if hint and hint not in cats:
+        cats.insert(0, hint)
+    order = list(CATEGORIES)
+    cats.sort(key=lambda c: order.index(c) if c in order else len(order))
+    return cats or [OTHER]
+
 
 # Optional: highlight headlines that match your brand / industry
 WATCH_KEYWORDS = ["funding", "ipo", "launch", "ai", "viral", "acquisition"]
@@ -103,9 +195,9 @@ def collect():
     seen = set()
 
     for group, sources in FEEDS.items():
-        for source, url in sources:
+        for source, url, *hint in sources:
             entries = fetch_feed(url)
-            print(f"-> {group:<10} {source:<34} {len(entries)} items")
+            print(f"-> {group:<10} {source:<36} {len(entries)} items")
             for e in entries:
                 title = (e.get("title") or "").strip()
                 if not title:
@@ -125,6 +217,7 @@ def collect():
                     "link": link,
                     "summary": clean_summary(e.get("summary", ""), title),
                     "source": source,
+                    "hint": hint[0] if hint else None,
                     "timestamp": ts or time.time(),
                 })
     return groups
@@ -146,6 +239,8 @@ def regroup(groups):
     for name in groups:
         for item in groups[name]:
             t = item["title"].lower()
+            item["categories"] = categorise(item)
+            item.pop("hint", None)
             item["hot"] = any(re.search(rf"\b{re.escape(k)}\b", t) for k in WATCH_KEYWORDS)
             item["time"] = datetime.fromtimestamp(item["timestamp"]).strftime("%d %b, %I:%M %p")
         groups[name].sort(key=lambda x: x["timestamp"], reverse=True)
@@ -164,6 +259,7 @@ def write_html(groups, path="news_report.html"):
     page = page.replace("__DATA__", data)
     page = page.replace("__GENERATED__", datetime.now().strftime("%d %b %Y, %I:%M %p"))
     page = page.replace("__HOURS__", str(HOURS_BACK))
+    page = page.replace("__CATS__", json.dumps(list(CATEGORIES) + [OTHER]))
     with open(path, "w", encoding="utf-8") as f:
         f.write(page)
     print(f"\nSaved {path}")
@@ -186,13 +282,22 @@ body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 .wrap { max-width:820px; margin:0 auto; padding:28px 18px 60px; }
 h1 { margin:0; font-size:28px; }
 .sub { color:var(--muted); margin:6px 0 22px; font-size:14px; }
-#tabs { display:flex; gap:10px; flex-wrap:wrap; position:sticky; top:0; padding:10px 0;
-        background:var(--bg); z-index:2; }
+.bar { position:sticky; top:0; z-index:2; background:var(--bg); padding:10px 0 6px; }
+#tabs { display:flex; gap:10px; flex-wrap:wrap; }
 #tabs button { border:1px solid var(--line); background:var(--card); color:var(--text);
                padding:10px 18px; border-radius:999px; font-size:15px; font-weight:600; cursor:pointer; }
 #tabs button span { color:var(--muted); font-weight:400; margin-left:4px; }
 #tabs button.active { background:var(--accent); border-color:var(--accent); color:var(--accent-text); }
 #tabs button.active span { color:var(--accent-text); opacity:.8; }
+#cats { display:flex; gap:8px; overflow-x:auto; padding:12px 0 4px; scrollbar-width:thin; }
+#cats button { flex:none; border:1px solid var(--line); background:transparent; color:var(--text);
+               padding:6px 12px; border-radius:8px; font-size:13px; cursor:pointer; }
+#cats button span { color:var(--muted); margin-left:4px; }
+#cats button.active { border-color:var(--accent); color:var(--accent); font-weight:600; }
+#cats button.active span { color:var(--accent); }
+button:focus-visible, #search:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.tags { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px; }
+.tag { font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:6px; padding:2px 8px; }
 #search { width:100%; margin:8px 0 16px; padding:11px 14px; border-radius:10px;
           border:1px solid var(--line); background:var(--card); color:var(--text); font-size:15px; }
 .card { background:var(--card); border:1px solid var(--line); border-radius:12px;
@@ -209,7 +314,7 @@ h1 { margin:0; font-size:28px; }
 <body><div class="wrap">
   <h1>Trending News</h1>
   <p class="sub">Updated __GENERATED__ · last __HOURS__ hours · highlighted stories match your watch keywords</p>
-  <div id="tabs"></div>
+  <div class="bar"><div id="tabs"></div><div id="cats"></div></div>
   <input id="search" type="search" placeholder="Search headlines…">
   <div id="list"></div>
 </div>
@@ -218,22 +323,39 @@ const DATA = __DATA__;
 const tabs = document.getElementById("tabs");
 const list = document.getElementById("list");
 const search = document.getElementById("search");
+const CATS = __CATS__;
+const catBar = document.getElementById("cats");
 let current = Object.keys(DATA)[0];
+let cat = "All";
 
 function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
 
+function renderCats() {
+  const items = DATA[current] || [];
+  const counts = {};
+  items.forEach(i => (i.categories || []).forEach(c => counts[c] = (counts[c] || 0) + 1));
+  const shown = CATS.filter(c => counts[c]);
+  if (cat !== "All" && !counts[cat]) cat = "All";
+  catBar.innerHTML = [`<button data-cat="All" class="${cat === "All" ? "active" : ""}">All<span>${items.length}</span></button>`]
+    .concat(shown.map(c => `<button data-cat="${esc(c)}" class="${cat === c ? "active" : ""}">${esc(c)}<span>${counts[c]}</span></button>`))
+    .join("");
+}
+
 function render() {
   tabs.querySelectorAll("button").forEach(b => b.classList.toggle("active", b.dataset.group === current));
+  renderCats();
   const q = search.value.trim().toLowerCase();
   const items = (DATA[current] || []).filter(i =>
-    !q || i.title.toLowerCase().includes(q) || (i.summary || "").toLowerCase().includes(q));
+    (cat === "All" || (i.categories || []).includes(cat)) &&
+    (!q || i.title.toLowerCase().includes(q) || (i.summary || "").toLowerCase().includes(q)));
   list.innerHTML = items.length ? items.map(i => `
     <article class="card ${i.hot ? "hot" : ""}">
       <div class="meta">${esc(i.source)} · ${esc(i.time)}${i.hot ? ' · <span class="badge">Watch</span>' : ""}</div>
       <h3>${esc(i.title)}</h3>
       ${i.summary ? `<p>${esc(i.summary)}</p>` : ""}
+      <div class="tags">${(i.categories || []).map(c => `<span class="tag">${esc(c)}</span>`).join("")}</div>
       <a class="more" href="${esc(i.link)}" target="_blank" rel="noopener">Read more →</a>
     </article>`).join("")
     : '<p class="empty">No news found here.</p>';
@@ -243,7 +365,11 @@ tabs.innerHTML = Object.keys(DATA).map(g =>
   `<button data-group="${esc(g)}">${esc(g)}<span>${DATA[g].length}</span></button>`).join("");
 tabs.addEventListener("click", e => {
   const b = e.target.closest("button");
-  if (b) { current = b.dataset.group; search.value = ""; render(); window.scrollTo(0, 0); }
+  if (b) { current = b.dataset.group; cat = "All"; search.value = ""; render(); window.scrollTo(0, 0); }
+});
+catBar.addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (b) { cat = b.dataset.cat; render(); window.scrollTo(0, 0); }
 });
 search.addEventListener("input", render);
 render();
