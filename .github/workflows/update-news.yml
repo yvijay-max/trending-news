@@ -2,7 +2,7 @@ name: Update news
 
 on:
   schedule:
-    - cron: "23 */3 * * *"  # every 3 hours at :23 (quieter than :00, so GitHub is less likely to skip it)
+    - cron: "23 */2 * * *"  # every 2 hours at :23 (~372 runs/month, inside Cloudflare free plan's 500 builds)
   workflow_dispatch:         # adds a "Run workflow" button for manual runs
 
 permissions:
