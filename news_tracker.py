@@ -281,8 +281,8 @@ SCORE_WEIGHTS = {
     "source": 0.05,       # story comes from a major publisher
     "keywords": 0.03,     # story matches your WATCH_KEYWORDS
 }
-MOMENTUM_FOR_MAX = 5      # +5 new publishers since the last update = full momentum score
-PERSISTENCE_FOR_MAX = 4   # seen in 4+ updates in a row = full persistence score
+MOMENTUM_FOR_MAX = 4      # +4 new publishers since the last (2-hourly) update = full momentum score
+PERSISTENCE_FOR_MAX = 4   # seen in 4+ updates in a row (about 8 hours) = full persistence score
 PREVIOUS_DATA = "public/news.json"   # last run's output, used for momentum and persistence
 
 # Stories with these words are flagged "Sensitive": not suitable for brand / marketing posts
