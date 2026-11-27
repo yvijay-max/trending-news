@@ -1,0 +1,47 @@
+name: Update app reviews and grouping
+
+on:
+  schedule:
+    - cron: "45 3,15 * * *"   # twice a day
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Cache AI model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ runner.os }}-minilm-multi-v1
+      - run: pip install -r scraper/requirements.txt
+      - name: Install AI model runtime (CPU)
+        run: pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu && pip install sentence-transformers==3.2.1
+      - name: App Store + Google Play reviews
+        run: python scraper/reviews.py
+      - name: Manual imports (data/manual/*.csv)
+        run: python scraper/manual_import.py
+      - name: Group with AI model (KNN + k-means)
+        run: python scraper/voice.py
+      - name: Key findings
+        run: python scraper/insights.py
+      - name: Commit data
+        run: |
+          git config user.name "tg-intel-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && exit 0
+          git commit -m "data: reviews + grouping $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase origin main && git push
