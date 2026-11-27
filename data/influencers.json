@@ -1,12 +1,94 @@
 [
- {"handle": "ScalperTrader02", "name": "Scalper Trader Praveen", "exchange": ["coindcx"], "region": "india", "discussion": null},
- {"handle": "finance_with_mansingh", "name": "Finance with Mansingh", "exchange": ["coindcx", "delta"], "region": "india", "discussion": null},
- {"handle": "tradingcopter", "name": "Trading Copter", "exchange": ["coindcx"], "region": "india", "discussion": null},
- {"handle": "realdeepakwadhwa", "name": "Deepak Wadhwa", "exchange": ["coindcx"], "region": "india", "discussion": null},
- {"handle": "vishaltechzone", "name": "Vishal Techzone", "exchange": ["wazirx"], "region": "india", "discussion": null},
- {"handle": "crypto_times_io", "name": "Crypto Times", "exchange": ["zebpay"], "region": "india", "discussion": null},
- {"handle": "abhishekkarofficial", "name": "Abhishek Kar", "exchange": ["delta"], "region": "india", "discussion": null},
- {"handle": "neerajjoshi5014", "name": "Neeraj Joshi", "exchange": ["delta"], "region": "india", "discussion": null},
- {"handle": "PushkarRajThakurOfficial", "name": "Pushkar Raj Thakur", "exchange": ["delta", "coinswitch"], "region": "india", "discussion": null},
- {"handle": "ytmasters", "name": "YT Masters", "exchange": ["delta"], "region": "india", "discussion": null}
+ {
+  "handle": "ScalperTrader02",
+  "name": "Scalper Trader Praveen",
+  "exchange": [
+   "coindcx"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "finance_with_mansingh",
+  "name": "Finance with Mansingh",
+  "exchange": [
+   "coindcx",
+   "delta"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "tradingcopter",
+  "name": "Trading Copter",
+  "exchange": [
+   "coindcx"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "realdeepakwadhwa",
+  "name": "Deepak Wadhwa",
+  "exchange": [
+   "coindcx"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "vishaltechzone",
+  "name": "Vishal Techzone",
+  "exchange": [
+   "wazirx"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "crypto_times_io",
+  "name": "Crypto Times",
+  "exchange": [
+   "zebpay"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "abhishekkarofficial",
+  "name": "Abhishek Kar",
+  "exchange": [
+   "delta"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "neerajjoshi5014",
+  "name": "Neeraj Joshi",
+  "exchange": [
+   "delta"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "PushkarRajThakurOfficial",
+  "name": "Pushkar Raj Thakur",
+  "exchange": [
+   "delta",
+   "coinswitch"
+  ],
+  "region": "india",
+  "discussion": null
+ },
+ {
+  "handle": "ytmasters",
+  "name": "YT Masters",
+  "exchange": [
+   "delta"
+  ],
+  "region": "india",
+  "discussion": null
+ }
 ]

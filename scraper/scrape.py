@@ -128,7 +128,8 @@ def merge_posts(path: Path, fresh):
             p["category"] = prev["category"]       # keep hand-corrected categories
             p["category_manual"] = True
         keyed[(p["channel"], p["id"])] = p
-    merged = sorted(keyed.values(), key=lambda p: (p.get("date") or "", p["id"]))
+    real = {p["channel"] for p in fresh}
+    merged = sorted((p for p in keyed.values() if not (p.get("seed") and p["channel"] in real)), key=lambda p: (p.get("date") or "", p["id"]))
     path.write_text(json.dumps(merged, ensure_ascii=False, indent=1))
     return len(merged)
 
@@ -162,9 +163,10 @@ def scrape_influencers(pages):
     info_path = d / "info.json"
     infos = json.loads(info_path.read_text()) if info_path.exists() else {}
     fresh = []
+    seen = known_channels(d / "posts.json")
     for f in infl:
         info = {}
-        posts = scrape_channel(f["handle"], pages, info)
+        posts = scrape_channel(f["handle"], pages if f["handle"] in seen else BACKFILL_PAGES, info)
         if info:
             infos[f["handle"]] = {**infos.get(f["handle"], {}), **{k: v for k, v in info.items() if v is not None}}
         fresh += [tag_influencer_post(p) for p in posts]
@@ -190,6 +192,15 @@ def update_btc():
     path.write_text(json.dumps(rows, indent=0))
 
 
+BACKFILL_PAGES = 25   # ~500 posts the first time a channel is seen
+
+
+def known_channels(path):
+    if not path.exists():
+        return set()
+    return {p.get("channel") for p in json.loads(path.read_text()) if not p.get("seed")}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pages", type=int, default=5, help="pages of ~20 posts per channel")
@@ -200,10 +211,12 @@ def main():
         if a.only and ex["id"] != a.only:
             continue
         fresh = []
+        seen = known_channels(DATA / ex["id"] / "posts.json")
         for ch in ex.get("channels", []):
             if ch.get("scrape"):
-                print(f"{ex['name']}: @{ch['handle']}")
-                fresh += scrape_channel(ch["handle"], a.pages)
+                pages = a.pages if ch["handle"] in seen else BACKFILL_PAGES
+                print(f"{ex['name']}: @{ch['handle']}{'' if ch['handle'] in seen else ' (first run: backfill)'}")
+                fresh += scrape_channel(ch["handle"], pages)
         if fresh:
             (DATA / ex["id"]).mkdir(exist_ok=True)
             n = merge_posts(DATA / ex["id"] / "posts.json", fresh)

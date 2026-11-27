@@ -3,8 +3,8 @@ const LABELS = {maintenance:"Planned maintenance",incident:"Downtime / incident"
 const PROMO = ["promo","campaign","community"];
 const ALERT = ["incident","maintenance","market"];
 const FILES = ["posts","events","scorecard","voices","lessons","incidents","x_posts","x_incidents","status_incidents","manual_incidents","discord_posts"];
-const OBJ_FILES = ["voice"];
-const S = {linked:{}, inflChat:{}, infl:[], inflPosts:[], inflInfo:{}, inflSel:null, msel:{}, stsel:{}, vlabel:{}, chat:{}, chatGroup:{}, chatFilter:"all", pb:null, pbLang:"en", xsel:null, regions:[], region:null, exchanges:[], data:{}, btc:[], groups:{}, current:null, evt:null, inc:null};
+const OBJ_FILES = ["voice", "hourly"];
+const S = {hrRange: 48, hrSel: null, insights:null, linked:{}, inflChat:{}, infl:[], inflPosts:[], inflInfo:{}, inflSel:null, msel:{}, stsel:{}, vlabel:{}, chat:{}, chatGroup:{}, chatFilter:"all", pb:null, pbLang:"en", xsel:null, regions:[], region:null, exchanges:[], data:{}, btc:[], groups:{}, current:null, evt:null, inc:null};
 const $ = (id) => document.getElementById(id) || document.createElement("div");
 const safe = (name, fn) => { try { fn(); } catch (e) { console.error("Section failed:", name, e); } };
 const el = (tag, props = {}, ...kids) => { const n = document.createElement(tag); Object.assign(n, props); kids.forEach(k => n.append(k)); return n; };
@@ -23,6 +23,7 @@ async function load() {
   S.inflPosts = (await getJSON("data/influencers/posts.json")) || [];
   S.inflInfo = (await getJSON("data/influencers/info.json")) || {};
   S.linked = (await getJSON("data/linked_groups.json")) || {};
+  S.insights = await getJSON("data/insights.json");
   S.groups = (await getJSON("data/groups.json")) || {};
   const last = await getJSON("data/last_run.json");
   await Promise.all(S.exchanges.map(async ex => {
@@ -34,7 +35,7 @@ async function load() {
   if (!S.exchanges.length) { $("updated").textContent = "Could not load data/exchanges.json. Check that the data folder is in the repo."; return; }
   $("updated").textContent = last ? `Channels last scraped ${new Date(last.at).toLocaleString()}` : "Not scraped yet. Showing seed data.";
   route(); addEventListener("hashchange", route);
-  let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(() => S.current && S.inflPosts && S.current.startsWith("influencers") ? safe("influencers", influencersView) : S.current && !S.current.startsWith("compare") && S.current !== "playbook" && charts(), 150); });
+  let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(() => S.current && S.current.startsWith("influencers") ? safe("influencers", influencersView) : S.current && !S.current.startsWith("compare") && !S.current.startsWith("findings") && S.current !== "playbook" && charts(), 150); });
 }
 
 const inRegion = () => S.exchanges.filter(e => e.region === S.region);
@@ -43,12 +44,12 @@ function tabs() {
   rn.replaceChildren(...S.regions.map(r => {
     const b = el("button", {textContent: r.name, type: "button"});
     b.setAttribute("aria-current", String(r.id === S.region && S.current !== "playbook"));
-    b.onclick = () => { const first = S.exchanges.find(e => e.region === r.id); location.hash = first ? first.id : "compare-" + r.id; };
+    b.onclick = () => { location.hash = "findings-" + r.id; };
     return b;
   }));
   if (S.pb) { const b = el("button", {textContent: "Playbook", type: "button"}); b.setAttribute("aria-current", String(S.current === "playbook")); b.onclick = () => { location.hash = "playbook"; }; rn.append(b); }
   const nav = $("tabs");
-  const items = [...inRegion().map(e => [e.id, e.name]), ...(S.infl.some(f => (f.region || "global") === S.region) ? [["influencers-" + S.region, "Influencers"]] : []), ["compare-" + S.region, "Compare"]];
+  const items = [["findings-" + S.region, "Key findings"], ...inRegion().map(e => [e.id, e.name]), ...(S.infl.some(f => (f.region || "global") === S.region) ? [["influencers-" + S.region, "Influencers"]] : []), ["compare-" + S.region, "Compare"]];
   nav.replaceChildren(...items.map(([id, name]) => {
     const b = el("button", {textContent: name, type: "button"});
     b.dataset.id = id; b.onclick = () => { location.hash = id; };
@@ -57,19 +58,27 @@ function tabs() {
 }
 
 function route() {
-  let id = location.hash.slice(1) || (S.exchanges[0] && S.exchanges[0].id);
+  let id = location.hash.slice(1) || "findings-" + (S.regions[0] || {id: "global"}).id;
   if (id === "compare") id = "compare-" + S.region;
   if (id === "playbook") {
     S.current = id; tabs();
-    $("view-exchange").hidden = true; $("view-compare").hidden = true; $("view-influencers").hidden = true; $("view-playbook").hidden = false;
+    $("view-exchange").hidden = true; $("view-compare").hidden = true; $("view-influencers").hidden = true; $("view-findings").hidden = true; $("view-playbook").hidden = false;
     safe("playbook", playbook); return;
   }
   $("view-playbook").hidden = true;
+  if (id.startsWith("findings")) {
+    const r = id.split("-")[1]; if (S.regions.some(x => x.id === r)) S.region = r;
+    S.current = id; tabs();
+    document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-current", String(b.dataset.id === id)));
+    ["view-exchange", "view-compare", "view-influencers"].forEach(v => $(v).hidden = true); $("view-findings").hidden = false;
+    safe("findings", findingsView); return;
+  }
+  $("view-findings").hidden = true;
   if (id.startsWith("influencers")) {
     const r = id.split("-")[1]; if (S.regions.some(x => x.id === r)) S.region = r;
     S.current = id; tabs();
     document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-current", String(b.dataset.id === id)));
-    $("view-exchange").hidden = true; $("view-compare").hidden = true; $("view-influencers").hidden = false;
+    $("view-exchange").hidden = true; $("view-compare").hidden = true; $("view-findings").hidden = true; $("view-influencers").hidden = false;
     safe("influencers", influencersView); return;
   }
   $("view-influencers").hidden = true;
@@ -121,7 +130,7 @@ function exchange(id) {
   safe("score", () => score(d.scorecard || [])); safe("voices", () => voices(d.voices || [])); safe("lessons", () => lessons(d.lessons || []));
 }
 
-function charts() { const d = S.data[S.current] || {}; pulse(d.posts || []); mix(d.posts || []); incChart(); }
+function charts() { const d = S.data[S.current] || {}; const ex = S.exchanges.find(e => e.id === S.current); if (ex) safe("hourly", () => hourlySec(ex, d.hourly)); pulse(d.posts || []); mix(d.posts || []); incChart(); }
 
 /* ---------- tooltip ---------- */
 const tip = $("tip");
@@ -622,6 +631,83 @@ async function chat(ex) {
   }) : [el("li", {className: "empty", textContent: "No messages match this filter."})]));
 }
 
+
+
+
+/* ---------- hour by hour ---------- */
+const IST = new Intl.DateTimeFormat("en-IN", {timeZone: "Asia/Kolkata", day: "2-digit", month: "short", hour: "2-digit", hour12: false});
+const istLabel = (iso) => IST.format(new Date(iso)).replace(",", "") + ":00";
+function hourlySec(ex, H) {
+  const sp = $("hr-spikes"), box = $("hr-heat"), det = $("hr-detail"), rg = $("hr-range");
+  rg.replaceChildren(...[[24, "24 hours"], [48, "48 hours"], [168, "7 days"]].map(([n, l]) => { const b = el("button", {type: "button", textContent: l}); b.setAttribute("aria-pressed", String(S.hrRange === n)); b.onclick = () => { S.hrRange = n; S.hrSel = null; hourlySec(ex, H); }; return b; }));
+  sp.replaceChildren(); box.replaceChildren(); det.replaceChildren();
+  if (!H || !(H.hours || []).length) { box.append(el("p", {className: "empty", textContent: "No hourly data yet. It appears after the next 'Update Telegram data' run (needs the Telegram group messages)."})); return; }
+  (H.spikes || []).slice(0, 3).forEach(x => sp.append(el("div", {className: "spike"}, el("b", {textContent: "Right now: "}),
+    document.createTextNode(`${x.product}: ${x.last_3h} messages in the last 3 hours, about ${x.usual_3h} usually${x.complaints ? `, ${x.complaints} complaints` : ""}.`))));
+  const hours = H.hours.slice(-S.hrRange);
+  const tot = {}; hours.forEach(r => Object.entries(r.products).forEach(([p, d]) => tot[p] = (tot[p] || 0) + d.n));
+  let prods = Object.keys(tot).sort((a, b) => tot[b] - tot[a]);
+  const gen = prods.filter(p => p === "General / other"); prods = [...prods.filter(p => p !== "General / other").slice(0, 11), ...gen];
+  if (!prods.length) { box.append(el("p", {className: "empty", textContent: "No customer messages in this period."})); return; }
+  const W = box.clientWidth || 900, rowH = 22, top = 34, labW = Math.min(190, W * 0.3), cw = Math.max(2, (W - labW - 8) / hours.length);
+  const Ht = top + prods.length * rowH + 22;
+  const svg = svgEl("svg", {viewBox: `0 0 ${W} ${Ht}`, role: "img", "aria-label": "Messages per hour by product"});
+  const maxTot = Math.max(1, ...hours.map(r => r.n));
+  hours.forEach((r, i) => { const hgt = r.n / maxTot * (top - 8);
+    svg.append(svgEl("rect", {x: labW + i * cw + cw * 0.1, y: top - 4 - hgt, width: Math.max(1, cw * 0.8), height: hgt, fill: "var(--bar)"})); });
+  const tx0 = svgEl("text", {x: labW - 6, y: top - 8, "text-anchor": "end"}); tx0.textContent = "All messages"; svg.append(tx0);
+  const maxCell = Math.max(1, ...hours.flatMap(r => prods.map(p => (r.products[p] || {}).n || 0)));
+  prods.forEach((p, j) => {
+    const y = top + j * rowH;
+    const lt = svgEl("text", {x: labW - 6, y: y + rowH / 2 + 4, "text-anchor": "end"}); lt.textContent = p; svg.append(lt);
+    hours.forEach((r, i) => {
+      const d = r.products[p]; const x = labW + i * cw;
+      const cell = svgEl("rect", {x: x + 0.5, y: y + 1, width: Math.max(1, cw - 1), height: rowH - 2, rx: 2,
+        fill: d ? (d.complaint / d.n >= 0.5 ? "var(--down)" : "var(--signal)") : "var(--line)", "fill-opacity": d ? (0.18 + 0.82 * Math.sqrt(d.n / maxCell)).toFixed(2) : 0.35});
+      if (S.hrSel && S.hrSel.h === r.h && S.hrSel.p === p) { cell.setAttribute("stroke", "var(--ink)"); cell.setAttribute("stroke-width", 2); }
+      cell.style.cursor = d ? "pointer" : "default";
+      cell.addEventListener("pointermove", ev => showTip(ev, `${istLabel(r.h)} IST, ${p}: ${d ? `${d.n} messages, ${d.complaint} complaints` : "nothing"}`));
+      cell.addEventListener("pointerleave", hideTip);
+      if (d) cell.addEventListener("click", () => { S.hrSel = {h: r.h, p}; hourlySec(ex, H); });
+      svg.append(cell);
+    });
+  });
+  const step = Math.max(1, Math.ceil(hours.length / Math.max(2, Math.floor((W - labW) / 70))));
+  hours.forEach((r, i) => { if (i % step) return; const tx = svgEl("text", {x: labW + i * cw + cw / 2, y: Ht - 4, "text-anchor": "middle"}); tx.textContent = istLabel(r.h).replace(/ \d\d:00$/, m => m).slice(-9); svg.append(tx); });
+  box.append(el("div", {className: "scroll"}, svg), el("div", {className: "hr-legend"},
+    ...[["var(--signal)", "mostly questions, praise or chat"], ["var(--down)", "mostly complaints"], ["var(--line)", "no messages"]].map(([c, l]) => el("span", {}, el("i", {style: `background:${c}`}), l)),
+    el("span", {textContent: `Sources: ${fmt((H.sources || {}).telegram || 0)} Telegram, ${fmt((H.sources || {}).review || 0)} app reviews, ${fmt((H.sources || {}).x || 0)} X (last 7 days)`})));
+  // detail of the selected hour (default: busiest recent hour)
+  let sel = S.hrSel;
+  if (!sel) { const r = [...hours].reverse().find(x => x.n); if (r) { const p = Object.entries(r.products).sort((a, b) => b[1].n - a[1].n)[0]; sel = p && {h: r.h, p: p[0]}; } }
+  if (!sel) return;
+  const r = hours.find(x => x.h === sel.h) || {products: {}};
+  const list = (H.samples || {})[`${sel.h}|${sel.p}`] || [];
+  const others = Object.entries(r.products).sort((a, b) => b[1].n - a[1].n).map(([p, d]) => `${p} ${d.n}`).join(", ");
+  det.append(el("div", {className: "box"}, el("h4", {textContent: `${istLabel(sel.h)} IST: ${sel.p}`}),
+    el("p", {className: "muted", style: "margin:0 0 8px;font-size:13px", textContent: `That hour: ${fmt(r.n)} messages, ${fmt(r.complaint)} complaints, ${fmt(r.question)} questions, ${fmt(r.praise)} praise. Topics: ${others || "none"}.`}),
+    ...(list.length ? list.map(m => el("div", {className: "quote" + (m.kind === "praise" ? " good" : "")}, el("div", {textContent: m.text}), el("small", {textContent: `${m.kind}, ${m.src === "review" ? "app review" : m.src === "x" ? "X" : "Telegram"}`})))
+      : [el("p", {className: "muted", textContent: "No example messages saved for this cell."})])));
+}
+
+/* ---------- key findings ---------- */
+function findingsView() {
+  const rg = S.regions.find(r => r.id === S.region) || {name: ""};
+  const I = S.insights && S.insights.regions && S.insights.regions[S.region];
+  $("kf-title").textContent = `Key findings: ${rg.name}`;
+  $("kf-lead").textContent = I ? `What the data says this week, in plain words. Updated ${t(S.insights.updated)} UTC.` : "No findings yet. They're written after the next scheduled run.";
+  const li = f => el("li", {}, el("span", {className: "dot " + (f.tone || "info")}), el("span", {textContent: f.text}));
+  const hl = $("kf-headline");
+  hl.replaceChildren(...(I && I.headline.length ? I.headline.map(li) : [el("li", {className: "empty", textContent: "Needs data from at least two exchanges in this region."})]));
+  $("kf-takeaways").replaceChildren(...((I && I.takeaways) || []).map(x => el("li", {textContent: x})));
+  const grid = $("kf-exchanges");
+  grid.replaceChildren(...inRegion().map(ex => {
+    const fs = ((I && I.exchanges[ex.id]) || {}).findings || [];
+    return el("section", {className: "panel kf-card"},
+      el("h3", {}, el("span", {textContent: ex.name}), el("a", {href: "#" + ex.id, textContent: "Open page"})),
+      el("ul", {className: "kf"}, ...(fs.length ? fs.map(li) : [el("li", {className: "empty", textContent: "Not enough data yet."})])));
+  }));
+}
 
 /* ---------- influencers ---------- */
 const NEG_EMO = ["👎", "😡", "🤬", "😢", "😱", "💩", "🤮"];

@@ -32,7 +32,27 @@ ADMIN_PHASES = [
     ("Scam warning", r"scam|never (dm|ask)|impersonat|fake (admin|support)|do not (click|share)"),
     ("Redirect to support", r"support (ticket|chat|team)|help ?center|contact support|submit a (ticket|case)|live chat"),
 ]
+PRODUCTS = {
+    "Futures / derivatives": r"futures?|\bperp|perpetual|leverage|\bmargin\b|liquidat|long position|short position|\bf&o\b|funding rate",
+    "Options": r"\boptions?\b|\bcall\b.{0,15}\bput\b|\bstrike\b|expiry|straddle|strangle",
+    "Spot trading": r"\bspot\b|buy order|sell order|limit order|market order|order book|\bbuy\b.{0,20}\bcoin|kharid",
+    "INR deposit / withdrawal": r"\binr\b|\bupi\b|\bimps\b|\bneft\b|bank (transfer|account)|rupee|₹|rs\.? ?\d",
+    "Crypto deposit / withdrawal": r"\b(usdt|btc|eth|sol|trx|bnb)\b.{0,30}(withdraw|deposit|transfer|network)|(withdraw|deposit|transfer).{0,30}\b(usdt|btc|eth|sol|trx|bnb|trc20|erc20|bep20)\b|\btxid\b|\bhash\b|wallet address",
+    "P2P": r"\bp2p\b|merchant|seller (not|didn)|buyer (not|didn)|appeal",
+    "Earn / staking": r"\bearn\b|staking|stake|\bapr\b|\bapy\b|savings|interest|yield|simple earn|dual investment",
+    "New listings / airdrops": r"\blist(ing|ed)?\b|new coin|launchpool|launchpad|airdrop|\bido\b|token sale",
+    "Copy trading / bots": r"copy ?trad|trading bot|\bbot\b|\bgrid\b|\bdca\b|signal",
+    "App / website": r"\bapp\b|website|\bsite\b|crash|not loading|update|\bui\b|chart|login|log in|otp|2fa",
+    "KYC / account": r"\bkyc\b|verification|verify|\bpan\b|aadhaa?r|account (locked|frozen|restricted|blocked)|selfie",
+    "Fees / tax": r"\bfees?\b|charges|\btds\b|\btax\b|\bgst\b|brokerage|commission|spread",
+    "Rewards / referral": r"referral|refer|reward|bonus|cashback|voucher|coupon|campaign|competition",
+}
+PRODUCT_RX = {k: re.compile(v, re.I) for k, v in PRODUCTS.items()}
 CUST_RX = {k: re.compile(v, re.I) for k, v in CUSTOMER_THEMES.items()}
+
+
+def products(text):
+    return [k for k, rx in PRODUCT_RX.items() if rx.search(text or "")]
 ADMIN_RX = [(k, re.compile(v, re.I)) for k, v in ADMIN_PHASES]
 COMPLAINT_THEMES = {"Withdrawals", "Deposits", "Login / account access", "Orders / liquidations",
                     "Fear for funds / trust", "Compensation / refund", "Support complaints"}

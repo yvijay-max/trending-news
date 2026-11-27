@@ -139,3 +139,32 @@ td.pass{color:var(--up);font-weight:600} td.warn{color:var(--btc);font-weight:60
 .tags2{display:flex;gap:4px;flex-wrap:wrap;grid-column:2}
 .tags2 span{font-size:11px;padding:0 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
 .tags2 .ref{color:var(--btc);border-color:var(--btc)} .tags2 .ex{color:var(--signal);border-color:var(--signal)} .tags2 .neg{color:var(--down);border-color:var(--down)}
+
+.moods{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.mood{border:1px solid var(--line);border-radius:8px;padding:12px;border-top:4px solid var(--bar)}
+.mood.rising{border-top-color:var(--up)} .mood.falling{border-top-color:var(--down)}
+.mood h5{font:600 16px var(--cond);margin:0} .mood small{color:var(--muted)}
+.kbar{display:flex;height:14px;border-radius:4px;overflow:hidden;margin:8px 0 4px}
+.kbar span{display:block;height:100%}
+.klegend{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px;color:var(--muted)}
+.klegend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px}
+.mood ol{margin:8px 0 0;padding-left:18px;font-size:14px} .mood p{font-size:13px;margin:6px 0 0;color:var(--muted)}
+
+.kf{list-style:none;margin:0;padding:0}
+.kf li{display:grid;grid-template-columns:14px 1fr;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.kf li:last-child{border-bottom:0}
+.kf .dot{width:10px;height:10px;border-radius:50%;margin-top:6px;background:var(--bar)}
+.kf .dot.bad{background:var(--down)} .kf .dot.good{background:var(--up)} .kf .dot.info{background:var(--signal)}
+.takeaway{border-left:4px solid var(--btc)}
+.kf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+.kf-card h3{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.kf-card h3 a{font:500 13px var(--sans)}
+.kf li.empty{display:block;color:var(--muted)}
+
+.spike{background:color-mix(in srgb,var(--down) 10%,var(--panel));border:1px solid var(--down);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:14px}
+.spike b{color:var(--down)}
+.hr-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:6px}
+.hr-legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:4px;vertical-align:-2px}
+#hr-detail{margin-top:12px}
+#hr-detail .box{border:1px solid var(--line);border-radius:8px;padding:12px}
+#hr-detail h4{font:600 15px var(--cond);margin:0 0 6px}

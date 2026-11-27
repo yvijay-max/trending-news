@@ -41,3 +41,41 @@ def test_ios_parse(monkeypatch):
     monkeypatch.setattr(reviews.requests, "get", lambda *a, **k: calls.append(1) or (R() if len(calls) == 1 else type("E", (), {"status_code": 404})()))
     out = reviews.ios_reviews("1", "in", pages=2)
     assert out[0]["rating"] == 1 and reviews.clean(out[0])["themes"] == ["Withdrawals"]
+
+
+def test_by_mood(tmp_path, monkeypatch):
+    monkeypatch.setattr(voice, "DATA", tmp_path)
+    now = make(tmp_path)
+    prices, p = [], 90000.0
+    for i in range(40):
+        d = (now - timedelta(days=39 - i)).strftime("%Y-%m-%d")
+        p *= 1.05 if i % 3 == 0 else (0.95 if i % 3 == 1 else 1.001)
+        prices.append({"date": d, "price": p})
+    (tmp_path / "btc.json").write_text(json.dumps(prices))
+    moods = voice.btc_moods()
+    assert {m["mood"] for m in moods.values()} == {"rising", "falling", "normal"}
+    res = voice.summarise("x", now, [], moods)
+    bm = res["by_mood"]
+    assert sum(bm[m]["messages"] for m in bm) == res["counts"]["reviews"] + res["counts"]["telegram"]
+    for m in ("rising", "falling", "normal"):
+        if bm[m]["messages"]:
+            assert abs(sum(bm[m]["kinds"].values()) - 1) < 0.01 and bm[m]["top_labels"]
+
+
+def test_ai_engine_path(tmp_path, monkeypatch):
+    """With an encoder available, tagging and topics use it (fake encoder: hashed letter trigrams)."""
+    import numpy as np
+    monkeypatch.setattr(voice, "DATA", tmp_path)
+    def fake_enc(texts):
+        out = np.zeros((len(texts), 256))
+        for i, t in enumerate(texts):
+            t = t.lower()
+            for j in range(len(t) - 2):
+                out[i, __import__("zlib").crc32(t[j:j + 3].encode()) % 256] += 1
+        n = np.linalg.norm(out, axis=1, keepdims=True); n[n == 0] = 1
+        return out / n
+    monkeypatch.setattr(voice, "_ENCODER", fake_enc)
+    (tmp_path / "label_examples.json").write_text(json.dumps({"Fear for funds / trust": ["is my money safe?", "ye log bhaag toh nahi jayenge"]}))
+    now = make(tmp_path)
+    res = voice.summarise("x", now, [])
+    assert res["method"]["engine"] == "ai" and res["topics"]

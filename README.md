@@ -132,6 +132,24 @@ List public influencer Telegram channels in `data/influencers.json`:
 Every run saves their posts with views, reactions (by emoji), which exchanges they name, and whether a post has a
 referral link. The **Influencers** tab of each region shows this, plus what they posted within 48 hours of an exchange outage.
 
+## Key findings, AI tagging and history
+
+- **Key findings** (first tab of each region): `scraper/insights.py` writes plain-language findings per exchange and
+  per region, plus takeaways for your own handling. Runs after every Telegram and grouping run.
+- **AI tagging**: `scraper/voice.py` uses a free multilingual model (paraphrase-multilingual-MiniLM-L12-v2) that
+  understands English, Hindi and Hinglish by meaning. Example phrases per category live in `data/label_examples.json`;
+  add more to improve it. If the model can't load, it falls back to letter-pattern matching automatically.
+- **History**: the first run for each group reads back 30 days; after that each run fetches only new messages.
+  Chats are kept for 30 days. The first run takes longer (up to ~40 minutes).
+
+## Hour by hour
+
+`scraper/hourly.py` (runs with every Telegram run) sorts the last 7 days of customer messages into hours and
+products (futures, options, spot, INR and crypto deposits/withdrawals, P2P, Earn, listings, bots, app, KYC,
+fees, rewards) and flags products talked about far more than usual in the last 3 hours. Each exchange page shows
+it as a heatmap; click a cell to read what people said. Product keywords are in `PRODUCTS` in `scraper/incidents.py`.
+How fresh it is depends on how often the Telegram job runs (every 2 hours is a good balance on a private repo).
+
 ## Everyday use (no Claude needed)
 
 | You want to… | Edit |

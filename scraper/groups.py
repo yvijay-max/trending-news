@@ -23,11 +23,13 @@ from lang import detect as lang_detect  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-DAYS = int(os.getenv("TG_GROUP_DAYS", "3"))           # how far back each run looks
-MAX_MSGS = int(os.getenv("TG_GROUP_MAX", "3000"))     # cap per group for daily counts
+DAYS = int(os.getenv("TG_GROUP_DAYS", "3"))           # window checked for new incidents each run
+MAX_MSGS = int(os.getenv("TG_GROUP_MAX", "15000"))    # cap of NEW messages read per group per run
+BACKFILL_DAYS = int(os.getenv("TG_BACKFILL_DAYS", "30"))   # first run for a group reads this far back
+BACKFILL_MAX = int(os.getenv("TG_BACKFILL_MAX", "25000"))
 INC_MAX = int(os.getenv("TG_INCIDENT_MAX", "15000"))  # cap per incident window
-CHAT_DAYS = int(os.getenv("TG_CHAT_DAYS", "7"))       # how many days of chat to keep on the dashboard
-CHAT_MAX = int(os.getenv("TG_CHAT_MAX", "6000"))      # max messages kept per group
+CHAT_DAYS = int(os.getenv("TG_CHAT_DAYS", "30"))      # how many days of chat to keep
+CHAT_MAX = int(os.getenv("TG_CHAT_MAX", "20000"))     # max messages kept per group
 ADMIN_HINT = re.compile(os.getenv("TG_ADMIN_HINT", r"admin|mod\b|moderator|support|angel|official"), re.I)
 
 THEMES = {
@@ -72,12 +74,33 @@ def save_chat(ex_id, handle, msgs, now):
         keep[m["id"]] = {"id": m["id"], "at": inc.iso(m["at"]), "admin": m["admin"], "reply_to": m.get("reply_to"),
                          "text": (m["text"][:400] if m["admin"] else inc.anonymise(m["text"], 300)),
                          "themes": [] if m["admin"] else inc.themes(m["text"]),
+                         "products": [] if m["admin"] else inc.products(m["text"]),
                          "phase": inc.admin_phase(m["text"]) if m["admin"] else None,
                          "lang": lang_detect(m["text"])}
     cutoff = inc.iso(now - timedelta(days=CHAT_DAYS))
     rows = sorted((r for r in keep.values() if r["at"] >= cutoff), key=lambda r: r["at"])[-CHAT_MAX:]
     path.write_text(json.dumps(rows, ensure_ascii=False, separators=(",", ":")))
-    return len(rows)
+    return rows
+
+
+def last_saved_id(ex_id, handle):
+    path = DATA / ex_id / "chat" / f"{handle}.json"
+    if not path.exists():
+        return None
+    rows = json.loads(path.read_text())
+    return max((r["id"] for r in rows), default=None) if rows else None
+
+
+def daily_counts(rows):
+    days = defaultdict(lambda: defaultdict(int))
+    for r in rows:
+        d = days[r["at"][:10]]
+        d["messages"] += 1
+        for k, rx in RX.items():
+            if rx.search(r["text"]):
+                d[k] += 1
+        d["lang_" + (r.get("lang") or "en")] += 1
+    return {k: {"date": k, **v} for k, v in days.items()}
 
 
 async def linked_group(client, handle):
@@ -164,34 +187,31 @@ async def run(login=False):
         down_posts = [p for p in posts if p.get("category") == "incident" and p.get("date") and inc.parse(p["date"]) >= since]
         admins = await admin_ids(client, ref)
         extra = {tg["admin_channel"]} if tg["admin_channel"] else set()
-        days, recent = defaultdict(lambda: defaultdict(int)), []
+        last_id = last_saved_id(ex_id, handle)
+        new_msgs = []
         try:
-            async for m in client.iter_messages(ref, limit=MAX_MSGS):
-                if m.date < since:
-                    break
-                recent.append(to_msg(m, admins, extra))
-                d = m.date.strftime("%Y-%m-%d")
-                days[d]["messages"] += 1
-                txt = m.message or ""
-                for k, rx in RX.items():
-                    if rx.search(txt):
-                        days[d][k] += 1
-                if txt:
-                    days[d]["lang_" + lang_detect(txt)] += 1
+            if last_id is None:   # first time: backfill
+                start = now - timedelta(days=BACKFILL_DAYS)
+                async for m in client.iter_messages(ref, limit=BACKFILL_MAX):
+                    if m.date < start:
+                        break
+                    new_msgs.append(to_msg(m, admins, extra))
+            else:                 # afterwards: only messages since the last run
+                async for m in client.iter_messages(ref, min_id=last_id, limit=MAX_MSGS):
+                    new_msgs.append(to_msg(m, admins, extra))
         except Exception as e:
             print(f"skip @{handle}: {e}", file=sys.stderr)
             continue
 
-        # 1) daily counts
+        rows = save_chat(ex_id, handle, new_msgs, now)
+        # 1) daily counts, rebuilt from the saved chat; older days beyond the chat window are kept
         hist = {r["date"]: r for r in out.get(ex_id, {}).get(handle, [])}
-        for d, v in days.items():
-            if v["messages"] >= hist.get(d, {}).get("messages", 0):
-                hist[d] = {"date": d, **v}
+        hist.update(daily_counts(rows))
         out.setdefault(ex_id, {})[handle] = sorted(hist.values(), key=lambda r: r["date"])
-        n = sum(v["messages"] for v in days.values())
-        kept = save_chat(ex_id, handle, recent, now)
         what = f"comments on @{tg['of']}" if tg.get("of") else f"@{handle}"
-        print(f"{tg['ex_name']} {what}: {n} msgs{' (capped)' if n >= MAX_MSGS else ''}, {len(admins)} admins known, {kept} kept for the dashboard")
+        mode = "backfill" if last_id is None else "new"
+        print(f"{tg['ex_name']} {what}: {len(new_msgs)} {mode} msgs{' (capped)' if len(new_msgs) >= (BACKFILL_MAX if last_id is None else MAX_MSGS) else ''}, {len(rows)} kept, {len(admins)} admins known")
+        recent = [{"at": inc.parse(r["at"]), "text": r["text"], "admin": r["admin"]} for r in rows if r["at"] >= inc.iso(since)]
 
         # 2) incidents: downtime posts + complaint spikes
         triggers = [(inc.parse(p["date"]), "announcement") for p in down_posts]

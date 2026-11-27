@@ -1,0 +1,14 @@
+{
+ "Withdrawals": ["my withdrawal is stuck for hours", "withdrawal pending since yesterday", "bhai withdrawal nahi ho raha", "paisa withdraw nahi hua abhi tak", "मेरी निकासी अटकी हुई है", "INR withdrawal not received in bank"],
+ "Deposits": ["deposit not credited yet", "I sent USDT but it is not showing", "UPI se paise dale par credit nahi hua", "deposit kab aayega", "जमा राशि नहीं दिख रही"],
+ "Login / account access": ["can't log in to my account", "account frozen without reason", "OTP not coming", "login nahi ho raha app me", "मेरा अकाउंट लॉक हो गया"],
+ "Orders / liquidations": ["got liquidated during the downtime", "my stop loss did not trigger", "order not executing", "position close nahi ho rahi", "liquidation ho gaya bina wajah"],
+ "Fear for funds / trust": ["is my money safe?", "is this exchange going to run away like FTX", "are you insolvent", "ye log bhaag toh nahi jayenge", "paisa doob gaya kya", "क्या मेरा पैसा सुरक्षित है"],
+ "Compensation / refund": ["will we get compensation for the loss", "refund my fees", "paisa wapas kab milega", "bharpai karo hamara nuksaan", "nuksaan ka compensation do"],
+ "Fees / charges": ["fees are too high", "why so much TDS deducted", "hidden charges on every trade", "brokerage bahut zyada hai", "शुल्क बहुत ज्यादा है"],
+ "App bugs / slow": ["app keeps crashing", "chart not loading", "app is very slow today", "update ke baad app band ho gaya", "app hang ho raha hai"],
+ "KYC / verification": ["kyc rejected again", "verification pending for a week", "PAN verify nahi ho raha", "selfie verification failed", "केवाईसी अभी तक पूरा नहीं हुआ"],
+ "Support complaints": ["support is not replying", "no response on my ticket for days", "customer care useless", "koi reply nahi de raha support se", "ticket ka jawab nahi aaya"],
+ "Praise": ["great app, smooth experience", "thanks admin, issue resolved", "best exchange in India", "bahut accha app hai", "shukriya, ho gaya", "धन्यवाद, समस्या हल हो गई"],
+ "Other": ["good morning everyone", "what is your price prediction for BTC", "which coin to buy now", "gm", "BTC to the moon"]
+}
