@@ -1,0 +1,378 @@
+{
+ "updated": "2026-11-27T17:37Z",
+ "days": 30,
+ "counts": {
+  "reviews": 217,
+  "telegram": 0,
+  "x": 0
+ },
+ "avg_rating": 4.88,
+ "low_rating_share": 0.03,
+ "method": {
+  "ai": 6,
+  "unsure": 0,
+  "keywords": 211,
+  "engine": "ai"
+ },
+ "labels": [
+  {
+   "label": "Praise",
+   "count": 197,
+   "negative_share": 0.03,
+   "sources": {
+    "review": 197
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-02T21:40Z",
+     "rating": 5,
+     "text": "great application for training"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-10T08:50Z",
+     "rating": 5,
+     "text": "yah app hme bahut अच्छा लगा."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-15T15:03Z",
+     "rating": 5,
+     "text": "Bitcoin prices are displayed clearly and conveniently."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-21T01:01Z",
+     "rating": 5,
+     "text": "Sell process smooth hai"
+    }
+   ]
+  },
+  {
+   "label": "Support complaints",
+   "count": 9,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 9
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-25T01:29Z",
+     "rating": 5,
+     "text": "Good support system"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-26T01:58Z",
+     "rating": 5,
+     "text": "Support helpful hai"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-26T02:28Z",
+     "rating": 5,
+     "text": "Good service support"
+    }
+   ]
+  },
+  {
+   "label": "KYC / verification",
+   "count": 3,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 3
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-25T02:13Z",
+     "rating": 5,
+     "text": "Verification smooth hai"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-26T01:49Z",
+     "rating": 5,
+     "text": "Easy KYC processj"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-26T02:06Z",
+     "rating": 5,
+     "text": "Easy KYC process"
+    }
+   ]
+  },
+  {
+   "label": "Deposits",
+   "count": 3,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 3
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-25T02:24Z",
+     "rating": 5,
+     "text": "Easy deposit process"
+    }
+   ]
+  },
+  {
+   "label": "Login / account access",
+   "count": 2,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 2
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-23T01:39Z",
+     "rating": 5,
+     "text": "Login easy hai"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-25T08:09Z",
+     "rating": 4,
+     "text": "the login experience seems to be affected recently as I'm unable to receive the OTP on my mail where my mobile number linked to the account is not present with me, and causing issues logging in. As the email id is also l"
+    }
+   ]
+  },
+  {
+   "label": "App bugs / slow",
+   "count": 2,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 2
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-24T18:14Z",
+     "rating": 5,
+     "text": "It is a great app. 1st crypto exchange of India or oldest crypto exchange of India. I trust Zebpay very much."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-26T01:49Z",
+     "rating": 5,
+     "text": "Wallet secure lagta hai"
+    }
+   ]
+  },
+  {
+   "label": "Withdrawals",
+   "count": 1,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 1
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-26T17:20Z",
+     "rating": 1,
+     "text": "I can't withdraw money, the account won't open, the account has been closed for 10 days."
+    }
+   ]
+  }
+ ],
+ "by_day": [
+  {
+   "date": "2026-11-02",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-10",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-15",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-21",
+   "reviews": 5,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-22",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-23",
+   "reviews": 2,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-24",
+   "reviews": 7,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-25",
+   "reviews": 97,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-26",
+   "reviews": 102,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  }
+ ],
+ "topics": [
+  {
+   "name": "good, experience, useful, use",
+   "size": 44,
+   "negative_share": 0.05,
+   "main_label": "Praise",
+   "sources": {
+    "review": 44
+   },
+   "samples": [
+    "Good app for quick use",
+    "Simple and useful app",
+    "Very useful app daily"
+   ]
+  },
+  {
+   "name": "trading, accha experience, smooth, accha",
+   "size": 33,
+   "negative_share": 0.03,
+   "main_label": "Praise",
+   "sources": {
+    "review": 33
+   },
+   "samples": [
+    "Very useful for trading",
+    "Smooth chal raha hai",
+    "Easy transaction flow"
+   ]
+  },
+  {
+   "name": "easy, buy, helpful, karna easy",
+   "size": 25,
+   "negative_share": 0.0,
+   "main_label": "Praise",
+   "sources": {
+    "review": 25
+   },
+   "samples": [
+    "Very useful crypto app",
+    "Crypto buy karna easy hai",
+    "Helpful for crypto use"
+   ]
+  }
+ ],
+ "by_mood": {
+  "rising": {
+   "days": 0,
+   "messages": 0
+  },
+  "normal": {
+   "days": 7,
+   "messages": 211,
+   "avg_btc_change": 0.63,
+   "kinds": {
+    "Complaint": 0.095,
+    "Praise": 0.905,
+    "Question": 0.0,
+    "Other": 0.0
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.905
+    },
+    {
+     "label": "Support complaints",
+     "share": 0.043
+    },
+    {
+     "label": "KYC / verification",
+     "share": 0.014
+    },
+    {
+     "label": "Deposits",
+     "share": 0.014
+    }
+   ],
+   "samples": {
+    "Complaint": "Login easy hai",
+    "Praise": "great application for training",
+    "Question": null
+   }
+  },
+  "falling": {
+   "days": 2,
+   "messages": 6,
+   "avg_btc_change": -5.57,
+   "kinds": {
+    "Complaint": 0.0,
+    "Praise": 1.0,
+    "Question": 0.0,
+    "Other": 0.0
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 1.0
+    }
+   ],
+   "samples": {
+    "Complaint": null,
+    "Praise": "Bitcoin prices are displayed clearly and conveniently.",
+    "Question": null
+   }
+  }
+ },
+ "mood_thresholds": {
+  "rising": 3.0,
+  "falling": -3.0
+ }
+}

@@ -1,0 +1,606 @@
+{
+ "updated": "2026-11-27T17:37Z",
+ "days": 30,
+ "counts": {
+  "reviews": 143,
+  "telegram": 0,
+  "x": 0
+ },
+ "avg_rating": 3.05,
+ "low_rating_share": 0.44,
+ "method": {
+  "ai": 29,
+  "unsure": 17,
+  "keywords": 97,
+  "engine": "ai"
+ },
+ "labels": [
+  {
+   "label": "Praise",
+   "count": 65,
+   "negative_share": 0.08,
+   "sources": {
+    "review": 65
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-02T04:46Z",
+     "rating": 5,
+     "text": "best. One of the best trading app"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-02T18:51Z",
+     "rating": 5,
+     "text": "Best app to learn F and O. Even the most complex strategy can be implemented with very less capital"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-08T04:53Z",
+     "rating": 5,
+     "text": "Best. All is well"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-08T11:40Z",
+     "rating": 4,
+     "text": "FEMA. Why ED is looking for transaction of delta account"
+    }
+   ]
+  },
+  {
+   "label": "Withdrawals",
+   "count": 23,
+   "negative_share": 0.78,
+   "sources": {
+    "review": 23
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-16T08:45Z",
+     "rating": 1,
+     "text": "withdrawal problem too slowly"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-16T10:31Z",
+     "rating": 1,
+     "text": "Fund Withdrawal Amount Rs.20000 Initiated On 15th Nov 2026 Delayed Unnecessarily In The Name Of Manual Audit. After Complaining So Many Times No Effect And No Result Oriented Work.. The Firm Is Just Delaying And Delaying"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T10:10Z",
+     "rating": 1,
+     "text": "from morning withdrawals are not working"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T17:35Z",
+     "rating": 5,
+     "text": "nice scalping offer and withdrawal system"
+    }
+   ]
+  },
+  {
+   "label": "Other",
+   "count": 17,
+   "negative_share": 0.94,
+   "sources": {
+    "review": 17
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-26T11:49Z",
+     "rating": 1,
+     "text": "Guys don't download this app they are fraud and don't give withdrawal properly..... please don't use this app"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-25T10:52Z",
+     "rating": 1,
+     "text": "no one trade this app is fraud i test i buy or sell take again again but result same hit stop loss many time. no see any profit besides the only loss. in some case profit i see than 30% tax"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-20T17:42Z",
+     "rating": 1,
+     "text": "worst app. deposit instant bt withdraw krne jao toh security review aur 58 ghanta ka wait khud ka paisa nikalna itna muskil ekdum bakwashh app hai dnt download... dusra koi bhi app best hai bt delta che ee cheee cheee"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-14T17:07Z",
+     "rating": 1,
+     "text": "Late funds submission. Starting it to get a better view"
+    }
+   ]
+  },
+  {
+   "label": "App bugs / slow",
+   "count": 17,
+   "negative_share": 0.53,
+   "sources": {
+    "review": 17
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-09T19:17Z",
+     "rating": 1,
+     "text": "leverage bahut lagta hai koi mat karo isme trade"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-17T11:07Z",
+     "rating": 1,
+     "text": "PLEASE ADD 4 MINUTE TIMEFRAME. I TRADE AT THE TIME WHERE WORLD DON'T EVEN IMAGINE TO TRADE. 4 MINUTE 😂. AND MAKE IT SMOOTH, AFTER A ENTRY THERE'S A PROBLEM ASAP WE CAN'T PUT SL. AFTER RESTART THEN WE CAN PUT SL TILL THE "
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T15:20Z",
+     "rating": 2,
+     "text": "Title: Being No. 1 Requires More Than Just Claiming It! Delta Exchange has a good platform, but its No. 1 status should be reflected in its features, not just its marketing. Three basic demands that traders should not ha"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-20T12:04Z",
+     "rating": 5,
+     "text": "I have using Delta Exchange since July, and honestly, abhi tak experience kaafi accha raha hai. App ka design nice hai, runs smoothly, aur mujhe koi major issue face nahi hua. Trades bhi pretty quickly execute ho jaate h"
+    }
+   ]
+  },
+  {
+   "label": "Fees / charges",
+   "count": 12,
+   "negative_share": 0.75,
+   "sources": {
+    "review": 12
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-17T15:43Z",
+     "rating": 5,
+     "text": "Bitcoin me bhi fees 0.01% kardo na please"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T12:45Z",
+     "rating": 1,
+     "text": "trading fees high hai"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T16:00Z",
+     "rating": 5,
+     "text": "nice but please low the fees. fees are too high"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-20T09:03Z",
+     "rating": 1,
+     "text": "brokerage is to high"
+    }
+   ]
+  },
+  {
+   "label": "Support complaints",
+   "count": 3,
+   "negative_share": 0.67,
+   "sources": {
+    "review": 3
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-08T18:32Z",
+     "rating": 4,
+     "text": "Not for the iPad. The design doesn’t support the iPad version. There should upgrade it."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-12T13:25Z",
+     "rating": 1,
+     "text": "Ux sucks on iPad. Please add resolution support for iPad devices…"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-25T22:11Z",
+     "rating": 1,
+     "text": "customer support 😭"
+    }
+   ]
+  },
+  {
+   "label": "Login / account access",
+   "count": 2,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 2
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-16T09:39Z",
+     "rating": 4,
+     "text": "remove no 1 add from app AND login Singup"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-17T08:49Z",
+     "rating": 5,
+     "text": "Unable to login in the app via Google. While I click login with Google it's not showing Google accounts to login from. There's a glitch. Kindly resolve"
+    }
+   ]
+  },
+  {
+   "label": "Orders / liquidations",
+   "count": 2,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 2
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-18T17:29Z",
+     "rating": 1,
+     "text": "highest brockerage and since 2023 I am using delta almost 90 % times I face just triggered my liquidation and goes up or down which max time I now realise that the app and brocker level manipulation as some other apps at"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-20T16:05Z",
+     "rating": 1,
+     "text": "liquidation very big problem mony wash out idea at no equity market"
+    }
+   ]
+  },
+  {
+   "label": "Fear for funds / trust",
+   "count": 1,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 1
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-17T12:01Z",
+     "rating": 1,
+     "text": "Fraud. Fraud"
+    }
+   ]
+  },
+  {
+   "label": "KYC / verification",
+   "count": 1,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 1
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-21T16:50Z",
+     "rating": 1,
+     "text": "Signup get rs250 BTC after Signing Complete KYC to get rs250 BTC... User's are not mad."
+    }
+   ]
+  }
+ ],
+ "by_day": [
+  {
+   "date": "2026-10-29",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-02",
+   "reviews": 2,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-03",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-08",
+   "reviews": 3,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-09",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-11",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-12",
+   "reviews": 2,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-13",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-14",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-15",
+   "reviews": 2,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-16",
+   "reviews": 4,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-17",
+   "reviews": 14,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-18",
+   "reviews": 16,
+   "low": 7,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-19",
+   "reviews": 3,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-20",
+   "reviews": 12,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-21",
+   "reviews": 12,
+   "low": 6,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-22",
+   "reviews": 16,
+   "low": 9,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-23",
+   "reviews": 21,
+   "low": 7,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-24",
+   "reviews": 9,
+   "low": 4,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-25",
+   "reviews": 13,
+   "low": 6,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-26",
+   "reviews": 8,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  }
+ ],
+ "topics": [
+  {
+   "name": "trading, high, good, best",
+   "size": 49,
+   "negative_share": 0.39,
+   "main_label": "Praise",
+   "sources": {
+    "review": 49
+   },
+   "samples": [
+    "Best Trading platform 🥰",
+    "Trading. Good app for trading",
+    "best. One of the best trading app"
+   ]
+  },
+  {
+   "name": "aap, use, don, application",
+   "size": 43,
+   "negative_share": 0.51,
+   "main_label": "Praise",
+   "sources": {
+    "review": 43
+   },
+   "samples": [
+    "worst app. deposit instant bt withdraw krne jao toh security review aur 58 ghanta ka wait khud ka paisa nikalna itna muskil ekdum bakwashh app hai dnt download... dusra koi bhi app best hai bt delta c",
+    "to much time to take withdraw money, don't download this app ur money will freez ,",
+    "love this application 💗"
+   ]
+  },
+  {
+   "name": "withdrawal, service, money, received",
+   "size": 21,
+   "negative_share": 0.81,
+   "main_label": "Withdrawals",
+   "sources": {
+    "review": 21
+   },
+   "samples": [
+    "⭐☆☆☆☆ (1 Star) ⭐☆☆☆☆ (1 Star) Very poor customer service and withdrawal experience. It has been 7 hours since I requested a withdrawal at 11:30 AM, but my money has still not been credited to my bank ",
+    "Very poor service. This is the third time I have made a withdrawal, but it still takes almost two days for the money to arrive. Withdrawals should be processed instantly. I am very disappointed with y",
+    "Fund withdrawal issues. I trying to withdraw my fund last 3 days . No response of delta exchange very poor service"
+   ]
+  }
+ ],
+ "by_mood": {
+  "rising": {
+   "days": 0,
+   "messages": 0
+  },
+  "normal": {
+   "days": 17,
+   "messages": 127,
+   "avg_btc_change": -0.25,
+   "kinds": {
+    "Complaint": 0.433,
+    "Praise": 0.457,
+    "Question": 0.008,
+    "Other": 0.102
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.457
+    },
+    {
+     "label": "Withdrawals",
+     "share": 0.157
+    },
+    {
+     "label": "App bugs / slow",
+     "share": 0.118
+    },
+    {
+     "label": "Fees / charges",
+     "share": 0.094
+    }
+   ],
+   "samples": {
+    "Complaint": "Not for the iPad. The design doesn’t support the iPad version. There should upgrade it.",
+    "Praise": "Need to add option of partial exit. I’m using this application from last 2 year and the experience was good….but what I just need now is the option of doing partial exit….work on top priority that mak",
+    "Question": "ak trade li or treading privilege aa raha hai kya bekar app he. Or deposit and withdraw bhi off kar diya. I don't recommend this app for anyone"
+   }
+  },
+  "falling": {
+   "days": 4,
+   "messages": 16,
+   "avg_btc_change": -4.74,
+   "kinds": {
+    "Complaint": 0.375,
+    "Praise": 0.438,
+    "Question": 0.0,
+    "Other": 0.188
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.438
+    },
+    {
+     "label": "Withdrawals",
+     "share": 0.188
+    },
+    {
+     "label": "App bugs / slow",
+     "share": 0.125
+    },
+    {
+     "label": "KYC / verification",
+     "share": 0.062
+    }
+   ],
+   "samples": {
+    "Complaint": "really good platform for trading forex and crypto. Delta Exchange being FIU registered is also reassuring. I've been using it for quite some time now, and trading has been convenient. Bas kabhi-kabhi ",
+    "Praise": "Hi. Good and easy to use",
+    "Question": null
+   }
+  }
+ },
+ "mood_thresholds": {
+  "rising": 3.0,
+  "falling": -3.0
+ }
+}

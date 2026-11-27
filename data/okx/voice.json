@@ -1,0 +1,681 @@
+{
+ "updated": "2026-11-27T17:37Z",
+ "days": 30,
+ "counts": {
+  "reviews": 128,
+  "telegram": 0,
+  "x": 0
+ },
+ "avg_rating": 2.53,
+ "low_rating_share": 0.58,
+ "method": {
+  "ai": 30,
+  "unsure": 2,
+  "keywords": 96,
+  "engine": "ai"
+ },
+ "labels": [
+  {
+   "label": "App bugs / slow",
+   "count": 77,
+   "negative_share": 0.79,
+   "sources": {
+    "review": 77
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-29T06:54Z",
+     "rating": 4,
+     "text": "The new version keep crashing on Redmi Note 13 4g continuously even I have tried clearing cache, cleared all data and also removed the OKX app completely. After fresh installation again same problem please fix it urgentl"
+    },
+    {
+     "src": "review",
+     "at": "2026-10-30T14:41Z",
+     "rating": 1,
+     "text": "the app lagging and force close everytime i enter futures trading my device is infinix note 30 pro"
+    },
+    {
+     "src": "review",
+     "at": "2026-10-30T21:05Z",
+     "rating": 4,
+     "text": "why is it keep crashimg after new update????"
+    },
+    {
+     "src": "review",
+     "at": "2026-10-31T22:43Z",
+     "rating": 2,
+     "text": "P2P chat and overall experience is horrible , the user sends me chats which never arrives in time. always arrives minutes and sometime hours after its being sent"
+    }
+   ]
+  },
+  {
+   "label": "Praise",
+   "count": 32,
+   "negative_share": 0.06,
+   "sources": {
+    "review": 32
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-30T15:38Z",
+     "rating": 5,
+     "text": "Thank you Jesus Christ"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-01T21:56Z",
+     "rating": 5,
+     "text": "old is the best"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-02T18:06Z",
+     "rating": 4,
+     "text": "bestest application"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-02T23:41Z",
+     "rating": 5,
+     "text": "great project ❤️"
+    }
+   ]
+  },
+  {
+   "label": "Login / account access",
+   "count": 5,
+   "negative_share": 0.4,
+   "sources": {
+    "review": 5
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-02T08:07Z",
+     "rating": 3,
+     "text": "it been fun but Recent update has been hell I have not been able to login my account it just load wont login I thought it was my account I tried login in on the website I was able to login but cant login on app outside t"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-06T01:59Z",
+     "rating": 2,
+     "text": "Good morning my name is Benard from Kenya and recently your app is just full of embarrassment you can't login it takes long time to log in yet it just stops and closes itself actually am really disappointed with this bea"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T10:48Z",
+     "rating": 5,
+     "text": "love it, it's not responding well in my device though since the last update, trying to uninstall and reinstall Now that I did uninstall and reinstalled, I can't log into my account please fix as soon as possible 🙏🏽"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-19T19:29Z",
+     "rating": 1,
+     "text": "DO YOU GUYS HAVE A PROBLEM WITH NIGERIA OR WHAT I am unable to have access to my account until I used VFN.... I haven try to trade but any time I try to log in is not working until one of my friends tell me that I should"
+    }
+   ]
+  },
+  {
+   "label": "Fear for funds / trust",
+   "count": 4,
+   "negative_share": 0.75,
+   "sources": {
+    "review": 4
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-29T13:56Z",
+     "rating": 1,
+     "text": "My brothers, no one should trade on the oKx event option. They are committing fraud here. They are thieves. What are they doing? They place a trade here and lock it at 0.05. Later, you will lose everything. You are a dis"
+    },
+    {
+     "src": "review",
+     "at": "2026-10-31T02:57Z",
+     "rating": 1,
+     "text": "Vorsicht SCAM! okx gibt vor Dokumente zur Freischaltung zu benötigen die es nicht gibt. und behält so Gelder ein."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-20T02:44Z",
+     "rating": 4,
+     "text": "my app is refusing to open, I have updated it several times but I can't get access to my funds please fix it I've done everything I'm supposed to do but the app is not responding"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-20T13:59Z",
+     "rating": 1,
+     "text": "be careful.. many scammers are here if they asking U to contact by WhatsApp for fast replies, please don't do, they only hiring you to be a victim. they are smart , friendly and will drain your money"
+    }
+   ]
+  },
+  {
+   "label": "KYC / verification",
+   "count": 3,
+   "negative_share": 0.67,
+   "sources": {
+    "review": 3
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-16T16:20Z",
+     "rating": 1,
+     "text": "Terrible verification process"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T16:57Z",
+     "rating": 1,
+     "text": "says i cant verify from Greece..."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-24T04:09Z",
+     "rating": 3,
+     "text": "Why? Myanmar Country KYC Not use Myanmar NRC Give Accepted ."
+    }
+   ]
+  },
+  {
+   "label": "Withdrawals",
+   "count": 2,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 2
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-30T13:54Z",
+     "rating": 1,
+     "text": "such a terrible app,several unworthy steps just to make a simple crypto withdrawal, not user friendly at all."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-15T09:08Z",
+     "rating": 1,
+     "text": "cannot withdraw"
+    }
+   ]
+  },
+  {
+   "label": "Other",
+   "count": 2,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 2
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-01T14:25Z",
+     "rating": 1,
+     "text": "it cann't be open."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-01T10:05Z",
+     "rating": 1,
+     "text": "Wec ould not claim our benefit and rewards.and block our rewards"
+    }
+   ]
+  },
+  {
+   "label": "Support complaints",
+   "count": 2,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 2
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-10T16:13Z",
+     "rating": 4,
+     "text": "Best trading app ever exept one thing it doesn't support Harmony os plz fix this"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-16T12:26Z",
+     "rating": 5,
+     "text": "Hello OKX Support Team, After updating the OKX app, I started experiencing a serious issue. Whenever I open the app and try to complete any steps or perform an action, the app suddenly closes by itself. This issue starte"
+    }
+   ]
+  },
+  {
+   "label": "Fees / charges",
+   "count": 1,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 1
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-28T17:37Z",
+     "rating": 5,
+     "text": "Okx is genuinely great. 3 years no problems on this app or anything the fees take so much tho like 16 dollars when i transfer I was like wtf"
+    }
+   ]
+  }
+ ],
+ "by_day": [
+  {
+   "date": "2026-10-28",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-10-29",
+   "reviews": 2,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-10-30",
+   "reviews": 7,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-10-31",
+   "reviews": 2,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-01",
+   "reviews": 4,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-02",
+   "reviews": 5,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-03",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-04",
+   "reviews": 2,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-05",
+   "reviews": 3,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-06",
+   "reviews": 3,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-07",
+   "reviews": 3,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-08",
+   "reviews": 4,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-09",
+   "reviews": 2,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-10",
+   "reviews": 3,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-11",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-12",
+   "reviews": 5,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-13",
+   "reviews": 7,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-14",
+   "reviews": 2,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-15",
+   "reviews": 10,
+   "low": 9,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-16",
+   "reviews": 10,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-17",
+   "reviews": 7,
+   "low": 4,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-18",
+   "reviews": 9,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-19",
+   "reviews": 11,
+   "low": 10,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-20",
+   "reviews": 9,
+   "low": 4,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-21",
+   "reviews": 3,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-22",
+   "reviews": 2,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-23",
+   "reviews": 3,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-24",
+   "reviews": 4,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-25",
+   "reviews": 2,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-26",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  }
+ ],
+ "topics": [
+  {
+   "name": "crashing, responding, slow, update",
+   "size": 59,
+   "negative_share": 0.68,
+   "main_label": "App bugs / slow",
+   "sources": {
+    "review": 59
+   },
+   "samples": [
+    "my app is keep crashing please fix it.",
+    "the app keep stopping and it's lagging so much over the past few days",
+    "This app just crashes out of nowhere😓, and my phone tells me that it has a bug"
+   ]
+  },
+  {
+   "name": "money, trading, one, terrible",
+   "size": 33,
+   "negative_share": 0.73,
+   "main_label": "App bugs / slow",
+   "sources": {
+    "review": 33
+   },
+   "samples": [
+    "App was working fine until recently. Now i want to transfer out funds and it freezes on a verification process. Reduced to 1 star. Every single withdrawal is flagged as suspicious and the last part to",
+    "deposit fails too much. do not trust instant deposit. high chance that you're deposit will fail and you're money will be taken for few workdays. so you will wait for refund. im sick of it, never using",
+    "horrible experience 😔. The second leave the app in order to get verification code from authenticator app, it restart. Which lead to canceled orders on peer to peer trading that comes with bad reviews"
+   ]
+  },
+  {
+   "name": "good, use, work, thank",
+   "size": 18,
+   "negative_share": 0.22,
+   "main_label": "Praise",
+   "sources": {
+    "review": 18
+   },
+   "samples": [
+    "Very good application",
+    "Very good useful platform",
+    "this app is very good to use. and also reliable."
+   ]
+  }
+ ],
+ "by_mood": {
+  "rising": {
+   "days": 1,
+   "messages": 3,
+   "avg_btc_change": 3.95,
+   "kinds": {
+    "Complaint": 0.667,
+    "Praise": 0.333,
+    "Question": 0.0,
+    "Other": 0.0
+   },
+   "top_labels": [
+    {
+     "label": "App bugs / slow",
+     "share": 0.667
+    },
+    {
+     "label": "Praise",
+     "share": 0.333
+    }
+   ],
+   "samples": {
+    "Complaint": "very confusing app last 3 days i try to setup a demo account for testing the results of Ai bot but can't find it on the app how to add the virtual fund",
+    "Praise": "it's very nice app to use for your day to day crypto transactions. I love it.",
+    "Question": null
+   }
+  },
+  "normal": {
+   "days": 23,
+   "messages": 93,
+   "avg_btc_change": -0.1,
+   "kinds": {
+    "Complaint": 0.731,
+    "Praise": 0.247,
+    "Question": 0.0,
+    "Other": 0.022
+   },
+   "top_labels": [
+    {
+     "label": "App bugs / slow",
+     "share": 0.581
+    },
+    {
+     "label": "Praise",
+     "share": 0.247
+    },
+    {
+     "label": "Fear for funds / trust",
+     "share": 0.043
+    },
+    {
+     "label": "Login / account access",
+     "share": 0.043
+    }
+   ],
+   "samples": {
+    "Complaint": "Okx is genuinely great. 3 years no problems on this app or anything the fees take so much tho like 16 dollars when i transfer I was like wtf",
+    "Praise": "old is the best",
+    "Question": null
+   }
+  },
+  "falling": {
+   "days": 6,
+   "messages": 32,
+   "avg_btc_change": -4.78,
+   "kinds": {
+    "Complaint": 0.75,
+    "Praise": 0.25,
+    "Question": 0.0,
+    "Other": 0.0
+   },
+   "top_labels": [
+    {
+     "label": "App bugs / slow",
+     "share": 0.656
+    },
+    {
+     "label": "Praise",
+     "share": 0.25
+    },
+    {
+     "label": "Withdrawals",
+     "share": 0.062
+    },
+    {
+     "label": "Login / account access",
+     "share": 0.031
+    }
+   ],
+   "samples": {
+    "Complaint": "If only I could rate zero ,this app is the worst,before even installing it's even giving me awareness that anytime it may stop working,now based on other reviews of some who are complaining that is no",
+    "Praise": "Thank you Jesus Christ",
+    "Question": null
+   }
+  }
+ },
+ "mood_thresholds": {
+  "rising": 3.0,
+  "falling": -3.0
+ }
+}

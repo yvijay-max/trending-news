@@ -1,14 +1,24 @@
 {
- "updated": "2026-11-27T17:21Z",
+ "updated": "2026-11-27T17:38Z",
  "regions": {
   "global": {
-   "headline": [],
+   "headline": [
+    {
+     "text": "App ratings this week range from Coinbase at 2.6★ to Binance at 4.5★.",
+     "tone": "info"
+    }
+   ],
    "takeaways": [
     "Kraken, Coinbase were slow to respond during incidents. Posting a holding message within 15 minutes (Playbook rule 1) would set you apart."
    ],
    "exchanges": {
     "binance": {
      "findings": [
+      {
+       "text": "App reviews this week average 4.5★ from 203 reviews, up from 4.0; 10% are 1–2 stars.",
+       "tone": "good",
+       "weight": 35
+      },
       {
        "text": "Influencers mentioned it in 31 posts across 5 channels in 30 days, 3 with a referral link.",
        "tone": "info",
@@ -29,6 +39,11 @@
     "kraken": {
      "findings": [
       {
+       "text": "App reviews this week average 2.9★ from 12 reviews, down from 3.5; 50% are 1–2 stars.",
+       "tone": "bad",
+       "weight": 70
+      },
+      {
        "text": "Status page: 45 incidents in 30 days, resolved in a median 3.5 h; 1 of 45 gave an ETA or next-update time.",
        "tone": "bad",
        "weight": 55
@@ -47,6 +62,16 @@
     },
     "okx": {
      "findings": [
+      {
+       "text": "Biggest negative topic this month: “crashing, responding, slow, update” (59 messages, 68% negative).",
+       "tone": "bad",
+       "weight": 55
+      },
+      {
+       "text": "App reviews this week average 3.4★ from 22 reviews, up from 2.5; 36% are 1–2 stars.",
+       "tone": "info",
+       "weight": 35
+      },
       {
        "text": "Influencers mentioned it in 1 posts across 1 channel in 30 days.",
        "tone": "info",
@@ -67,6 +92,16 @@
     "bybit": {
      "findings": [
       {
+       "text": "App reviews this week average 3.3★ from 115 reviews, down from 3.6; 38% are 1–2 stars.",
+       "tone": "bad",
+       "weight": 70
+      },
+      {
+       "text": "Biggest negative topic this month: “working, open, what, opening” (66 messages, 79% negative).",
+       "tone": "bad",
+       "weight": 55
+      },
+      {
        "text": "Announcement channel: 201 posts in 30 days, 17% promos or campaigns, 4 about downtime or maintenance.",
        "tone": "info",
        "weight": 25
@@ -80,6 +115,16 @@
     },
     "coinbase": {
      "findings": [
+      {
+       "text": "App reviews this week average 2.6★ from 41 reviews, up from 1.9; 56% are 1–2 stars.",
+       "tone": "bad",
+       "weight": 70
+      },
+      {
+       "text": "Biggest negative topic this month: “all, worst, money, ever” (58 messages, 90% negative).",
+       "tone": "bad",
+       "weight": 55
+      },
       {
        "text": "Status page: 23 incidents in 30 days, resolved in a median 2.6 h; 1 of 23 gave an ETA or next-update time.",
        "tone": "bad",
@@ -95,13 +140,28 @@
    }
   },
   "india": {
-   "headline": [],
+   "headline": [
+    {
+     "text": "App ratings this week range from Delta Exchange India at 3.5★ to ZebPay at 4.9★.",
+     "tone": "info"
+    }
+   ],
    "takeaways": [
     "Not enough data yet for firm takeaways. They appear after a week of collection."
    ],
    "exchanges": {
     "coindcx": {
      "findings": [
+      {
+       "text": "Biggest negative topic this month: “withdrawal, worst, withdraw, funds” (29 messages, 93% negative).",
+       "tone": "bad",
+       "weight": 55
+      },
+      {
+       "text": "App reviews this week average 4.2★ from 204 reviews, up from 2.9; 17% are 1–2 stars.",
+       "tone": "good",
+       "weight": 35
+      },
       {
        "text": "Influencers mentioned it in 12 posts across 4 channels in 30 days, 4 with a referral link.",
        "tone": "info",
@@ -117,6 +177,11 @@
     "coinswitch": {
      "findings": [
       {
+       "text": "App reviews this week average 4.8★ from 207 reviews; 5% are 1–2 stars.",
+       "tone": "good",
+       "weight": 35
+      },
+      {
        "text": "Influencers mentioned it in 1 posts across 1 channel in 30 days.",
        "tone": "info",
        "weight": 30
@@ -131,6 +196,16 @@
     "wazirx": {
      "findings": [
       {
+       "text": "App reviews this week average 4.2★ from 10 reviews, down from 4.6; 20% are 1–2 stars.",
+       "tone": "bad",
+       "weight": 70
+      },
+      {
+       "text": "Biggest negative topic this month: “fraud, worst, funds, zero” (14 messages, 100% negative).",
+       "tone": "bad",
+       "weight": 55
+      },
+      {
        "text": "Influencers mentioned it in 3 posts across 2 channels in 30 days.",
        "tone": "info",
        "weight": 30
@@ -144,6 +219,16 @@
     },
     "delta": {
      "findings": [
+      {
+       "text": "App reviews this week average 3.5★ from 139 reviews, down from 3.9; 31% are 1–2 stars.",
+       "tone": "bad",
+       "weight": 70
+      },
+      {
+       "text": "Biggest negative topic this month: “withdrawal, service, money, received” (21 messages, 81% negative).",
+       "tone": "bad",
+       "weight": 55
+      },
       {
        "text": "Influencers mentioned it in 12 posts across 2 channels in 30 days, 10 with a referral link.",
        "tone": "info",
@@ -163,6 +248,11 @@
     },
     "zebpay": {
      "findings": [
+      {
+       "text": "App reviews this week average 4.9★ from 216 reviews; 3% are 1–2 stars.",
+       "tone": "good",
+       "weight": 35
+      },
       {
        "text": "Influencers mentioned it in 1 posts across 1 channel in 30 days.",
        "tone": "info",

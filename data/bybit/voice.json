@@ -1,0 +1,540 @@
+{
+ "updated": "2026-11-27T17:37Z",
+ "days": 30,
+ "counts": {
+  "reviews": 147,
+  "telegram": 0,
+  "x": 0
+ },
+ "avg_rating": 2.92,
+ "low_rating_share": 0.49,
+ "method": {
+  "ai": 46,
+  "unsure": 9,
+  "keywords": 92,
+  "engine": "ai"
+ },
+ "labels": [
+  {
+   "label": "Praise",
+   "count": 62,
+   "negative_share": 0.06,
+   "sources": {
+    "review": 62
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-15T15:51Z",
+     "rating": 5,
+     "text": "the best ever"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-15T17:16Z",
+     "rating": 5,
+     "text": "this app have good for Africa user so clearly the best platform everrr"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-16T07:45Z",
+     "rating": 5,
+     "text": "A vary good app"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-16T23:09Z",
+     "rating": 5,
+     "text": "It's an greatest earning app"
+    }
+   ]
+  },
+  {
+   "label": "App bugs / slow",
+   "count": 54,
+   "negative_share": 0.76,
+   "sources": {
+    "review": 54
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-16T05:10Z",
+     "rating": 5,
+     "text": "One of the best exchange!!!!"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-17T02:55Z",
+     "rating": 1,
+     "text": "The new Bybit update is really disappointing. The app takes way too long to open. The previous version was much better and opened instantly. Since the new update, Bybit has become noticeably slower. Please fix this issue"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-17T17:46Z",
+     "rating": 5,
+     "text": "best and faster than most crypto exchanges"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T09:12Z",
+     "rating": 5,
+     "text": "seamless and scalable experience so far although slowness network experienced within the App can be challenging which in turn leads to delay in transaction sometimes but I do rate the application very highly"
+    }
+   ]
+  },
+  {
+   "label": "Other",
+   "count": 9,
+   "negative_share": 0.89,
+   "sources": {
+    "review": 9
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-24T16:52Z",
+     "rating": 1,
+     "text": "DON'T TRUST BYBIT. ENDLESS ID RE-VERIFICATION TRAP. The Risk trigger will pop up to ask you to re-verify yourself the same day right after they said your trading is resumed after a successful verification. Each review ta"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-22T05:52Z",
+     "rating": 1,
+     "text": "I think bybit don't like people profiting. they still from you just to set up nonsense rewards"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-20T14:31Z",
+     "rating": 1,
+     "text": "unfair & scam .. I was liquidated due to their price froze ..entering me at price i didnt click & exiting the positions at a price that actually never reached it that time ... So awful experience!!!!!!!"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T23:44Z",
+     "rating": 2,
+     "text": "Hello pls I sent #360k from other bank account different from the name on my bybit account but the money has not yet reflected on my bybit account!! pls I want you to rectify this for me"
+    }
+   ]
+  },
+  {
+   "label": "Login / account access",
+   "count": 8,
+   "negative_share": 0.88,
+   "sources": {
+    "review": 8
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-19T20:05Z",
+     "rating": 1,
+     "text": "haven't been able to login to my account since yesterday keeps showing network related errors which I have full internet network"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-19T21:54Z",
+     "rating": 5,
+     "text": "I can't log into my account anymore I don't know what the problem is please bybit do something"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-23T07:27Z",
+     "rating": 1,
+     "text": "FOR THE PAST ONE WEEK IN NIGERIA I CAN'T ACCESS MY BYBIT APP, I HAVE CLEARED CACHE, UPDATED MY APP, RESTARTED MY PHONE, YET THE SAME BAD EXPERIENCE, AND I HAVE MISSED A LOT OF THINGS BECAUSE OF THIS NONSENSE.. YOU PEOPLE"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-21T10:43Z",
+     "rating": 1,
+     "text": "I don't know why I can't open my account it always takes long"
+    }
+   ]
+  },
+  {
+   "label": "Support complaints",
+   "count": 4,
+   "negative_share": 0.75,
+   "sources": {
+    "review": 4
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-16T13:23Z",
+     "rating": 1,
+     "text": "Your customer support is extremely poor You keep delaying the resolution of issues instead of addressing them in a timely manner This level of service is very disappointing"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T06:40Z",
+     "rating": 1,
+     "text": "Very disappointing experience! Bybit's app and websites have been experiencing intermittent accessibility issues in Nigeria for about a week, making it difficult to manage transactions. Their advertised 24/7 live support"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-23T12:37Z",
+     "rating": 1,
+     "text": "Don't know what is happening to the app because for days now the app has been shutdown and I have coin inside please let the support team help me"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-26T15:19Z",
+     "rating": 5,
+     "text": "Bybit is one of the best cryptocurrency trading platforms I have tried. Its interface feels smooth, clear, and easy to navigate for both new and experienced traders. The platform has been stable during volatile market co"
+    }
+   ]
+  },
+  {
+   "label": "Fear for funds / trust",
+   "count": 4,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 4
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-17T02:27Z",
+     "rating": 1,
+     "text": "Extremely Poor Experience! Bybit is holding my USDT in the name of Due Diligence without any proper justification. Initially, they promised resolution within 48 hours, but keep extending the deadline by 2, 4, 6, 12 and 2"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-18T04:54Z",
+     "rating": 1,
+     "text": "not giving real rewards . becarefull scam app"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-23T01:26Z",
+     "rating": 1,
+     "text": "They stolen my xaut transfer And they refused to say if It's reached their wallet or not They are scam becarfull guys.."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-24T08:57Z",
+     "rating": 1,
+     "text": "SCAM APP DO NOT USE! They restricted from my account for God knows reason!! that's FRAUD!!"
+    }
+   ]
+  },
+  {
+   "label": "Withdrawals",
+   "count": 3,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 3
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-19T16:50Z",
+     "rating": 1,
+     "text": "bybit is no more working as of today everybody withdraw your funds if you can"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-21T08:01Z",
+     "rating": 1,
+     "text": "you people have frustrated my life I tried setting up authenticator for withdrawal but they keep on saying invalid code the next thing they restricted me from making a withdrawal until next year February this is really b"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-26T16:00Z",
+     "rating": 1,
+     "text": "bybit before is a joy cus I love it when it comes to exchange but now it suck,is nothing but nonsense,my account was restricted for more than 24hrs,I was told that setting my withdrawal limit will prevent me from withdra"
+    }
+   ]
+  },
+  {
+   "label": "KYC / verification",
+   "count": 1,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 1
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-31T01:26Z",
+     "rating": 1,
+     "text": "Trash app. When i try to identify and take selfie the selfie just stay it is when i fit my face it dont do anything need to fix that signin"
+    }
+   ]
+  },
+  {
+   "label": "Deposits",
+   "count": 1,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 1
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-21T22:27Z",
+     "rating": 1,
+     "text": "it takes to long to confirm my deposits"
+    }
+   ]
+  },
+  {
+   "label": "Fees / charges",
+   "count": 1,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 1
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-22T13:45Z",
+     "rating": 5,
+     "text": "This is amazing app! Bybit got a pretty decent setup for comparing crypto prices and planning trades. I like the liquidity info, order history and how you can customize different chart indicators. The app feels quick mos"
+    }
+   ]
+  }
+ ],
+ "by_day": [
+  {
+   "date": "2026-10-31",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-15",
+   "reviews": 2,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-16",
+   "reviews": 5,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-17",
+   "reviews": 15,
+   "low": 8,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-18",
+   "reviews": 14,
+   "low": 6,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-19",
+   "reviews": 15,
+   "low": 9,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-20",
+   "reviews": 12,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-21",
+   "reviews": 13,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-22",
+   "reviews": 12,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-23",
+   "reviews": 15,
+   "low": 11,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-24",
+   "reviews": 15,
+   "low": 10,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-25",
+   "reviews": 13,
+   "low": 4,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-26",
+   "reviews": 15,
+   "low": 8,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  }
+ ],
+ "topics": [
+  {
+   "name": "working, open, what, opening",
+   "size": 66,
+   "negative_share": 0.79,
+   "main_label": "App bugs / slow",
+   "sources": {
+    "review": 66
+   },
+   "samples": [
+    "I have been using this Bybit exchanger for a long time and everything is going smoothly, but just recently like 3 days ago up till now , the app is not opening, it's showing the Bybit logo and nothing",
+    "for the past few days, I've tried to access the app but it isn't opening sometimes it'll open for a few minutes and crashes . I've updated it, cleared caches and done everything I could but it isn't o",
+    "why is the app not opening it just stops at the logo. I have cleared cache, uninstalled, updated, changed network provider but nothing I have tried have work what is wrong with you guys🤧🤧"
+   ]
+  },
+  {
+   "name": "good, best, easy, great",
+   "size": 36,
+   "negative_share": 0.0,
+   "main_label": "Praise",
+   "sources": {
+    "review": 36
+   },
+   "samples": [
+    "very satisfied very good app",
+    "تطبيق ممتاز وجيد انصح به",
+    "Great App, Excellent Service."
+   ]
+  },
+  {
+   "name": "rewards, funds, scam, account",
+   "size": 20,
+   "negative_share": 0.8,
+   "main_label": "Other",
+   "sources": {
+    "review": 20
+   },
+   "samples": [
+    "this is the worse crypto currency platform I have ever used, why does everything has to be so complicated with them, I can't even withdraw my funds without going through some unnecessary hassle in the",
+    "not giving real rewards . becarefull scam app",
+    "Dear Bybit Risk Management Team, I am extremely disappointed and frustrated with the way my CFD account restriction is being handled. I recently deposited funds into my Bybit CFD account, and shortly "
+   ]
+  }
+ ],
+ "by_mood": {
+  "rising": {
+   "days": 0,
+   "messages": 0
+  },
+  "normal": {
+   "days": 11,
+   "messages": 132,
+   "avg_btc_change": -0.13,
+   "kinds": {
+    "Complaint": 0.515,
+    "Praise": 0.417,
+    "Question": 0.0,
+    "Other": 0.068
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.417
+    },
+    {
+     "label": "App bugs / slow",
+     "share": 0.371
+    },
+    {
+     "label": "Login / account access",
+     "share": 0.053
+    },
+    {
+     "label": "Support complaints",
+     "share": 0.03
+    }
+   ],
+   "samples": {
+    "Complaint": "Trash app. When i try to identify and take selfie the selfie just stay it is when i fit my face it dont do anything need to fix that signin",
+    "Praise": "A vary good app",
+    "Question": null
+   }
+  },
+  "falling": {
+   "days": 2,
+   "messages": 15,
+   "avg_btc_change": -5.57,
+   "kinds": {
+    "Complaint": 0.533,
+    "Praise": 0.467,
+    "Question": 0.0,
+    "Other": 0.0
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.467
+    },
+    {
+     "label": "App bugs / slow",
+     "share": 0.333
+    },
+    {
+     "label": "Withdrawals",
+     "share": 0.067
+    },
+    {
+     "label": "Login / account access",
+     "share": 0.067
+    }
+   ],
+   "samples": {
+    "Complaint": "latest update takes forever to open the app, screen rotates on its own even if rotation is off in phones settings, crashes from time to time. Xiaomi",
+    "Praise": "the best ever",
+    "Question": null
+   }
+  }
+ },
+ "mood_thresholds": {
+  "rising": 3.0,
+  "falling": -3.0
+ }
+}

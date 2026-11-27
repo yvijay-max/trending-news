@@ -1,0 +1,550 @@
+{
+ "updated": "2026-11-27T17:37Z",
+ "days": 30,
+ "counts": {
+  "reviews": 107,
+  "telegram": 0,
+  "x": 0
+ },
+ "avg_rating": 3.31,
+ "low_rating_share": 0.4,
+ "method": {
+  "ai": 13,
+  "unsure": 13,
+  "keywords": 81,
+  "engine": "ai"
+ },
+ "labels": [
+  {
+   "label": "Praise",
+   "count": 57,
+   "negative_share": 0.05,
+   "sources": {
+    "review": 57
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-29T15:48Z",
+     "rating": 5,
+     "text": "great application"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-03T00:52Z",
+     "rating": 5,
+     "text": "bahut acha app hay"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-08T07:22Z",
+     "rating": 5,
+     "text": "bahut achcha"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-09T14:51Z",
+     "rating": 5,
+     "text": "good performance"
+    }
+   ]
+  },
+  {
+   "label": "Withdrawals",
+   "count": 14,
+   "negative_share": 0.93,
+   "sources": {
+    "review": 14
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-20T16:39Z",
+     "rating": 3,
+     "text": "Withdrawal Issues & Poor Experience. The withdrawal process takes unnecessarily long, and after waiting for the transaction to be processed, my withdrawal was rejected again without any clear reason or proper explanation"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-20T18:05Z",
+     "rating": 1,
+     "text": "They hold your withdrawal. Bloody theifs"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-21T04:39Z",
+     "rating": 1,
+     "text": "Worst platform! These days they are not processing withdrawals on time! Just to update a failed transaction they want 72 hours and then you again initiate withdrawal which may take hell lot of time. Don't put any funds b"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-22T12:59Z",
+     "rating": 1,
+     "text": "very bad app withdrawal is very let😡😡😡"
+    }
+   ]
+  },
+  {
+   "label": "App bugs / slow",
+   "count": 13,
+   "negative_share": 0.69,
+   "sources": {
+    "review": 13
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-30T03:11Z",
+     "rating": 5,
+     "text": "mujhe achha laga ye aap"
+    },
+    {
+     "src": "review",
+     "at": "2026-10-31T13:47Z",
+     "rating": 1,
+     "text": "running is very slow. Also refain from using the book profit or book losses options while the process is running in the back at a very slow & poor"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-12T07:03Z",
+     "rating": 1,
+     "text": "Worst app. App is full Of glitch"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-23T03:47Z",
+     "rating": 1,
+     "text": "this Application Was So Laging"
+    }
+   ]
+  },
+  {
+   "label": "Other",
+   "count": 13,
+   "negative_share": 0.85,
+   "sources": {
+    "review": 13
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-30T14:22Z",
+     "rating": 1,
+     "text": "Portfolio Details. Can not check my coin wise investments !"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-25T15:50Z",
+     "rating": 5,
+     "text": "hi coindcx team, please add scalping offer in btc like 50percent off in fees like Delta exchange did .."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-23T17:28Z",
+     "rating": 1,
+     "text": "worst app don't download"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-23T14:47Z",
+     "rating": 1,
+     "text": "very bad broker in crypto and future 🤮🤮🤮🤮🤮💩💩💩 bahut bekar hai ye broker 🤬🤬🤬 SL bad jata hai apne aap"
+    }
+   ]
+  },
+  {
+   "label": "Support complaints",
+   "count": 4,
+   "negative_share": 0.5,
+   "sources": {
+    "review": 4
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-08T05:30Z",
+     "rating": 1,
+     "text": "Poor support. Very poor customer support and very poor company"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-15T15:49Z",
+     "rating": 1,
+     "text": "Unclear and unsupported towards newcomers. Heartbreaking to say this is my first review that’s negative, but I lost a lot of funds trading on this platform and I won’t use it again"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-23T12:47Z",
+     "rating": 5,
+     "text": "best support."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-26T15:09Z",
+     "rating": 5,
+     "text": "Plz introduce - day wise performance profit loss view just like zerodha trading app. - Lock trading for the day once i achieve my target profit or maximum loss, this will help me to prevent over trading and greed. Rest a"
+    }
+   ]
+  },
+  {
+   "label": "Fear for funds / trust",
+   "count": 3,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 3
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-13T14:54Z",
+     "rating": 1,
+     "text": "Scammers. I transferred 68 USDT from Binance to CoinDCX and received an email confirming receipt, but the funds are not showing in my account on either the app or website."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-21T06:47Z",
+     "rating": 1,
+     "text": "ye bina permission ke sell kar deta h isliye trust nahi is app pe logo ka mehnat ka paisa hota h bhai aap bina anumati ke bech nahi sakhte h ye scam ka rasta hai coindcx I have proof kisi ko jarurat ho to hamse le lena"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-24T08:27Z",
+     "rating": 1,
+     "text": "one of the worst app tbh, you can't sell properly and can't buy properly, it's like time pass app for trading, yesterday I had limit order for sell I was at 40 rs profit and after sell order executed in options I was in "
+    }
+   ]
+  },
+  {
+   "label": "Orders / liquidations",
+   "count": 2,
+   "negative_share": 0.5,
+   "sources": {
+    "review": 2
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-24T00:25Z",
+     "rating": 1,
+     "text": "worst app and dangerous to funding and trading, guys I have been used this app several months, today my trading position has closed twice, automatically with loss of 40k and 5k, and agent saying that I have closed it man"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-24T06:52Z",
+     "rating": 5,
+     "text": "sir , Why yours analysis Wind Market failing 5 Times Stoploss hit dear Please analysis Clear we are losing money and By the way Coindcx is very amazing User freindly UI interface."
+    }
+   ]
+  },
+  {
+   "label": "Deposits",
+   "count": 1,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 1
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-17T17:54Z",
+     "rating": 1,
+     "text": "Pathetic deposit service. The app is absolutely pathetic and it has problems with the INR fast bank deposits 99 times out of 100 absolutely stupid app don’t install at all I uninstalled this stupid app"
+    }
+   ]
+  }
+ ],
+ "by_day": [
+  {
+   "date": "2026-10-29",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-10-30",
+   "reviews": 2,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-10-31",
+   "reviews": 2,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-03",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-08",
+   "reviews": 2,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-09",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-12",
+   "reviews": 2,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-13",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-15",
+   "reviews": 3,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-16",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-17",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-19",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-20",
+   "reviews": 4,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-21",
+   "reviews": 11,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-22",
+   "reviews": 10,
+   "low": 4,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-23",
+   "reviews": 19,
+   "low": 10,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-24",
+   "reviews": 22,
+   "low": 5,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-25",
+   "reviews": 15,
+   "low": 2,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-26",
+   "reviews": 8,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  }
+ ],
+ "topics": [
+  {
+   "name": "withdrawal, worst, withdraw, funds",
+   "size": 29,
+   "negative_share": 0.93,
+   "main_label": "Withdrawals",
+   "sources": {
+    "review": 29
+   },
+   "samples": [
+    "Worst platform! These days they are not processing withdrawals on time! Just to update a failed transaction they want 72 hours and then you again initiate withdrawal which may take hell lot of time. D",
+    "very bad app withdrawal is very let😡😡😡",
+    "Withdrawal Issue. Yesterday i was withdrawing my deposited money in the app but its been 12 hours and still money is not credited to my bank account."
+   ]
+  },
+  {
+   "name": "trading, aap, money, add",
+   "size": 26,
+   "negative_share": 0.46,
+   "main_label": "Praise",
+   "sources": {
+    "review": 26
+   },
+   "samples": [
+    "बेस्ट प्लेटफॉर्म फॉर trading",
+    "very bad broker in crypto and future 🤮🤮🤮🤮🤮💩💩💩 bahut bekar hai ye broker 🤬🤬🤬 SL bad jata hai apne aap",
+    "nice crypto currency"
+   ]
+  },
+  {
+   "name": "good, best, easy, use",
+   "size": 25,
+   "negative_share": 0.08,
+   "main_label": "Praise",
+   "sources": {
+    "review": 25
+   },
+   "samples": [
+    "superb app very easy use",
+    "very nice app and user friendly experience",
+    "very nice application"
+   ]
+  }
+ ],
+ "by_mood": {
+  "rising": {
+   "days": 0,
+   "messages": 0
+  },
+  "normal": {
+   "days": 15,
+   "messages": 90,
+   "avg_btc_change": -0.27,
+   "kinds": {
+    "Complaint": 0.333,
+    "Praise": 0.567,
+    "Question": 0.033,
+    "Other": 0.067
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.567
+    },
+    {
+     "label": "Withdrawals",
+     "share": 0.144
+    },
+    {
+     "label": "App bugs / slow",
+     "share": 0.111
+    },
+    {
+     "label": "Support complaints",
+     "share": 0.033
+    }
+   ],
+   "samples": {
+    "Complaint": "running is very slow. Also refain from using the book profit or book losses options while the process is running in the back at a very slow & poor",
+    "Praise": "great application",
+    "Question": "esse ghtiya exchange maine use nhi Kiya hai India ki nak kya rha hai ye crypto exchange k nam pe kya mtlb hai eaisa ghtiya exchange use krne ka jo inr ka withdrawal 3 ghante me hi nhi deta mai sbko YH"
+   }
+  },
+  "falling": {
+   "days": 4,
+   "messages": 17,
+   "avg_btc_change": -4.72,
+   "kinds": {
+    "Complaint": 0.412,
+    "Praise": 0.353,
+    "Question": 0.0,
+    "Other": 0.235
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.353
+    },
+    {
+     "label": "App bugs / slow",
+     "share": 0.176
+    },
+    {
+     "label": "Fear for funds / trust",
+     "share": 0.118
+    },
+    {
+     "label": "Support complaints",
+     "share": 0.059
+    }
+   ],
+   "samples": {
+    "Complaint": "mujhe achha laga ye aap",
+    "Praise": "Lots of ISSUES with CoinDCX. Observed lots of issues with NO CUSTOMER SUPPORT: 1. No withdrawal of INR allowed. 2. No transfer/ withdrawal of Crypto. 3. Support email is no longer using What’s going o",
+    "Question": null
+   }
+  }
+ },
+ "mood_thresholds": {
+  "rising": 3.0,
+  "falling": -3.0
+ }
+}

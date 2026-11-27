@@ -1,0 +1,465 @@
+{
+ "updated": "2026-11-27T17:37Z",
+ "days": 30,
+ "counts": {
+  "reviews": 66,
+  "telegram": 0,
+  "x": 0
+ },
+ "avg_rating": 4.11,
+ "low_rating_share": 0.21,
+ "method": {
+  "ai": 5,
+  "unsure": 0,
+  "keywords": 61,
+  "engine": "ai"
+ },
+ "labels": [
+  {
+   "label": "Praise",
+   "count": 46,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 46
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-01T10:31Z",
+     "rating": 5,
+     "text": "Organising Questions Before Researching a Coin. I was deciding whether a coin deserved a place in my portfolio and wanted to challenge the reasons I was considering it. WazirX AI helped me explore a few additional questi"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-01T11:54Z",
+     "rating": 5,
+     "text": "Keeping My Trading Watchlist Relevant. I prefer to keep my watchlist focused on assets I genuinely want to follow. Reviewing the available trading pairs on WazirX helps me decide which markets are relevant to my current "
+    },
+    {
+     "src": "review",
+     "at": "2026-11-05T12:31Z",
+     "rating": 5,
+     "text": "Account management. My account credentials were reset and was helped by Mr. Haider from WazirX who guided me very well and process was very smooth."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-14T14:25Z",
+     "rating": 5,
+     "text": "Trading Made Accessible. The app brings cryptocurrency trading features together in one place. My experience has been feedback."
+    }
+   ]
+  },
+  {
+   "label": "Fear for funds / trust",
+   "count": 14,
+   "negative_share": 1.0,
+   "sources": {
+    "review": 14
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-31T00:29Z",
+     "rating": 1,
+     "text": "Completely fraud. Your funds will be locked despite crypto being stolen your account balance will also be frozen until no stated time"
+    },
+    {
+     "src": "review",
+     "at": "2026-10-31T12:01Z",
+     "rating": 1,
+     "text": "Worst app. Most fraud app, didn’t let you take out your own money."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-04T15:20Z",
+     "rating": 1,
+     "text": "Fraud completely. Worst aap"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-06T22:09Z",
+     "rating": 1,
+     "text": "Fraud App scammers. Completely fruad app deducted thousands of hard earned money without any reason in the name of rebalancing now my all holding and balance become zero 0 like this fraud app"
+    }
+   ]
+  },
+  {
+   "label": "Support complaints",
+   "count": 3,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 3
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-10-30T17:22Z",
+     "rating": 5,
+     "text": "Awesome. Best with the best customer support"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-01T12:49Z",
+     "rating": 4,
+     "text": "Getting Guidance With an Account Question. I made a mistake while handling an account task and wasn't confident about how to correct it. Rather than trying different things and risking further confusion, I contacted Wazi"
+    },
+    {
+     "src": "review",
+     "at": "2026-11-01T13:16Z",
+     "rating": 5,
+     "text": "Finding Help for an App-Related Issue. I had an issue that kept interrupting a task I was trying to complete on WazirX. Contacting support gave me a way to raise the problem directly instead of continuing to work around "
+    }
+   ]
+  },
+  {
+   "label": "Fees / charges",
+   "count": 3,
+   "negative_share": 0.0,
+   "sources": {
+    "review": 3
+   },
+   "samples": [
+    {
+     "src": "review",
+     "at": "2026-11-01T15:07Z",
+     "rating": 5,
+     "text": "Exploring WazirX Zero Fees. I started using WazirX for my first few crypto trades and wanted to understand the charges before trading more regularly. I checked out WazirX Zero and liked having another option to consider "
+    },
+    {
+     "src": "review",
+     "at": "2026-11-15T10:13Z",
+     "rating": 5,
+     "text": "Trading Fee information. Clear information about trading fees is important. I would appreciate an easy-to-understand fee breakdown."
+    },
+    {
+     "src": "review",
+     "at": "2026-11-15T16:12Z",
+     "rating": 5,
+     "text": "Clear Trading Information. Clear explanations of trading processes and charges can make the application easier for new users."
+    }
+   ]
+  }
+ ],
+ "by_day": [
+  {
+   "date": "2026-10-30",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-10-31",
+   "reviews": 3,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-01",
+   "reviews": 5,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-04",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-05",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-06",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-12",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-13",
+   "reviews": 3,
+   "low": 3,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-14",
+   "reviews": 7,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-15",
+   "reviews": 6,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-16",
+   "reviews": 4,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-17",
+   "reviews": 7,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-18",
+   "reviews": 4,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-19",
+   "reviews": 6,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-20",
+   "reviews": 6,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-21",
+   "reviews": 1,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-22",
+   "reviews": 4,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-23",
+   "reviews": 2,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-24",
+   "reviews": 1,
+   "low": 1,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  },
+  {
+   "date": "2026-11-25",
+   "reviews": 2,
+   "low": 0,
+   "telegram": 0,
+   "tg_complaints": 0,
+   "x": 0,
+   "x_complaints": 0
+  }
+ ],
+ "topics": [
+  {
+   "name": "easy, features, explore, interface",
+   "size": 40,
+   "negative_share": 0.0,
+   "main_label": "Praise",
+   "sources": {
+    "review": 40
+   },
+   "samples": [
+    "Convenient Crypto Information. I find the app easy to navigate, with a well-organized layout that helps me explore cryptocurrency details and available features without confusion.",
+    "Good overall experience. The app offers a clean design and simple navigation. I like how easily I can explore different sections and view cryptocurrency market information.",
+    "Useful for Crypto Exploration. The application gives users an opportunity to explore cryptocurrency options. More beginner-friendly guidance would be helpful."
+   ]
+  },
+  {
+   "name": "fraud, worst, funds, zero",
+   "size": 14,
+   "negative_share": 1.0,
+   "main_label": "Fear for funds / trust",
+   "sources": {
+    "review": 14
+   },
+   "samples": [
+    "Fraud App. I’m not sure why they keep reducing my funds. After the hack, they returned only a portion of my crypto holdings, and now they’re continuing to reduce my balance. This is really frustrating",
+    "Fraud. My entire holdings are wiped out due to cyber attack and WazirX just lift up their hands . Don’t invest ur hard earned money and one day ur holding will become 0 at any time.",
+    "The total disappointed experience and taken my whole invested amount.. My whole fund became 0 without any communication from the organisation as a whole. Totally fraudster and because of this sort of "
+   ]
+  },
+  {
+   "name": "trading, account, support, which",
+   "size": 12,
+   "negative_share": 0.0,
+   "main_label": "Praise",
+   "sources": {
+    "review": 12
+   },
+   "samples": [
+    "Convenient Trading Platform. I like the availability of different trading options. The overall experience could improve with suggestion.",
+    "Clear Trading Information. Clear explanations of trading processes and charges can make the application easier for new users.",
+    "A Modern Trading App. The design looks modern. Improving the overall user experience would make the application more convenient."
+   ]
+  }
+ ],
+ "by_mood": {
+  "rising": {
+   "days": 1,
+   "messages": 1,
+   "avg_btc_change": 3.95,
+   "kinds": {
+    "Complaint": 0.0,
+    "Praise": 1.0,
+    "Question": 0.0,
+    "Other": 0.0
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 1.0
+    }
+   ],
+   "samples": {
+    "Complaint": null,
+    "Praise": "Account management. My account credentials were reset and was helped by Mr. Haider from WazirX who guided me very well and process was very smooth.",
+    "Question": null
+   }
+  },
+  "normal": {
+   "days": 13,
+   "messages": 46,
+   "avg_btc_change": -0.07,
+   "kinds": {
+    "Complaint": 0.261,
+    "Praise": 0.739,
+    "Question": 0.0,
+    "Other": 0.0
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.739
+    },
+    {
+     "label": "Fear for funds / trust",
+     "share": 0.196
+    },
+    {
+     "label": "Support complaints",
+     "share": 0.043
+    },
+    {
+     "label": "Fees / charges",
+     "share": 0.022
+    }
+   ],
+   "samples": {
+    "Complaint": "Completely fraud. Your funds will be locked despite crypto being stolen your account balance will also be frozen until no stated time",
+    "Praise": "Organising Questions Before Researching a Coin. I was deciding whether a coin deserved a place in my portfolio and wanted to challenge the reasons I was considering it. WazirX AI helped me explore a f",
+    "Question": null
+   }
+  },
+  "falling": {
+   "days": 6,
+   "messages": 19,
+   "avg_btc_change": -4.78,
+   "kinds": {
+    "Complaint": 0.421,
+    "Praise": 0.579,
+    "Question": 0.0,
+    "Other": 0.0
+   },
+   "top_labels": [
+    {
+     "label": "Praise",
+     "share": 0.579
+    },
+    {
+     "label": "Fear for funds / trust",
+     "share": 0.263
+    },
+    {
+     "label": "Fees / charges",
+     "share": 0.105
+    },
+    {
+     "label": "Support complaints",
+     "share": 0.053
+    }
+   ],
+   "samples": {
+    "Complaint": "Awesome. Best with the best customer support",
+    "Praise": "Trading Made Accessible. The app brings cryptocurrency trading features together in one place. My experience has been feedback.",
+    "Question": null
+   }
+  }
+ },
+ "mood_thresholds": {
+  "rising": 3.0,
+  "falling": -3.0
+ }
+}
