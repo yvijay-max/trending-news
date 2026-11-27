@@ -60,6 +60,14 @@ FEEDS = {
         ("Google News - India Crypto", f"{GN}/search?q=India+crypto+OR+bitcoin+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Crypto"),
         ("Google News - India Banking", f"{GN}/search?q=RBI+OR+bank+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Banking & Finance"),
         ("Google Trends - India", "https://trends.google.com/trending/rss?geo=IN"),
+        # Compliance & regulation. The FATF, ED, FIU-IND and Bharat Web3 Association websites
+        # don't offer news feeds, so we track news about them through Google News searches.
+        ("FATF", f"{GN}/search?q=FATF+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Compliance"),
+        ("Enforcement Directorate", f"{GN}/search?q=%22Enforcement+Directorate%22+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Compliance"),
+        ("FIU-IND", f"{GN}/search?q=%22FIU-IND%22+OR+%22Financial+Intelligence+Unit%22+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Compliance"),
+        ("PMLA / AML", f"{GN}/search?q=PMLA+OR+%22money+laundering%22+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Compliance"),
+        ("Bharat Web3 Association", f"{GN}/search?q=%22Bharat+Web3+Association%22+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Compliance"),
+        ("Crypto regulation India", f"{GN}/search?q=crypto+regulation+OR+VDA+OR+%22virtual+digital+assets%22+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en", "Compliance"),
     ],
     "Bangalore": [
         ("Google News - Bengaluru", f"{GN}/search?q=Bengaluru+OR+Bangalore+when:1d&hl=en-IN&gl=IN&ceid=IN:en"),
@@ -94,6 +102,12 @@ CATEGORIES = {
                           "credit card*", "nbfc*", "rupee", "rate cut*", "rate hike*", "gdp"],
     "Crypto": ["crypto*", "bitcoin*", "btc", "ethereum", "blockchain*", "web3", "stablecoin*",
                "binance", "coinbase", "solana", "nft", "nfts", "defi", "memecoin*"],
+    "Compliance": ["compliance", "aml", "anti-money laundering", "money laundering", "pmla",
+                   "fatf", "enforcement directorate", "fiu", "fiu-ind", "financial intelligence unit",
+                   "kyc", "cft", "terror financing", "terrorist financing", "sanction*", "fema",
+                   "regulator*", "regulation*", "vda", "vdas", "virtual digital asset*",
+                   "bharat web3", "show cause notice*", "penalt*", "ed raid*", "ed searches",
+                   "attached assets", "grey list", "travel rule"],
     "Startups & Funding": ["startup*", "start-up*", "funding", "raises", "raised", "series a",
                            "series b", "series c", "seed round", "ipo", "ipos", "unicorn*",
                            "valuation*", "acqui*", "venture capital", "layoff*"],
