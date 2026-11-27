@@ -1,0 +1,181 @@
+{
+ "updated": "2026-11-27T17:21Z",
+ "regions": {
+  "global": {
+   "headline": [],
+   "takeaways": [
+    "Kraken, Coinbase were slow to respond during incidents. Posting a holding message within 15 minutes (Playbook rule 1) would set you apart."
+   ],
+   "exchanges": {
+    "binance": {
+     "findings": [
+      {
+       "text": "Influencers mentioned it in 31 posts across 5 channels in 30 days, 3 with a referral link.",
+       "tone": "info",
+       "weight": 30
+      },
+      {
+       "text": "Announcement channel: 80 posts in 30 days, 31% promos or campaigns, 15 about downtime or maintenance.",
+       "tone": "info",
+       "weight": 25
+      },
+      {
+       "text": "No group messages collected yet. Check the 'Group stats' step of the Telegram run.",
+       "tone": "info",
+       "weight": 5
+      }
+     ]
+    },
+    "kraken": {
+     "findings": [
+      {
+       "text": "Status page: 45 incidents in 30 days, resolved in a median 3.5 h; 1 of 45 gave an ETA or next-update time.",
+       "tone": "bad",
+       "weight": 55
+      },
+      {
+       "text": "Influencers mentioned it in 2 posts across 1 channel in 30 days.",
+       "tone": "info",
+       "weight": 30
+      },
+      {
+       "text": "No group messages collected yet. Check the 'Group stats' step of the Telegram run.",
+       "tone": "info",
+       "weight": 5
+      }
+     ]
+    },
+    "okx": {
+     "findings": [
+      {
+       "text": "Influencers mentioned it in 1 posts across 1 channel in 30 days.",
+       "tone": "info",
+       "weight": 30
+      },
+      {
+       "text": "Announcement channel: 84 posts in 30 days, 99% promos or campaigns, 0 about downtime or maintenance.",
+       "tone": "info",
+       "weight": 25
+      },
+      {
+       "text": "No group messages collected yet. Check the 'Group stats' step of the Telegram run.",
+       "tone": "info",
+       "weight": 5
+      }
+     ]
+    },
+    "bybit": {
+     "findings": [
+      {
+       "text": "Announcement channel: 201 posts in 30 days, 17% promos or campaigns, 4 about downtime or maintenance.",
+       "tone": "info",
+       "weight": 25
+      },
+      {
+       "text": "No group messages collected yet. Check the 'Group stats' step of the Telegram run.",
+       "tone": "info",
+       "weight": 5
+      }
+     ]
+    },
+    "coinbase": {
+     "findings": [
+      {
+       "text": "Status page: 23 incidents in 30 days, resolved in a median 2.6 h; 1 of 23 gave an ETA or next-update time.",
+       "tone": "bad",
+       "weight": 55
+      },
+      {
+       "text": "Influencers mentioned it in 3 posts across 2 channels in 30 days.",
+       "tone": "info",
+       "weight": 30
+      }
+     ]
+    }
+   }
+  },
+  "india": {
+   "headline": [],
+   "takeaways": [
+    "Not enough data yet for firm takeaways. They appear after a week of collection."
+   ],
+   "exchanges": {
+    "coindcx": {
+     "findings": [
+      {
+       "text": "Influencers mentioned it in 12 posts across 4 channels in 30 days, 4 with a referral link.",
+       "tone": "info",
+       "weight": 30
+      },
+      {
+       "text": "No group messages collected yet. Check the 'Group stats' step of the Telegram run.",
+       "tone": "info",
+       "weight": 5
+      }
+     ]
+    },
+    "coinswitch": {
+     "findings": [
+      {
+       "text": "Influencers mentioned it in 1 posts across 1 channel in 30 days.",
+       "tone": "info",
+       "weight": 30
+      },
+      {
+       "text": "No group messages collected yet. Check the 'Group stats' step of the Telegram run.",
+       "tone": "info",
+       "weight": 5
+      }
+     ]
+    },
+    "wazirx": {
+     "findings": [
+      {
+       "text": "Influencers mentioned it in 3 posts across 2 channels in 30 days.",
+       "tone": "info",
+       "weight": 30
+      },
+      {
+       "text": "Announcement channel: 45 posts in 30 days, 4% promos or campaigns, 2 about downtime or maintenance.",
+       "tone": "info",
+       "weight": 25
+      }
+     ]
+    },
+    "delta": {
+     "findings": [
+      {
+       "text": "Influencers mentioned it in 12 posts across 2 channels in 30 days, 10 with a referral link.",
+       "tone": "info",
+       "weight": 30
+      },
+      {
+       "text": "Announcement channel: 157 posts in 30 days, 0% promos or campaigns, 0 about downtime or maintenance.",
+       "tone": "info",
+       "weight": 25
+      },
+      {
+       "text": "No group messages collected yet. Check the 'Group stats' step of the Telegram run.",
+       "tone": "info",
+       "weight": 5
+      }
+     ]
+    },
+    "zebpay": {
+     "findings": [
+      {
+       "text": "Influencers mentioned it in 1 posts across 1 channel in 30 days.",
+       "tone": "info",
+       "weight": 30
+      },
+      {
+       "text": "Announcement channel: 40 posts in 30 days, 5% promos or campaigns, 5 about downtime or maintenance.",
+       "tone": "info",
+       "weight": 25
+      }
+     ]
+    }
+   }
+  }
+ }
+}

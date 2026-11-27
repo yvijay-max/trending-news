@@ -1,0 +1,1849 @@
+[
+ {
+  "id": "fj8rtq8hh1cz",
+  "title": "Prop order execution issues",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-27T15:04Z",
+  "resolved_at": "2026-11-27T16:07Z",
+  "minutes_to_resolve": 63,
+  "minutes_to_identified": 9,
+  "updates": 5,
+  "longest_gap_min": 33,
+  "median_gap_min": 16,
+  "gave_eta": true,
+  "said_funds_safe": false,
+  "components": [
+   "Prop Trading"
+  ],
+  "link": "https://stspg.io/zr2rv9sqrjx5",
+  "timeline": [
+   {
+    "at": "2026-11-27T15:04Z",
+    "status": "investigating",
+    "text": "We are investigating an issue affecting order execution for Prop Trading. Some orders may be rejected or fail to complete, and some account upgrades and breach processing may be delayed or not go through. Our engineering team is actively investigating. We will post another update within 30 minutes, or sooner if we have new information."
+   },
+   {
+    "at": "2026-11-27T15:13Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-27T15:46Z",
+    "status": "identified",
+    "text": "We are continuing to work on a fix for this issue."
+   },
+   {
+    "at": "2026-11-27T15:51Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-27T16:07Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "1n8qtknpxrd7",
+  "title": "Interac e-Transfer (CAD) Withdrawal Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-26T14:39Z",
+  "resolved_at": "2026-11-27T03:41Z",
+  "minutes_to_resolve": 783,
+  "minutes_to_identified": 0,
+  "updates": 3,
+  "longest_gap_min": 696,
+  "median_gap_min": 696,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Canadian Dollar (CAD) - Domestic"
+  ],
+  "link": "https://stspg.io/d0lhks0rcppy",
+  "timeline": [
+   {
+    "at": "2026-11-26T14:39Z",
+    "status": "identified",
+    "text": "We're investigating an issue with the Interac e-Transfer (CAD) funding gateway. Withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-27T02:15Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-27T03:41Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "zn68hn8ytn43",
+  "title": "Hivemapper (HONEY) Funding Delays",
+  "impact": "minor",
+  "status": "identified",
+  "started_at": "2026-11-25T10:18Z",
+  "resolved_at": null,
+  "minutes_to_resolve": null,
+  "minutes_to_identified": 559,
+  "updates": 2,
+  "longest_gap_min": 559,
+  "median_gap_min": 559,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Hivemapper (HONEY) - Solana"
+  ],
+  "link": "https://stspg.io/1lq6bxp4pv34",
+  "timeline": [
+   {
+    "at": "2026-11-25T10:18Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Hivemapper (HONEY) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-25T19:37Z",
+    "status": "identified",
+    "text": "Hivemapper (HONEY) withdrawals have been re-enabled and are processing normally, and trading on HONEY/USD and HONEY/EUR has resumed. HONEY deposits remain disabled until further notice. Please do not send HONEY deposits to Kraken at this time. All other funding methods are operating normally. We will provide an update when there is further information on HONEY deposits."
+   }
+  ]
+ },
+ {
+  "id": "91v7w0wckz6g",
+  "title": "Interac e-Transfer (CAD) Withdrawal Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-25T06:30Z",
+  "resolved_at": "2026-11-26T04:44Z",
+  "minutes_to_resolve": 1334,
+  "minutes_to_identified": 0,
+  "updates": 3,
+  "longest_gap_min": 1326,
+  "median_gap_min": 1326,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Canadian Dollar (CAD) - Domestic"
+  ],
+  "link": "https://stspg.io/ql36rr6g5bw8",
+  "timeline": [
+   {
+    "at": "2026-11-25T06:30Z",
+    "status": "identified",
+    "text": "We're investigating an issue with the Interac e-Transfer (CAD) funding gateway. Withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-25T06:38Z",
+    "status": "identified",
+    "text": "The delay to Interac e-Transfer (CAD) withdrawals has been identified as an issue with our third-party payment provider. Pending withdrawals are queued and will be processed once the provider's service is restored, so there is no need to resubmit. Deposits are unaffected."
+   },
+   {
+    "at": "2026-11-26T04:44Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "sxwz18y77ngb",
+  "title": "Deprecation notice: SPV asset naming update on Spot REST API",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-24T18:40Z",
+  "resolved_at": "2026-11-26T16:26Z",
+  "minutes_to_resolve": 2746,
+  "minutes_to_identified": null,
+  "updates": 4,
+  "longest_gap_min": 2584,
+  "median_gap_min": 152,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [],
+  "link": "https://stspg.io/bf5vw55lw76l",
+  "timeline": [
+   {
+    "at": "2026-11-24T18:40Z",
+    "status": "investigating",
+    "text": "The legacy rebased x names previously returned for SPV entries in Assets and AssetPairs are deprecated. These entries now return SPV asset and pair names. If your integration identifies SPV entries using altname, wsname, or base, please update its mappings. The rebased x entries remain unchanged.\n\nChange details: https://docs.kraken.com/exchange/changelog#24-november-2026-%E2%80%94-spot-rest-v1"
+   },
+   {
+    "at": "2026-11-24T18:50Z",
+    "status": "monitoring",
+    "text": "The legacy rebased x names previously returned for SPV entries in Assets and AssetPairs are deprecated. These entries now return SPV asset and pair names. If your integration identifies SPV entries using altname, wsname, or base, please update its mappings. The rebased x entries remain unchanged.\n\nChange details: https://docs.kraken.com/exchange/changelog#24-november-2026-%E2%80%94-spot-rest-v1"
+   },
+   {
+    "at": "2026-11-26T13:54Z",
+    "status": "monitoring",
+    "text": "The Assets and AssetPairs endpoints now accept an optional include_spv parameter. Set include_spv=false to leave the SPV entries of tokenized assets (for example AAPLSPV and AAPLSPVUSD) out of full listings. The default is true, so existing responses don’t change. If you only use the rebased x entries (AAPLx, AAPLxUSD), you can pass include_spv=false instead of updating your mapping for the 24 Nov"
+   },
+   {
+    "at": "2026-11-26T16:26Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "n6qwq0c2ht7d",
+  "title": "Transaction Processing Disruption",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-24T06:50Z",
+  "resolved_at": "2026-11-24T07:21Z",
+  "minutes_to_resolve": 31,
+  "minutes_to_identified": 17,
+  "updates": 3,
+  "longest_gap_min": 17,
+  "median_gap_min": 17,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Website",
+   "Kraken App",
+   "Krak Card"
+  ],
+  "link": "https://stspg.io/p0djhkg33zt3",
+  "timeline": [
+   {
+    "at": "2026-11-24T06:50Z",
+    "status": "investigating",
+    "text": "We are investigating an issue affecting quote requests and transaction processing on Kraken. Some clients may experience errors or be unable to complete certain transactions at this time. Our team is actively working to resolve the issue and restore normal functionality. We will provide updates as more information becomes available."
+   },
+   {
+    "at": "2026-11-24T07:07Z",
+    "status": "identified",
+    "text": "We have identified the issue affecting quote requests and transaction processing on Kraken, including Buy and Convert transactions and Krak Card conversions when spending. Some clients may experience errors or be unable to complete certain transactions. Our team is working to implement a fix and restore normal functionality. We will provide updates as more information becomes available."
+   },
+   {
+    "at": "2026-11-24T07:21Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "k4nsdzmry0q7",
+  "title": "USDC - ETH withdrawing Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-24T01:32Z",
+  "resolved_at": "2026-11-24T02:40Z",
+  "minutes_to_resolve": 68,
+  "minutes_to_identified": null,
+  "updates": 2,
+  "longest_gap_min": 68,
+  "median_gap_min": 68,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "USDC (USDC) - Ethereum"
+  ],
+  "link": "https://stspg.io/546r5lldc9xn",
+  "timeline": [
+   {
+    "at": "2026-11-24T01:32Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the USDC - ETH funding gateway. Withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-24T02:40Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "xtqfqd49s6gz",
+  "title": "Incorrect Prices Displayed for Some xStocks and Equities",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-23T14:45Z",
+  "resolved_at": "2026-11-26T16:56Z",
+  "minutes_to_resolve": 4451,
+  "minutes_to_identified": 30,
+  "updates": 4,
+  "longest_gap_min": 4346,
+  "median_gap_min": 75,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [],
+  "link": "https://stspg.io/ncr7y1mtqx87",
+  "timeline": [
+   {
+    "at": "2026-11-23T14:45Z",
+    "status": "investigating",
+    "text": "We’re investigating an issue where prices for some xStocks and traditional equities are being displayed incorrectly. Prices may also switch between correct and incorrect values, and portfolio values for the affected assets may look wrong. We’ll share another update as soon as we know more."
+   },
+   {
+    "at": "2026-11-23T15:15Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-23T16:30Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-26T16:56Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "j7sd1r3xvmx2",
+  "title": "CAD Deposit Delays via Apaylo",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-23T12:52Z",
+  "resolved_at": "2026-11-27T02:06Z",
+  "minutes_to_resolve": 5115,
+  "minutes_to_identified": 124,
+  "updates": 3,
+  "longest_gap_min": 4991,
+  "median_gap_min": 4991,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [],
+  "link": "https://stspg.io/1ypvb07wv0gq",
+  "timeline": [
+   {
+    "at": "2026-11-23T12:52Z",
+    "status": "investigating",
+    "text": "We are investigating an issue affecting CAD deposits processed through Apaylo. Deposits may be delayed in being credited to client accounts. We are working to restore normal processing and will provide updates as more information becomes available."
+   },
+   {
+    "at": "2026-11-23T14:56Z",
+    "status": "identified",
+    "text": "Our payment provider, Apaylo, has confirmed an ongoing technical issue affecting CAD deposit processing. Apaylo is working to restore its services. CAD deposits may continue to experience delays until the issue is resolved. We are monitoring the situation closely and will provide further updates as they become available."
+   },
+   {
+    "at": "2026-11-27T02:06Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "q7dyg438dmc6",
+  "title": "NESA (NES) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-23T06:37Z",
+  "resolved_at": "2026-11-25T10:25Z",
+  "minutes_to_resolve": 3108,
+  "minutes_to_identified": null,
+  "updates": 2,
+  "longest_gap_min": 3108,
+  "median_gap_min": 3108,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Nesa (NES) - BNB Chain"
+  ],
+  "link": "https://stspg.io/413qfzzlf3s9",
+  "timeline": [
+   {
+    "at": "2026-11-23T06:37Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the NESA (NES) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-25T10:25Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "nmm6jvc0tllc",
+  "title": "Interac e-Transfer Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-22T17:57Z",
+  "resolved_at": "2026-11-22T19:54Z",
+  "minutes_to_resolve": 117,
+  "minutes_to_identified": 21,
+  "updates": 3,
+  "longest_gap_min": 96,
+  "median_gap_min": 96,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Canadian Dollar (CAD) - Domestic"
+  ],
+  "link": "https://stspg.io/8219nh1slls5",
+  "timeline": [
+   {
+    "at": "2026-11-22T17:57Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Interac e-Transfer funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-22T18:18Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-22T19:54Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "zwvwwl4ykp8f",
+  "title": "Cyber (CYBER) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-21T19:59Z",
+  "resolved_at": "2026-11-25T10:28Z",
+  "minutes_to_resolve": 5189,
+  "minutes_to_identified": 0,
+  "updates": 2,
+  "longest_gap_min": 5189,
+  "median_gap_min": 5189,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Cyber (CYBER) - Optimism"
+  ],
+  "link": "https://stspg.io/c4y7vlf7zbk5",
+  "timeline": [
+   {
+    "at": "2026-11-21T19:59Z",
+    "status": "identified",
+    "text": "We're aware of an issue with the Cyber (CYBER) - Optimism funding gateway. Deposits may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-25T10:28Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "0cr915nj4ss1",
+  "title": "Card purchases degraded performance",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-20T11:01Z",
+  "resolved_at": "2026-11-20T12:29Z",
+  "minutes_to_resolve": 89,
+  "minutes_to_identified": 2,
+  "updates": 4,
+  "longest_gap_min": 71,
+  "median_gap_min": 16,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Debit / Credit Cards"
+  ],
+  "link": "https://stspg.io/5khnmf3bhvf9",
+  "timeline": [
+   {
+    "at": "2026-11-20T11:01Z",
+    "status": "investigating",
+    "text": "We are investigating an issue with card purchases processing, currently the following funding options does not work:\n- Card Deposits\n- Instant buy with card\n- Apple Pay\n- Google Pay\n\nWe are working diligently to fix this as soon as possible."
+   },
+   {
+    "at": "2026-11-20T11:02Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-20T11:18Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-20T12:29Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "m44tdl2fvbf2",
+  "title": "Futures cancel-after-timeout requests rejected",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-19T20:06Z",
+  "resolved_at": "2026-11-20T14:03Z",
+  "minutes_to_resolve": 1077,
+  "minutes_to_identified": 0,
+  "updates": 3,
+  "longest_gap_min": 1058,
+  "median_gap_min": 1058,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Unified WebSocket"
+  ],
+  "link": "https://stspg.io/nc1s89bnyqmk",
+  "timeline": [
+   {
+    "at": "2026-11-19T20:06Z",
+    "status": "identified",
+    "text": "We have identified an issue where requests to automatically cancel all open futures orders after a timeout (cancel after / dead man’s switch) are being rejected. While this issue continues, open futures orders will not be cancelled automatically when the timeout expires.\n\nClients using this feature should monitor and manage their open futures orders directly until it is restored.\n\nWe have identifi"
+   },
+   {
+    "at": "2026-11-19T20:26Z",
+    "status": "identified",
+    "text": "We are continuing to work on a fix for this issue."
+   },
+   {
+    "at": "2026-11-20T14:03Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "bccy6g93gmbf",
+  "title": "Ink Network Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-18T17:10Z",
+  "resolved_at": "2026-11-19T16:24Z",
+  "minutes_to_resolve": 1395,
+  "minutes_to_identified": 4,
+  "updates": 3,
+  "longest_gap_min": 1391,
+  "median_gap_min": 1391,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Bitcoin (kBTC) - Ink",
+   "Constellation (DAG) - Ink",
+   "Ethereum (ETH) - Ink",
+   "Tether USD (USDT) - Ink",
+   "USDC (USDC) - Ink",
+   "USDG (USDG) - Ink",
+   "Hype (kHYPE) - Ink.",
+   "Hyperliquid (HYPE) - Ink (kHYPE)"
+  ],
+  "link": "https://stspg.io/2ys0r0wydmtp",
+  "timeline": [
+   {
+    "at": "2026-11-18T17:10Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Ink funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-18T17:13Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-19T16:24Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "qwyyxqhgk3wj",
+  "title": "Tether USD (USDT) - Tron Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-17T21:13Z",
+  "resolved_at": "2026-11-17T22:35Z",
+  "minutes_to_resolve": 82,
+  "minutes_to_identified": 10,
+  "updates": 3,
+  "longest_gap_min": 72,
+  "median_gap_min": 72,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Tether USD (USDT) - Tron"
+  ],
+  "link": "https://stspg.io/yqht12jqry6b",
+  "timeline": [
+   {
+    "at": "2026-11-17T21:13Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Tether USD (USDT) - Tron funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-17T21:23Z",
+    "status": "identified",
+    "text": "We have identified the cause of the delays. Processing has resumed and pending transactions are being worked through."
+   },
+   {
+    "at": "2026-11-17T22:35Z",
+    "status": "resolved",
+    "text": "Backlog has been cleared, transactions are being processed normally."
+   }
+  ]
+ },
+ {
+  "id": "5lmkvc6ylghn",
+  "title": "EthereumPoW Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-16T10:57Z",
+  "resolved_at": "2026-11-16T12:14Z",
+  "minutes_to_resolve": 77,
+  "minutes_to_identified": 0,
+  "updates": 3,
+  "longest_gap_min": 68,
+  "median_gap_min": 68,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [],
+  "link": "https://stspg.io/9j0vjq5n7zh0",
+  "timeline": [
+   {
+    "at": "2026-11-16T10:57Z",
+    "status": "identified",
+    "text": "We're investigating an issue with the ETHW funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-16T12:05Z",
+    "status": "identified",
+    "text": "We are continuing to work on a fix for this issue."
+   },
+   {
+    "at": "2026-11-16T12:14Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "y5p24gbkbths",
+  "title": "Kava (KAVA) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-16T06:57Z",
+  "resolved_at": "2026-11-17T21:11Z",
+  "minutes_to_resolve": 2294,
+  "minutes_to_identified": 0,
+  "updates": 2,
+  "longest_gap_min": 2294,
+  "median_gap_min": 2294,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Kava (KAVA)"
+  ],
+  "link": "https://stspg.io/98xctkfmd71x",
+  "timeline": [
+   {
+    "at": "2026-11-16T06:57Z",
+    "status": "identified",
+    "text": "We're aware of an issue with the Kava (KAVA) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-17T21:11Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "6yz857nnnkz5",
+  "title": "Concordium (CCD) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-14T11:54Z",
+  "resolved_at": "2026-11-14T12:33Z",
+  "minutes_to_resolve": 39,
+  "minutes_to_identified": null,
+  "updates": 4,
+  "longest_gap_min": 24,
+  "median_gap_min": 15,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Concordium (CCD)"
+  ],
+  "link": "https://stspg.io/xrnjgl6rg6yv",
+  "timeline": [
+   {
+    "at": "2026-11-14T11:54Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Concordium (CCD) funding gateway. Withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-14T11:54Z",
+    "status": "investigating",
+    "text": "We are continuing to investigate this issue."
+   },
+   {
+    "at": "2026-11-14T12:19Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-14T12:33Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "9bc6xzp6mx8l",
+  "title": "Aptos (APT) Network Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-14T11:08Z",
+  "resolved_at": "2026-11-14T13:38Z",
+  "minutes_to_resolve": 150,
+  "minutes_to_identified": null,
+  "updates": 2,
+  "longest_gap_min": 150,
+  "median_gap_min": 150,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Amnis Finance (AMI) - Aptos",
+   "Aptos (APT)",
+   "KGeN (KGEN) - Aptos",
+   "PACT (PACT) - Aptos",
+   "Tether USD (USDT) - Aptos"
+  ],
+  "link": "https://stspg.io/krcktpgh4lq8",
+  "timeline": [
+   {
+    "at": "2026-11-14T11:08Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Aptos (APT) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-14T13:38Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "yshfxnffsgl2",
+  "title": "Osmosis (OSMO) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-14T11:02Z",
+  "resolved_at": "2026-11-25T10:28Z",
+  "minutes_to_resolve": 15807,
+  "minutes_to_identified": null,
+  "updates": 2,
+  "longest_gap_min": 15807,
+  "median_gap_min": 15807,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Osmosis (OSMO)"
+  ],
+  "link": "https://stspg.io/m0v330r5jhjb",
+  "timeline": [
+   {
+    "at": "2026-11-14T11:02Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Osmosis (OSMO) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-25T10:28Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "nbqcqss23yr1",
+  "title": "Trade Histories Not Visible",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-13T13:02Z",
+  "resolved_at": "2026-11-13T13:51Z",
+  "minutes_to_resolve": 48,
+  "minutes_to_identified": 0,
+  "updates": 3,
+  "longest_gap_min": 47,
+  "median_gap_min": 47,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Website",
+   "Kraken App",
+   "Kraken Pro App",
+   "Krak App"
+  ],
+  "link": "https://stspg.io/9p3vvn5j8m68",
+  "timeline": [
+   {
+    "at": "2026-11-13T13:02Z",
+    "status": "identified",
+    "text": "We are aware of an issue causing PDF/CSV exports to be missing ledgers & trades in the last 24 hours"
+   },
+   {
+    "at": "2026-11-13T13:50Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-13T13:51Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "1r99c1gzffzf",
+  "title": "Kraken Pro US Futures Data Not Updating",
+  "impact": "none",
+  "status": "resolved",
+  "started_at": "2026-11-13T03:21Z",
+  "resolved_at": "2026-11-13T16:09Z",
+  "minutes_to_resolve": 768,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 473,
+  "median_gap_min": 473,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [],
+  "link": "https://stspg.io/cdllq14jdkj5",
+  "timeline": [
+   {
+    "at": "2026-11-13T03:21Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with market data on a subset of Kraken Derivatives US products.  We are looking into this and will provide details as we learn more."
+   },
+   {
+    "at": "2026-11-13T08:17Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-13T16:09Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "g70pckb34tqc",
+  "title": "Funding Degraded Performance",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-12T11:08Z",
+  "resolved_at": "2026-11-12T14:38Z",
+  "minutes_to_resolve": 210,
+  "minutes_to_identified": null,
+  "updates": 5,
+  "longest_gap_min": 112,
+  "median_gap_min": 38,
+  "gave_eta": false,
+  "said_funds_safe": true,
+  "components": [],
+  "link": "https://stspg.io/411jsld2wddm",
+  "timeline": [
+   {
+    "at": "2026-11-12T11:08Z",
+    "status": "investigating",
+    "text": "We are aware of a temporary hiccup causing issues with funding for a subset of clients. Deposits and withdrawals may be delayed or failing at this time. Please be assured that the security and safety of your funds are not affected by this temporary disruption.\n\nWe are working diligently to resolve the issue and will keep you informed. Thank you for your patience."
+   },
+   {
+    "at": "2026-11-12T12:59Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-12T13:24Z",
+    "status": "investigating",
+    "text": "We are currently investigating this issue."
+   },
+   {
+    "at": "2026-11-12T14:00Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-12T14:38Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "b65fk4qjpcl1",
+  "title": "Kraken Derivatives Trading Unavailable",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-11T22:42Z",
+  "resolved_at": "2026-11-11T22:52Z",
+  "minutes_to_resolve": 10,
+  "minutes_to_identified": 0,
+  "updates": 3,
+  "longest_gap_min": 9,
+  "median_gap_min": 9,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "User Interface"
+  ],
+  "link": "https://stspg.io/9d29766x97sq",
+  "timeline": [
+   {
+    "at": "2026-11-11T22:42Z",
+    "status": "investigating",
+    "text": "We are investigating an issue affecting Kraken Derivatives trading. Clients may also be unable to view their derivatives balances and portfolios. Our team is working to restore service, and we will provide updates as more information becomes available."
+   },
+   {
+    "at": "2026-11-11T22:43Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-11T22:52Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "dk2sjsgq5tx3",
+  "title": "Flare Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-11T15:37Z",
+  "resolved_at": "2026-11-19T16:25Z",
+  "minutes_to_resolve": 11568,
+  "minutes_to_identified": null,
+  "updates": 2,
+  "longest_gap_min": 11568,
+  "median_gap_min": 11568,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Flare (FLR)",
+   "Tether USD (USDT) - Flare"
+  ],
+  "link": "https://stspg.io/lws4xdj6r6np",
+  "timeline": [
+   {
+    "at": "2026-11-11T15:37Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Flare funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-19T16:25Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "9mys861w4snj",
+  "title": "X Layer Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-11T13:40Z",
+  "resolved_at": "2026-11-11T17:05Z",
+  "minutes_to_resolve": 205,
+  "minutes_to_identified": 41,
+  "updates": 3,
+  "longest_gap_min": 164,
+  "median_gap_min": 164,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Tether USD (USDT) - Xlayer (USDT0)",
+   "USDG (USDG) - Xlayer",
+   "X Layer (OKB)"
+  ],
+  "link": "https://stspg.io/x7jp5qgc5rzh",
+  "timeline": [
+   {
+    "at": "2026-11-11T13:40Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the X Layer funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-11T14:21Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-11T17:05Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "wmfdhp7qc1xw",
+  "title": "Deposit and Withdrawal Delays on Multiple Blockchain Networks",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-10T18:15Z",
+  "resolved_at": "2026-11-10T18:57Z",
+  "minutes_to_resolve": 42,
+  "minutes_to_identified": 6,
+  "updates": 3,
+  "longest_gap_min": 36,
+  "median_gap_min": 36,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "AB (AB)",
+   "Arbitrum (ARB)",
+   "AI Rig Complex (ARC) - Solana",
+   "Avalanche (AVAX)",
+   "Berachain (BERA)",
+   "Celo (CELO)",
+   "Conflux (CFX)",
+   "Creditcoin (CTC) - Ethereum"
+  ],
+  "link": "https://stspg.io/hl7bphl8pfgq",
+  "timeline": [
+   {
+    "at": "2026-11-10T18:15Z",
+    "status": "investigating",
+    "text": "We’re investigating an issue that may delay deposits and withdrawals on multiple blockchain networks. Our team is working to restore normal processing, and we’ll provide updates as we learn more."
+   },
+   {
+    "at": "2026-11-10T18:21Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-10T18:57Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "fqgy2v7071c7",
+  "title": "Deposit and Withdrawal Delays on Multiple Blockchain Networks",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-10T18:14Z",
+  "resolved_at": "2026-11-11T05:01Z",
+  "minutes_to_resolve": 646,
+  "minutes_to_identified": null,
+  "updates": 2,
+  "longest_gap_min": 646,
+  "median_gap_min": 646,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "AB (AB)",
+   "Arbitrum (ARB)",
+   "AI Rig Complex (ARC) - Solana",
+   "Avalanche (AVAX)",
+   "Berachain (BERA)",
+   "Celo (CELO)",
+   "Conflux (CFX)",
+   "Creditcoin (CTC) - Ethereum"
+  ],
+  "link": "https://stspg.io/lq4r21np0jpv",
+  "timeline": [
+   {
+    "at": "2026-11-10T18:14Z",
+    "status": "investigating",
+    "text": "We’re investigating an issue that may delay deposits and withdrawals on multiple blockchain networks. Our team is working to restore normal processing, and we’ll provide updates as we learn more."
+   },
+   {
+    "at": "2026-11-11T05:01Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "6yrrplqc5yv0",
+  "title": "Initia (INIT) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-10T08:23Z",
+  "resolved_at": "2026-11-20T20:57Z",
+  "minutes_to_resolve": 15154,
+  "minutes_to_identified": 48,
+  "updates": 3,
+  "longest_gap_min": 15106,
+  "median_gap_min": 15106,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Initia (INIT)"
+  ],
+  "link": "https://stspg.io/6m8947xr22xm",
+  "timeline": [
+   {
+    "at": "2026-11-10T08:23Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Initia (INIT) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-10T09:11Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-20T20:57Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "wfwxn353pk62",
+  "title": "Spot REST API market data errors",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-09T21:38Z",
+  "resolved_at": "2026-11-09T22:49Z",
+  "minutes_to_resolve": 70,
+  "minutes_to_identified": 1,
+  "updates": 4,
+  "longest_gap_min": 61,
+  "median_gap_min": 9,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "REST"
+  ],
+  "link": "https://stspg.io/llf4khzv3prs",
+  "timeline": [
+   {
+    "at": "2026-11-09T21:38Z",
+    "status": "investigating",
+    "text": "We are investigating reports an issue affecting some public market data endpoints on our Spot REST API. Clients may receive errors or empty responses when requesting market data, such as ticker and recent trades, for some trading pairs.\n\nWe are looking into this and will provide details as we learn more."
+   },
+   {
+    "at": "2026-11-09T21:39Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-09T21:48Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-09T22:49Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "ltqk3bv2r649",
+  "title": "Injective (INJ) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-09T13:12Z",
+  "resolved_at": "2026-11-09T22:48Z",
+  "minutes_to_resolve": 576,
+  "minutes_to_identified": 0,
+  "updates": 3,
+  "longest_gap_min": 563,
+  "median_gap_min": 563,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Injective (INJ)"
+  ],
+  "link": "https://stspg.io/tygl42q9v3bg",
+  "timeline": [
+   {
+    "at": "2026-11-09T13:12Z",
+    "status": "identified",
+    "text": "We're investigating an issue with the Injective (INJ) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-09T22:35Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-09T22:48Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "cyfkt3ylmm4t",
+  "title": "Vaulta - A [EOS Network] Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-08T23:52Z",
+  "resolved_at": "2026-11-09T17:52Z",
+  "minutes_to_resolve": 1080,
+  "minutes_to_identified": 673,
+  "updates": 5,
+  "longest_gap_min": 673,
+  "median_gap_min": 382,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "EOS (EOS)"
+  ],
+  "link": "https://stspg.io/2y9rxgtt25t3",
+  "timeline": [
+   {
+    "at": "2026-11-08T23:52Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Vaulta - A [EOS Network] funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-09T11:05Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-09T11:24Z",
+    "status": "identified",
+    "text": "We're still working on the issue, but can share that Deposits are now working again. We'll update you on withdrawals as soon as we can."
+   },
+   {
+    "at": "2026-11-09T11:30Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-09T17:52Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "1mk59wfdjggk",
+  "title": "BRL PIX Withdrawal Issues",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-05T16:03Z",
+  "resolved_at": "2026-11-11T02:33Z",
+  "minutes_to_resolve": 7830,
+  "minutes_to_identified": null,
+  "updates": 2,
+  "longest_gap_min": 7830,
+  "median_gap_min": 7830,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Brazilian Real (BRL) - Domestic"
+  ],
+  "link": "https://stspg.io/rrcvk3ml0hld",
+  "timeline": [
+   {
+    "at": "2026-11-05T16:03Z",
+    "status": "investigating",
+    "text": "BRL withdrawals via PIX are currently being rejected. We’re working with our funding provider to restore the service and will provide updates as more information becomes available."
+   },
+   {
+    "at": "2026-11-11T02:33Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "y6t0n8f1qgxt",
+  "title": "Delays in Chart Updates - Kraken Pro Prop",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-05T12:53Z",
+  "resolved_at": "2026-11-05T13:28Z",
+  "minutes_to_resolve": 35,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 25,
+  "median_gap_min": 25,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Prop Trading"
+  ],
+  "link": "https://stspg.io/nqsf7q4dmkd1",
+  "timeline": [
+   {
+    "at": "2026-11-05T12:53Z",
+    "status": "investigating",
+    "text": "We are investigating an issue causing delays in chart updates on Kraken Pro Prop. Price updates and order execution remain operational. Our team is working to resolve the issue, and we will provide updates as more information becomes available."
+   },
+   {
+    "at": "2026-11-05T13:03Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-05T13:28Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "lq19kjjg863l",
+  "title": "Deposit and Withdrawal Delays on Multiple Networks",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-05T10:19Z",
+  "resolved_at": "2026-11-11T17:59Z",
+  "minutes_to_resolve": 9100,
+  "minutes_to_identified": 0,
+  "updates": 4,
+  "longest_gap_min": 7451,
+  "median_gap_min": 1613,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Sonic (S)"
+  ],
+  "link": "https://stspg.io/gtqvkp4mdyvy",
+  "timeline": [
+   {
+    "at": "2026-11-05T10:19Z",
+    "status": "identified",
+    "text": "We’re investigating an issue affecting funding gateways on the Ink, Optimism, Unichain, Shape, Gensyn, Fraxtal, Katana, X Layer and Base networks. Deposits and withdrawals on these networks may be delayed at this time. All other funding methods are operating normally. We are working to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-11-06T13:12Z",
+    "status": "identified",
+    "text": "We have restored normal deposit and withdrawal processing on Ink, Optimism, Unichain, and Base, and delays are no longer expected on these networks. We are continuing remediation efforts for the remaining affected networks. Deposits and withdrawals on these networks may still experience delays.\n\nAll other funding methods remain operational. We will provide further updates as progress is made."
+   },
+   {
+    "at": "2026-11-06T13:48Z",
+    "status": "identified",
+    "text": "We have restored normal deposit and withdrawal processing on BSC. We are continuing remediation efforts for the remaining affected networks. Deposits and withdrawals on these networks may still experience delays.\n\nAll other funding methods remain operational. We will provide further updates as progress is made."
+   },
+   {
+    "at": "2026-11-11T17:59Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "jkm5tq0rzsc3",
+  "title": "Plaid US Withdrawal Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-04T17:33Z",
+  "resolved_at": "2026-11-04T18:04Z",
+  "minutes_to_resolve": 31,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 25,
+  "median_gap_min": 25,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "US Dollar (USD) - Domestic"
+  ],
+  "link": "https://stspg.io/ghmfg4qnvdpk",
+  "timeline": [
+   {
+    "at": "2026-11-04T17:33Z",
+    "status": "investigating",
+    "text": "We're aware of an issue with Plaid, one of our third-party payment providers, that is affecting USD withdrawals via Instant Bank Transfers. Some of these transactions may be delayed.\n\nAffected transactions are queued and will be processed automatically once the service is restored.\n\nWe're monitoring the situation closely and will post an update as soon as we have more information."
+   },
+   {
+    "at": "2026-11-04T17:58Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-04T18:04Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "5sf6xkjqtrw0",
+  "title": "Brazilian Real (BRL) PIX Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-03T20:39Z",
+  "resolved_at": "2026-11-05T12:16Z",
+  "minutes_to_resolve": 2377,
+  "minutes_to_identified": 1020,
+  "updates": 3,
+  "longest_gap_min": 1357,
+  "median_gap_min": 1357,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Brazilian Real (BRL) - Domestic"
+  ],
+  "link": "https://stspg.io/7ztgln6zqfmj",
+  "timeline": [
+   {
+    "at": "2026-11-03T20:39Z",
+    "status": "investigating",
+    "text": "We are experiencing delays with Brazilian Real (BRL) deposits and withdrawals via PIX. Some transfers may remain pending longer than usual. We are working with our provider and will share updates as more information becomes available."
+   },
+   {
+    "at": "2026-11-04T13:39Z",
+    "status": "identified",
+    "text": "Brazilian Real (BRL) deposits via PIX are now operating normally. Withdrawals remain affected, and some transfers may take longer than usual to complete. We are continuing to work with our provider to resolve the issue and will share further updates as more information becomes available."
+   },
+   {
+    "at": "2026-11-05T12:16Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "27b7ccx9s67k",
+  "title": "Incorrect liquidation prices displayed on Kraken Pro",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-11-03T18:40Z",
+  "resolved_at": "2026-11-03T21:16Z",
+  "minutes_to_resolve": 156,
+  "minutes_to_identified": 37,
+  "updates": 4,
+  "longest_gap_min": 110,
+  "median_gap_min": 37,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Kraken Pro App"
+  ],
+  "link": "https://stspg.io/t4pgrslrf39r",
+  "timeline": [
+   {
+    "at": "2026-11-03T18:40Z",
+    "status": "investigating",
+    "text": "We are investigating an issue where some clients may see incorrect estimated liquidation prices for perpetual futures positions on Kraken Pro web and mobile. Our team is working on a fix and will provide an update as soon as we have more information."
+   },
+   {
+    "at": "2026-11-03T19:17Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-11-03T19:25Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-03T21:16Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "pq7m18tp02jx",
+  "title": "Delayed Earn rewards payouts",
+  "impact": "none",
+  "status": "resolved",
+  "started_at": "2026-10-30T03:09Z",
+  "resolved_at": "2026-10-30T03:41Z",
+  "minutes_to_resolve": 32,
+  "minutes_to_identified": 0,
+  "updates": 2,
+  "longest_gap_min": 32,
+  "median_gap_min": 32,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [],
+  "link": "https://stspg.io/0m57t0zjt7sl",
+  "timeline": [
+   {
+    "at": "2026-10-30T03:09Z",
+    "status": "identified",
+    "text": "We are aware of delayed Earn rewards payouts. The team is currently investigating, and any delayed rewards will be paid once service is restored. \n\nWe will provide another update as soon as we have more information."
+   },
+   {
+    "at": "2026-10-30T03:41Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "zkqc9db292h5",
+  "title": "Spot Exchange Connectivity Issues - Web, Mobile & API (Rest & Websockets)",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-30T02:42Z",
+  "resolved_at": "2026-10-30T03:42Z",
+  "minutes_to_resolve": 60,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 47,
+  "median_gap_min": 47,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Website",
+   "REST",
+   "Kraken App",
+   "WebSocket",
+   "Cross-Exchange Transfers"
+  ],
+  "link": "https://stspg.io/93pf0f9z61yq",
+  "timeline": [
+   {
+    "at": "2026-10-30T02:42Z",
+    "status": "investigating",
+    "text": "We are investigating an issue affecting Spot and Derivatives clients connecting to the platform and submitting orders across all Web and Mobile applications, as well as REST, WebSocket, and FIX connections. We are working to resolve the issue and will provide an update as soon as we have more information."
+   },
+   {
+    "at": "2026-10-30T02:55Z",
+    "status": "investigating",
+    "text": "We are continuing to investigate this issue."
+   },
+   {
+    "at": "2026-10-30T03:42Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "drgdcf17cb9j",
+  "title": "Flow (FLOW) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-29T22:20Z",
+  "resolved_at": "2026-10-31T04:43Z",
+  "minutes_to_resolve": 1823,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 1451,
+  "median_gap_min": 1451,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Flow (FLOW)"
+  ],
+  "link": "https://stspg.io/1993vx4rnk41",
+  "timeline": [
+   {
+    "at": "2026-10-29T22:20Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Flow (FLOW) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-10-30T22:31Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-10-31T04:43Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "qrl60y02xpb3",
+  "title": "Argentine Peso (ARS), Colombian Peso (COP), & Mexican Peso (MXN) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-29T16:21Z",
+  "resolved_at": "2026-10-29T17:01Z",
+  "minutes_to_resolve": 40,
+  "minutes_to_identified": 0,
+  "updates": 4,
+  "longest_gap_min": 20,
+  "median_gap_min": 13,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Argentine Peso (ARS) - Domestic",
+   "Brazilian Real (BRL) - Domestic",
+   "Colombian Peso (COP) - Domestic",
+   "Mexican Peso (MXN) - Domestic"
+  ],
+  "link": "https://stspg.io/jk7sglwcm1nr",
+  "timeline": [
+   {
+    "at": "2026-10-29T16:21Z",
+    "status": "identified",
+    "text": "We are aware of an issue with our funding provider, PayAmigo, that is affecting Argentine Peso (ARS), Colombian Peso (COP), & Mexican Peso (MXN) funding. As a result, users may be unable to deposit or withdraw ARS, COP, and MXN. All other funding methods are operating normally. We will provide updates as soon as more information becomes available."
+   },
+   {
+    "at": "2026-10-29T16:27Z",
+    "status": "identified",
+    "text": "We are continuing to work on a fix for this issue."
+   },
+   {
+    "at": "2026-10-29T16:41Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-10-29T17:01Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "b1hx199lcnq8",
+  "title": "Solana (SOL) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-29T08:47Z",
+  "resolved_at": "2026-10-29T09:11Z",
+  "minutes_to_resolve": 24,
+  "minutes_to_identified": 0,
+  "updates": 2,
+  "longest_gap_min": 24,
+  "median_gap_min": 24,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Solana (SOL)"
+  ],
+  "link": "https://stspg.io/x3wslstp0x2r",
+  "timeline": [
+   {
+    "at": "2026-10-29T08:47Z",
+    "status": "identified",
+    "text": "We're investigating an issue with the Solana (SOL) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-10-29T09:11Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "228c28mxv816",
+  "title": "FIX API connectivity issues",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-28T22:54Z",
+  "resolved_at": "2026-10-29T00:53Z",
+  "minutes_to_resolve": 119,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 92,
+  "median_gap_min": 92,
+  "gave_eta": false,
+  "said_funds_safe": true,
+  "components": [
+   "FIX"
+  ],
+  "link": "https://stspg.io/q6h1mqn04xb6",
+  "timeline": [
+   {
+    "at": "2026-10-28T22:54Z",
+    "status": "investigating",
+    "text": "We are investigating that some clients are unable to reconnect to the FIX API following the scheduled maintenance completed earlier today. Clients may see connection rejections when trying to reconnect. Other trading interfaces are not affected. Our team is actively investigating, and we will provide an update as soon as more information is available."
+   },
+   {
+    "at": "2026-10-29T00:26Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-10-29T00:53Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "1mwk0t5k5ktr",
+  "title": "USD Coin (ARC) [USDC - ARC] Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-28T02:34Z",
+  "resolved_at": "2026-10-28T04:14Z",
+  "minutes_to_resolve": 100,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 96,
+  "median_gap_min": 96,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "USDC (USDC) - Arc"
+  ],
+  "link": "https://stspg.io/71m96c5q3xmk",
+  "timeline": [
+   {
+    "at": "2026-10-28T02:34Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the USD Coin (ARC) [USDC - ARC]  funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-10-28T04:10Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-10-28T04:14Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "ld19hs76nxnz",
+  "title": "Plasma (XPL) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-27T15:34Z",
+  "resolved_at": "2026-10-28T15:55Z",
+  "minutes_to_resolve": 1461,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 1116,
+  "median_gap_min": 1116,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Plasma (XPL)",
+   "Tether USD (USDT) - Plasma"
+  ],
+  "link": "https://stspg.io/kvhlgzz8216w",
+  "timeline": [
+   {
+    "at": "2026-10-27T15:34Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Plasma (XPL) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-10-28T10:11Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-10-28T15:55Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "7zcy2j4hhxqz",
+  "title": "Polkadot (DOT) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-26T09:55Z",
+  "resolved_at": "2026-10-27T10:11Z",
+  "minutes_to_resolve": 1456,
+  "minutes_to_identified": null,
+  "updates": 3,
+  "longest_gap_min": 1251,
+  "median_gap_min": 1251,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Polkadot (DOT)"
+  ],
+  "link": "https://stspg.io/j50yvjychny4",
+  "timeline": [
+   {
+    "at": "2026-10-26T09:55Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the Polkadot (DOT) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-10-27T06:46Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-10-27T10:11Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "4m0rscfswypx",
+  "title": "SUI (SUI) Funding Delays",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-26T09:39Z",
+  "resolved_at": "2026-11-02T14:56Z",
+  "minutes_to_resolve": 10397,
+  "minutes_to_identified": 282,
+  "updates": 6,
+  "longest_gap_min": 7443,
+  "median_gap_min": 1017,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Sui (SUI)"
+  ],
+  "link": "https://stspg.io/xf73qsnz80w9",
+  "timeline": [
+   {
+    "at": "2026-10-26T09:39Z",
+    "status": "investigating",
+    "text": "We're investigating an issue with the SUI (SUI) funding gateway. Deposits and withdrawals may be delayed at this time. All other funding methods are operating normally. We are working diligently to resolve the issue and will keep you updated."
+   },
+   {
+    "at": "2026-10-26T14:21Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-10-27T07:19Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-10-27T11:00Z",
+    "status": "identified",
+    "text": "The issue has been identified and a fix is being implemented."
+   },
+   {
+    "at": "2026-10-28T10:54Z",
+    "status": "monitoring",
+    "text": "A fix has been implemented and we are monitoring the results."
+   },
+   {
+    "at": "2026-11-02T14:56Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ },
+ {
+  "id": "by3j8r6q39ld",
+  "title": "Initia (INIT) Deposits and Withdrawals Temporarily Paused",
+  "impact": "minor",
+  "status": "resolved",
+  "started_at": "2026-10-23T16:15Z",
+  "resolved_at": "2026-11-02T15:05Z",
+  "minutes_to_resolve": 14330,
+  "minutes_to_identified": null,
+  "updates": 2,
+  "longest_gap_min": 14330,
+  "median_gap_min": 14330,
+  "gave_eta": false,
+  "said_funds_safe": false,
+  "components": [
+   "Initia (INIT)"
+  ],
+  "link": "https://stspg.io/fm0n8q11k450",
+  "timeline": [
+   {
+    "at": "2026-10-23T16:15Z",
+    "status": "investigating",
+    "text": "Deposits and withdrawals for Initia (INIT) are temporarily paused due to an issue affecting the Initia network. All other funding methods are operational. We are closely monitoring the situation and will provide updates as more information becomes available. We appreciate your patience and understanding."
+   },
+   {
+    "at": "2026-11-02T15:05Z",
+    "status": "resolved",
+    "text": "This incident has been resolved."
+   }
+  ]
+ }
+]
