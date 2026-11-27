@@ -1,0 +1,77 @@
+{
+ "updated": "2026-11-16",
+ "levels": [
+  {"level": "S1 Critical", "means": "Funds may be at risk, or the whole platform is down", "examples": "Hack, all withdrawals halted, exchange offline", "first_post_min": 15, "update_every_min": 30, "admin_reply_min": 10},
+  {"level": "S2 Major", "means": "One core service is down or badly delayed", "examples": "INR deposits delayed, one network's withdrawals stuck, login failing, orders not placing", "first_post_min": 30, "update_every_min": 60, "admin_reply_min": 15},
+  {"level": "S3 Minor", "means": "A small or partial issue", "examples": "One coin's deposits slow, chart glitch, slow KYC", "first_post_min": 120, "update_every_min": null, "admin_reply_min": 30},
+  {"level": "Planned", "means": "Scheduled maintenance", "examples": "Wallet or system upgrade", "first_post_min": null, "update_every_min": null, "admin_reply_min": 30, "note": "Announce 24 hours before; post at start and end"}
+ ],
+ "rules": [
+  {"rule": "Speak first, explain later", "detail": "Post a short holding message within 15 minutes, even if the cause is unknown. Silence lets rumours on X and in the group set the story."},
+  {"rule": "Lead with fund safety, but only if it is true", "detail": "The first line answers 'is my money safe?'. Binance opened every hack update with 'funds are safe, we will cover all losses'."},
+  {"rule": "Never deny before you have checked", "detail": "Say 'we are checking' instead. CoinDCX's CEO called a breach report a 'false alarm', then confirmed a $16M loss days later."},
+  {"rule": "Say exactly what is off and what still works", "detail": "'Withdrawals paused; trading, deposits and balances unaffected' stops most panic questions."},
+  {"rule": "Give the time of the next update, then keep it", "detail": "'Next update by 14:30 IST', and post at 14:30 even if nothing changed."},
+  {"rule": "One message, every channel, same minute", "detail": "Telegram announcement, pinned group post, X, app banner. During its hack, Binance's key updates came on X first."},
+  {"rule": "Answer complaints; never delete or ban them", "detail": "Remove only scams and fake admins. ZebPay users reported complaints deleted and themselves blocked, which became a news story."},
+  {"rule": "Speak your customers' language", "detail": "In India most group complaints come in Hinglish or Hindi; reply in the same register."},
+  {"rule": "Close the loop", "detail": "A resolved post, a plain-language cause, compensation and how to claim it, and a dated post-mortem. Binance paid about $283M within two days after the Oct 2025 crash."}
+ ],
+ "timeline": [
+  {"when": "0–15 min", "phase": "Hold", "who": "Comms owner + community admins", "do": "Holding message on Telegram announcement, X and app banner; pin it in the group. Say what is affected, fund safety (or 'checking'), next update time."},
+  {"when": "15–60 min", "phase": "Confirm scope", "who": "Incident lead + comms owner", "do": "Update with what works and what doesn't, any workaround, ETA if known. Admins answer in the group with the scripts. Post a scam warning."},
+  {"when": "Every 30–60 min", "phase": "Keep updating", "who": "Comms owner", "do": "Post at the promised time even with no change. Share progress (e.g. '8 of 15 networks back')."},
+  {"when": "At fix", "phase": "Resolved", "who": "Comms owner + admins", "do": "Resolved post on every channel: what's back, when pending items will clear, how to raise a ticket. Unpin the incident post."},
+  {"when": "24–72 h", "phase": "Follow-up", "who": "Leadership + comms owner", "do": "Plain-language cause, impact, compensation and how to claim, what changed, dated full report."}
+ ],
+ "roles": [
+  {"role": "Incident lead", "owns": "Confirms facts and approves every public message", "channel": "Internal"},
+  {"role": "Comms owner", "owns": "Writes and posts announcements at the same minute everywhere", "channel": "Telegram announcement, X, app banner, email (S1)"},
+  {"role": "Community admins", "owns": "Pin posts, answer with scripts, remove scams, escalate tickets", "channel": "Telegram groups (all languages)"},
+  {"role": "Support", "owns": "Same wording in ticket replies; tag incident tickets", "channel": "Tickets, chat, @support on X"},
+  {"role": "Leadership", "owns": "S1 only: a personal post after the first official message, never before facts are confirmed", "channel": "X, Telegram"}
+ ],
+ "templates": [
+  {"phase": "Hold", "en": "We're aware some users can't [withdraw INR / place orders] right now. Our team is on it. [Your funds are safe / We're checking and will confirm by HH:MM]. [Trading and balances are not affected]. Next update by [HH:MM IST].",
+   "hinglish": "Kuch users ko abhi [INR withdrawal / order place karne] mein dikkat aa rahi hai. Hamari team is par kaam kar rahi hai. [Aapke funds safe hain / Hum check kar rahe hain, HH:MM tak confirm karenge]. Agla update [HH:MM] tak."},
+  {"phase": "Update", "en": "Update [HH:MM IST]: [what we found, one line]. Working now: [services]. Still paused: [services]. Expected fix: [ETA, or 'ETA by HH:MM']. Next update by [HH:MM IST].",
+   "hinglish": "Update [HH:MM]: [kya pata chala]. Abhi chal raha hai: [services]. Abhi band hai: [services]. Expected fix: [ETA]. Agla update [HH:MM] tak."},
+  {"phase": "Resolved", "en": "Resolved [HH:MM IST]: [service] is working normally. Pending [withdrawals] will process within [X hours]. If something still looks wrong, raise a ticket in the app. No admin will DM you first. Thank you for your patience.",
+   "hinglish": "Resolved [HH:MM]: [service] ab normal chal raha hai. Pending [withdrawals] [X ghante] mein process ho jayenge. Agar abhi bhi dikkat ho, app mein ticket raise karein. Koi admin aapko pehle DM nahi karega. Dhanyavaad."},
+  {"phase": "Follow-up", "en": "What happened on [date]: [cause, one sentence]. Impact: [who, what, how long]. Compensation: [what + how to claim by date, or why none]. What we changed: [1–2 fixes]. Full report: [link or date].",
+   "hinglish": "[Date] ko kya hua: [cause]. Asar: [kis par, kitni der]. Compensation: [kya milega + kaise claim karein]. Humne kya badla: [fixes]. Poori report: [link / date]."},
+  {"phase": "Maintenance", "en": "Scheduled maintenance: [service] on [date], [HH:MM]–[HH:MM IST] (about [duration]). [Deposits/withdrawals] pause 5 minutes before. Trading [is / is not] affected. We'll post here when it's done.",
+   "hinglish": "Scheduled maintenance: [service], [date] ko [HH:MM]–[HH:MM] tak (lagbhag [duration]). [Deposits/withdrawals] 5 minute pehle ruk jayenge. Trading [par asar nahi / band rahegi]. Khatam hone par yahin update denge."}
+ ],
+ "scripts": [
+  {"q": "Is my money safe?", "en": "Yes. Balances are safe and not affected; only [service] is paused. The pinned post has every update.", "hinglish": "Haan, aapka balance safe hai. Sirf [service] abhi ruki hai. Saare updates pinned post mein hain.", "note": "Only if confirmed. Otherwise: 'We're checking now and will confirm by HH:MM.'"},
+  {"q": "When will withdrawals open?", "en": "We expect [ETA] / we'll share an ETA by [HH:MM]. The pinned post is updated every 30 minutes.", "hinglish": "[ETA] tak expected hai / [HH:MM] tak ETA batayenge. Pinned post har 30 minute update hota hai."},
+  {"q": "My transaction is stuck", "en": "It's queued, not lost. It will process automatically when [service] is back. If it hasn't arrived [X hours] after the resolved post, raise a ticket with your TxID.", "hinglish": "Aapka transaction queue mein hai, lost nahi hua. [Service] wapas aate hi apne aap process ho jayega. Resolved post ke [X ghante] baad bhi na aaye to TxID ke saath ticket raise karein."},
+  {"q": "Is this a scam? Are you running away?", "en": "No. [What happened, what is affected]. We'll publish a full report by [date].", "hinglish": "Nahi. [Kya hua, kya affected hai]. Poori report [date] tak publish karenge."},
+  {"q": "Will I get compensation?", "en": "If you lost money because of our issue (failed orders, forced liquidation during the downtime), claim through [form/ticket] by [date]. Normal market moves aren't covered.", "hinglish": "Agar hamari dikkat ki wajah se nuksaan hua (order fail, downtime mein liquidation), to [form/ticket] se [date] tak claim karein. Normal market movement cover nahi hota."},
+  {"q": "Support isn't replying", "en": "Sorry for the wait; ticket volume is high. Share your ticket number here and we'll escalate it. Never share your password or OTP.", "hinglish": "Wait ke liye sorry, abhi tickets bahut zyada hain. Apna ticket number yahan share karein, hum escalate karenge. Password ya OTP kabhi share na karein."},
+  {"q": "Someone DMed me offering help", "en": "That's a scammer. Admins never DM first and never ask for passwords, OTPs or transfers. Please report and block them.", "hinglish": "Woh scammer hai. Admin kabhi pehle DM nahi karte, na password, OTP ya transfer maangte hain. Report aur block karein."}
+ ],
+ "donts": [
+  {"dont": "Deny before checking", "example": "CoinDCX's CEO called breach reports a 'false alarm' on X; the company confirmed a $16M loss days later (Oct 2026)."},
+  {"dont": "Let outsiders break the news", "example": "In both CoinDCX cases, on-chain investigators flagged the outflows before the exchange explained them."},
+  {"dont": "Update on one channel only", "example": "Binance's first hack statements and the 48-hour ETA led on X and executives' posts (Oct 2026)."},
+  {"dont": "Delete complaints or ban complainers", "example": "ZebPay users said their group complaints were deleted and they were blocked (2022)."},
+  {"dont": "Say 'reopened' when most of it is still off", "example": "Binance announced withdrawals were back while most coins were still suspended (Nov 2026)."},
+  {"dont": "Promise a report without a date", "example": "Binance's post-mortem and reserve proof were still pending two weeks after the hack."},
+  {"dont": "Say 'no compensation' without a claim path", "example": "Binance's 'no compensation for market losses' angered traders whose stop-losses failed (Oct 2025)."},
+  {"dont": "Go silent between updates", "example": "Every gap without a post fills the group with rumours and 'are you running away?' messages."}
+ ],
+ "maintenance": [
+  "Announce at least 24 hours before, then again 1 hour before.",
+  "Give exact start and end in IST and UTC, and the expected duration.",
+  "Name what pauses and what keeps working; pause 5 minutes before start.",
+  "Avoid Indian evening peak hours and big-news days (CPI, FOMC, major unlocks).",
+  "Post 'done' the moment it ends, and say if anything is delayed."
+ ],
+ "targets": [
+  {"metric": "Customers complain → first official post", "s1": 15, "s2": 30, "field": "minutes_customers_before_official"},
+  {"metric": "Customers complain → first admin reply in group", "s1": 10, "s2": 15, "field": "minutes_to_first_admin_reply"},
+  {"metric": "Downtime post on X → first exchange reply under it", "s1": 30, "s2": 30, "field": "minutes_to_first_exchange_reply"}
+ ]
+}

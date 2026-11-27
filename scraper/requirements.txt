@@ -1,0 +1,6 @@
+requests==2.32.3
+beautifulsoup4==4.12.3
+telethon==1.36.0
+google-play-scraper==1.2.7
+scikit-learn==1.5.2
+numpy>=1.26

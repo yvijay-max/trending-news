@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exchange Telegram Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>Exchange Telegram Watch</h1>
+    <p class="muted" id="updated">Loading data…</p>
+  </div>
+  <div class="navs"><nav class="regions" id="regions" aria-label="Region"></nav><nav class="tabs" id="tabs" aria-label="Exchange"></nav></div>
+</header>
+
+<main id="view-exchange">
+  <section class="hero">
+    <div class="hero-head">
+      <h2 id="ex-title">—</h2>
+      <p id="ex-summary" class="lead">—</p>
+      <p id="ex-channels" class="muted chan"></p>
+      <p id="ex-note" class="note" hidden></p>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h3>Posting rhythm against the BTC price</h3>
+      <p class="muted">Bars are posts per day. Red marks are downtime or maintenance posts. The orange line is BTC/USD. Hover or tap a day.</p>
+    </div>
+    <div class="chart" id="pulse"></div>
+  </section>
+
+  <div class="two">
+    <section class="panel">
+      <div class="panel-head"><h3>What they post, and what gets read</h3><p class="muted">Average views per post type. Post counts in brackets.</p></div>
+      <div class="chart" id="mix"></div>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><h3>Downtime and BTC alerts</h3><p class="muted">Latest posts the classifier flagged as incident, maintenance or market news.</p></div>
+      <ul class="feed" id="feed"></ul>
+    </section>
+  </div>
+
+  <section class="panel" id="discordsec" hidden>
+    <div class="panel-head">
+      <h3>Discord announcements</h3>
+      <p class="muted" id="dc-note">Posts from the exchange's Discord announcement channel, followed into your own server and read by your bot.</p>
+    </div>
+    <div class="kpis" id="dc-kpis"></div>
+    <ul class="feed" id="dc-feed" style="margin-top:10px"></ul>
+  </section>
+
+  <section class="panel" id="statussec" hidden>
+    <div class="panel-head">
+      <h3>Status page: every outage and how it was updated</h3>
+      <label class="select-wrap">Incident <select id="st-sel"></select></label>
+      <p class="muted" id="st-note">From the exchange's public status page. Each incident shows its updates from Investigating to Resolved.</p>
+    </div>
+    <div class="kpis" id="st-kpis"></div>
+    <div id="st-body" style="margin-top:12px"></div>
+  </section>
+
+  <section class="panel" id="xsec">
+    <div class="panel-head">
+      <h3>On X (Twitter)</h3>
+      <p class="muted">Posts from the exchange's X accounts, and how people replied under its downtime posts. Updated once a day.</p>
+    </div>
+    <div class="kpis" id="x-kpis"></div>
+    <div class="inc-cols">
+      <div><h4>Latest downtime, maintenance and BTC posts on X</h4><ul class="feed" id="x-feed"></ul></div>
+      <div>
+        <h4 style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center">Replies under downtime posts <select id="x-sel" aria-label="Downtime post on X"></select></h4>
+        <div id="x-body"></div>
+      </div>
+    </div>
+    <div id="x-manual"></div>
+  </section>
+
+  <section class="panel" id="incidents">
+    <div class="panel-head">
+      <h3>When something went wrong: handling, reaction, fix</h3>
+      <label class="select-wrap">Incident <select id="inc-sel"></select></label>
+      <p class="muted">Built from the community group and the announcement channel around each downtime post or complaint spike. Times are UTC; minutes are counted from when customers started complaining.</p>
+    </div>
+    <div id="inc-body"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><h3>Customer side: community group activity</h3><p class="muted">Daily messages and complaint mentions in the exchange's Telegram groups. Counts only, no message text.</p></div>
+    <div id="groups"></div>
+  </section>
+
+  <section class="panel" id="voicesec">
+    <div class="panel-head">
+      <h3>What customers say: app reviews + Telegram</h3>
+      <p class="muted">Last 30 days of App Store and Google Play reviews plus Telegram group messages, tagged by a KNN model and grouped into topics with k-means.</p>
+    </div>
+    <div class="kpis" id="v-kpis"></div>
+    <div class="chart" id="v-chart" style="min-height:160px;margin-top:12px"></div>
+    <div class="inc-cols">
+      <div><h4>What they talk about</h4><div id="v-labels"></div><div id="v-samples"></div></div>
+      <div><h4>Topics found this month</h4><div id="v-topics"></div></div>
+    </div>
+    <p class="muted" id="v-method" style="font-size:13px;margin:12px 0 0"></p>
+  </section>
+
+  <section class="panel" id="chatsec">
+    <div class="panel-head">
+      <h3>Community chat</h3>
+      <label class="select-wrap">Group <select id="chat-group"></select></label>
+      <p class="muted">The last 7 days of messages in the exchange's Telegram groups. Admin replies as written; customer messages without names, @handles, links or numbers.</p>
+    </div>
+    <div class="kpis" id="chat-kpis"></div>
+    <div class="seg" id="chat-filter" style="margin:12px 0;width:fit-content;flex-wrap:wrap"></div>
+    <ul class="chat" id="chat-list"></ul>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h3>How they handled downtime, step by step</h3>
+      <label class="select-wrap">Event <select id="evt"></select></label>
+    </div>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><h3>Scorecard</h3><p class="muted">Rated 1 to 5 from the evidence in each row. Pending rows still need data.</p></div>
+    <div class="scroll"><table class="table" id="score"><thead><tr><th>Area</th><th>Rating</th><th>Evidence</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><h3>What customers said</h3><p class="muted">Paraphrased from public replies, news and the exchange's own figures.</p></div>
+    <div class="voices" id="voices"></div>
+  </section>
+
+  <div class="two">
+    <section class="panel"><h3 class="good">Worth copying</h3><ul class="lessons" id="copy"></ul></section>
+    <section class="panel"><h3 class="bad">Worth avoiding</h3><ul class="lessons" id="avoid"></ul></section>
+  </div>
+</main>
+
+<main id="view-compare" hidden>
+  <section class="hero"><div class="hero-head"><h2 id="cmp-title">All exchanges side by side</h2><p class="lead">Posting habits from scraped channels and downtime ratings from research. Empty cells mean that exchange has not been collected yet.</p></div></section>
+  <section class="panel">
+    <div class="panel-head"><h3>Posting habits</h3></div>
+    <div class="scroll"><table class="table" id="cmp-posts"></table></div>
+  </section>
+  <section class="panel">
+    <div class="panel-head"><h3>Downtime scorecard</h3></div>
+    <div class="scroll"><table class="table" id="cmp-score"></table></div>
+  </section>
+</main>
+
+<main id="view-influencers" hidden>
+  <section class="hero"><div class="hero-head">
+    <h2 id="inf-title">Influencers</h2>
+    <p class="lead" id="inf-lead">—</p>
+  </div><div class="kpis" id="inf-kpis"></div></section>
+  <section class="panel"><div class="panel-head"><h3>Who they are and what they push</h3><p class="muted">Public Telegram channels, scraped every 6 hours. Negative reactions are 👎 😡 🤬 😢 😱 💩 🤮.</p></div>
+    <div class="scroll"><table class="table" id="inf-table"></table></div></section>
+  <div class="two">
+    <section class="panel"><div class="panel-head"><h3>Which exchanges they talk about</h3><p class="muted">Posts mentioning each exchange; the darker part has a referral link.</p></div><div class="chart" id="inf-mentions" style="min-height:140px"></div></section>
+    <section class="panel"><div class="panel-head"><h3>When an exchange had problems</h3><p class="muted">Influencer posts within 48 hours after an outage or downtime post of an exchange in this region.</p></div><ul class="feed" id="inf-outages"></ul></section>
+  </div>
+  <section class="panel"><div class="panel-head"><h3>Latest posts</h3><label class="select-wrap">Influencer <select id="inf-sel"></select></label></div><ul class="feed" id="inf-feed" style="max-height:620px"></ul></section>
+  <section class="panel"><div class="panel-head"><h3>Followers' discussion groups</h3><p class="muted">Comments under influencer posts, where followers complain and ask. Add a group as "discussion" in data/influencers.json.</p></div><div id="inf-groups"></div></section>
+</main>
+
+<main id="view-playbook" hidden>
+  <section class="hero"><div class="hero-head">
+    <h2>Downtime Response Playbook</h2>
+    <p class="lead">How to react when something breaks, generalised from how Binance, CoinDCX, WazirX, ZebPay and others handled their incidents. Each incident on the exchange pages is checked against it.</p>
+  </div></section>
+  <section class="panel"><div class="panel-head"><h3>Response timeline</h3><p class="muted">What to post, by whom, from the first complaint to the follow-up.</p></div><div class="steps" id="pb-timeline"></div></section>
+  <section class="panel"><div class="panel-head"><h3>Severity levels and targets</h3><p class="muted">When unsure between two levels, pick the higher one.</p></div><div class="scroll"><table class="table" id="pb-levels"></table></div></section>
+  <section class="panel"><div class="panel-head"><h3>Golden rules</h3></div><ol class="rules" id="pb-rules"></ol></section>
+  <section class="panel">
+    <div class="panel-head"><h3>Message templates</h3><div class="seg" id="pb-lang"></div><p class="muted">Fill the brackets, then post the same text on Telegram, X and the app banner at the same minute.</p></div>
+    <div class="cards" id="pb-templates"></div>
+  </section>
+  <section class="panel"><div class="panel-head"><h3>Admin reply scripts for the group</h3><p class="muted">Answers to the questions that flood the group during downtime.</p></div><div class="cards" id="pb-scripts"></div></section>
+  <div class="two">
+    <section class="panel"><h3 class="bad">What not to do, with real examples</h3><ul class="lessons" id="pb-donts"></ul></section>
+    <section class="panel"><h3>Planned maintenance checklist</h3><ul class="lessons" id="pb-maint"></ul></section>
+  </div>
+  <section class="panel"><div class="panel-head"><h3>Who does what</h3></div><div class="scroll"><table class="table" id="pb-roles"></table></div></section>
+  <section class="panel"><div class="panel-head"><h3>How the competitors measure up</h3><p class="muted">Median minutes per exchange in this region, from captured incidents. Green meets the S1 target, amber only S2, red misses both.</p></div><div class="scroll"><table class="table" id="pb-bench"></table></div></section>
+</main>
+
+<footer class="foot muted">Data refreshes every 6 hours through GitHub Actions. Research sections (timelines, scorecard, customer quotes) are edited by hand in <code>data/&lt;exchange&gt;/</code>.</footer>
+<div class="tip" id="tip" hidden></div>
+<script src="assets/app.js"></script>
+</body>
+</html>
