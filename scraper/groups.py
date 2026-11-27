@@ -48,9 +48,12 @@ async def admin_ids(client, handle):
         return set()
 
 
-def to_msg(m, admins):
+def to_msg(m, admins, admin_channels=()):
     name = getattr(m, "post_author", None) or ""
-    is_admin = (m.sender_id in admins) or bool(name and ADMIN_HINT.search(name)) or bool(getattr(m, "post", False))
+    from_ch = getattr(getattr(m, "from_id", None), "channel_id", None)
+    fwd_ch = getattr(getattr(getattr(m, "fwd_from", None), "from_id", None), "channel_id", None)
+    is_admin = (m.sender_id in admins) or bool(name and ADMIN_HINT.search(name)) or bool(getattr(m, "post", False)) \
+        or (from_ch is not None and from_ch in admin_channels) or (fwd_ch is not None and fwd_ch in admin_channels)
     rt = getattr(m, "reply_to", None)
     return {"id": m.id, "at": m.date.astimezone(timezone.utc), "text": m.message or "", "admin": is_admin,
             "reply_to": getattr(rt, "reply_to_msg_id", None) if rt else None}
@@ -77,12 +80,29 @@ def save_chat(ex_id, handle, msgs, now):
     return len(rows)
 
 
-async def fetch_window(client, handle, start, end, admins, cap):
+async def linked_group(client, handle):
+    """The comment group linked to a channel, if it has one (None otherwise)."""
+    from telethon.tl.functions.channels import GetFullChannelRequest
+    try:
+        full = await client(GetFullChannelRequest(handle))
+    except Exception:
+        return None
+    lid = getattr(full.full_chat, "linked_chat_id", None)
+    if not lid:
+        return None
+    chat = next((c for c in full.chats if c.id == lid), None)
+    if chat is None:
+        return None
+    return {"id": lid, "username": getattr(chat, "username", None), "title": getattr(chat, "title", None),
+            "entity": chat, "channel_id": full.full_chat.id}
+
+
+async def fetch_window(client, handle, start, end, admins, cap, admin_channels=()):
     out = []
     async for m in client.iter_messages(handle, offset_date=end, limit=cap):
         if m.date < start:
             break
-        out.append(to_msg(m, admins))
+        out.append(to_msg(m, admins, admin_channels))
     return out
 
 
@@ -108,63 +128,88 @@ async def run(login=False):
 
     ipath = DATA / "influencers.json"
     infl = json.loads(ipath.read_text()) if ipath.exists() else []
-    disc = [{"handle": f["discussion"], "type": "group"} for f in infl if f.get("discussion")]
-    if disc:
-        exchanges = exchanges + [{"id": "influencers", "name": "Influencers", "channels": disc}]
+
+    # every group to read: configured community groups + comment groups linked to channels
+    targets, linked_out = [], {}
     for ex in exchanges:
-        posts_path = DATA / ex["id"] / "posts.json"
-        posts = json.loads(posts_path.read_text()) if posts_path.exists() else []
-        down_posts = [p for p in posts if p.get("category") == "incident" and p.get("date") and inc.parse(p["date"]) >= since]
-
         for ch in ex.get("channels", []):
-            if ch["type"] != "group":
+            if ch["type"] == "group":
+                targets.append({"ex_id": ex["id"], "ex_name": ex["name"], "key": ch["handle"], "ref": ch["handle"], "admin_channel": None})
+    for f in infl:
+        if f.get("discussion"):
+            targets.append({"ex_id": "influencers", "ex_name": "Influencers", "key": f["discussion"], "ref": f["discussion"], "admin_channel": None})
+    channels = [(ex["id"], ex["name"], ch["handle"]) for ex in exchanges for ch in ex.get("channels", []) if ch["type"] == "announcements"]
+    channels += [("influencers", "Influencers", f["handle"]) for f in infl if not f.get("discussion")]
+    known = {t["key"].lower() for t in targets}
+    for ex_id, ex_name, handle in channels:
+        lk = await linked_group(client, handle)
+        if not lk:
+            continue
+        key = lk["username"] or f"linked-{lk['id']}"
+        linked_out.setdefault(ex_id, {})[handle] = {"group": key, "title": lk["title"], "username": lk["username"]}
+        if key.lower() in known:
+            continue
+        known.add(key.lower())
+        targets.append({"ex_id": ex_id, "ex_name": ex_name, "key": key, "ref": lk["entity"], "admin_channel": lk["channel_id"], "of": handle})
+        print(f"{ex_name} @{handle}: comments go to {('@' + lk['username']) if lk['username'] else lk['title']}")
+    (DATA / "linked_groups.json").write_text(json.dumps(linked_out, ensure_ascii=False, indent=1))
+
+    posts_cache = {}
+    for tg in targets:
+        ex_id, handle, ref = tg["ex_id"], tg["key"], tg["ref"]
+        if ex_id not in posts_cache:
+            pp = DATA / ex_id / "posts.json"
+            posts_cache[ex_id] = json.loads(pp.read_text()) if pp.exists() else []
+        posts = posts_cache[ex_id]
+        down_posts = [p for p in posts if p.get("category") == "incident" and p.get("date") and inc.parse(p["date"]) >= since]
+        admins = await admin_ids(client, ref)
+        extra = {tg["admin_channel"]} if tg["admin_channel"] else set()
+        days, recent = defaultdict(lambda: defaultdict(int)), []
+        try:
+            async for m in client.iter_messages(ref, limit=MAX_MSGS):
+                if m.date < since:
+                    break
+                recent.append(to_msg(m, admins, extra))
+                d = m.date.strftime("%Y-%m-%d")
+                days[d]["messages"] += 1
+                txt = m.message or ""
+                for k, rx in RX.items():
+                    if rx.search(txt):
+                        days[d][k] += 1
+                if txt:
+                    days[d]["lang_" + lang_detect(txt)] += 1
+        except Exception as e:
+            print(f"skip @{handle}: {e}", file=sys.stderr)
+            continue
+
+        # 1) daily counts
+        hist = {r["date"]: r for r in out.get(ex_id, {}).get(handle, [])}
+        for d, v in days.items():
+            if v["messages"] >= hist.get(d, {}).get("messages", 0):
+                hist[d] = {"date": d, **v}
+        out.setdefault(ex_id, {})[handle] = sorted(hist.values(), key=lambda r: r["date"])
+        n = sum(v["messages"] for v in days.values())
+        kept = save_chat(ex_id, handle, recent, now)
+        what = f"comments on @{tg['of']}" if tg.get("of") else f"@{handle}"
+        print(f"{tg['ex_name']} {what}: {n} msgs{' (capped)' if n >= MAX_MSGS else ''}, {len(admins)} admins known, {kept} kept for the dashboard")
+
+        # 2) incidents: downtime posts + complaint spikes
+        triggers = [(inc.parse(p["date"]), "announcement") for p in down_posts]
+        triggers += [(t, "complaint spike") for t in inc.detect_spikes(recent)]
+        done = []
+        for t, kind in sorted(triggers):
+            if any(abs((t - d).total_seconds()) < 12 * 3600 for d in done):
                 continue
-            handle = ch["handle"]
-            admins = await admin_ids(client, handle)
-            days, recent = defaultdict(lambda: defaultdict(int)), []
+            done.append(t)
             try:
-                async for m in client.iter_messages(handle, limit=MAX_MSGS):
-                    if m.date < since:
-                        break
-                    recent.append(to_msg(m, admins))
-                    d = m.date.strftime("%Y-%m-%d")
-                    days[d]["messages"] += 1
-                    txt = m.message or ""
-                    for k, rx in RX.items():
-                        if rx.search(txt):
-                            days[d][k] += 1
-                    if txt:
-                        days[d]["lang_" + lang_detect(txt)] += 1
+                msgs = await fetch_window(client, ref, t - timedelta(hours=6), min(t + timedelta(hours=48), now), admins, INC_MAX, extra)
             except Exception as e:
-                print(f"skip @{handle}: {e}", file=sys.stderr)
+                print(f"  incident window failed: {e}", file=sys.stderr)
                 continue
-
-            # 1) daily counts
-            hist = {r["date"]: r for r in out.get(ex["id"], {}).get(handle, [])}
-            for d, v in days.items():
-                if v["messages"] >= hist.get(d, {}).get("messages", 0):
-                    hist[d] = {"date": d, **v}
-            out.setdefault(ex["id"], {})[handle] = sorted(hist.values(), key=lambda r: r["date"])
-            n = sum(v["messages"] for v in days.values())
-            kept = save_chat(ex["id"], handle, recent, now)
-            print(f"{ex['name']} @{handle}: {n} msgs{' (capped)' if n >= MAX_MSGS else ''}, {len(admins)} admins known, {kept} kept for the dashboard")
-
-            # 2) incidents: downtime posts + complaint spikes
-            triggers = [(inc.parse(p["date"]), "announcement") for p in down_posts]
-            triggers += [(t, "complaint spike") for t in inc.detect_spikes(recent)]
-            done = []
-            for t, kind in sorted(triggers):
-                if any(abs((t - d).total_seconds()) < 12 * 3600 for d in done):
-                    continue
-                done.append(t)
-                try:
-                    msgs = await fetch_window(client, handle, t - timedelta(hours=6), min(t + timedelta(hours=48), now), admins, INC_MAX)
-                except Exception as e:
-                    print(f"  incident window failed: {e}", file=sys.stderr)
-                    continue
-                rec = inc.build(ex["id"], handle, msgs, posts, t, kind, now=now)
-                inc.merge(DATA / ex["id"] / "incidents.json", rec)
-                print(f"  incident {rec['id']}: {rec['customer_messages']} customer msgs, peak {rec['peak_complaints_per_hour']}/h, {rec['status']}")
+            rec = inc.build(ex_id, handle, msgs, posts, t, kind, now=now)
+            (DATA / ex_id).mkdir(parents=True, exist_ok=True)
+            inc.merge(DATA / ex_id / "incidents.json", rec)
+            print(f"  incident {rec['id']}: {rec['customer_messages']} customer msgs, peak {rec['peak_complaints_per_hour']}/h, {rec['status']}")
 
     await client.disconnect()
     out_path.write_text(json.dumps(out, indent=0))

@@ -4,7 +4,7 @@ const PROMO = ["promo","campaign","community"];
 const ALERT = ["incident","maintenance","market"];
 const FILES = ["posts","events","scorecard","voices","lessons","incidents","x_posts","x_incidents","status_incidents","manual_incidents","discord_posts"];
 const OBJ_FILES = ["voice"];
-const S = {infl:[], inflPosts:[], inflInfo:{}, inflSel:null, msel:{}, stsel:{}, vlabel:{}, chat:{}, chatGroup:{}, chatFilter:"all", pb:null, pbLang:"en", xsel:null, regions:[], region:null, exchanges:[], data:{}, btc:[], groups:{}, current:null, evt:null, inc:null};
+const S = {linked:{}, inflChat:{}, infl:[], inflPosts:[], inflInfo:{}, inflSel:null, msel:{}, stsel:{}, vlabel:{}, chat:{}, chatGroup:{}, chatFilter:"all", pb:null, pbLang:"en", xsel:null, regions:[], region:null, exchanges:[], data:{}, btc:[], groups:{}, current:null, evt:null, inc:null};
 const $ = (id) => document.getElementById(id) || document.createElement("div");
 const safe = (name, fn) => { try { fn(); } catch (e) { console.error("Section failed:", name, e); } };
 const el = (tag, props = {}, ...kids) => { const n = document.createElement(tag); Object.assign(n, props); kids.forEach(k => n.append(k)); return n; };
@@ -22,6 +22,7 @@ async function load() {
   S.infl = (await getJSON("data/influencers.json")) || [];
   S.inflPosts = (await getJSON("data/influencers/posts.json")) || [];
   S.inflInfo = (await getJSON("data/influencers/info.json")) || {};
+  S.linked = (await getJSON("data/linked_groups.json")) || {};
   S.groups = (await getJSON("data/groups.json")) || {};
   const last = await getJSON("data/last_run.json");
   await Promise.all(S.exchanges.map(async ex => {
@@ -213,7 +214,7 @@ function groups(id) {
     const sum = k => rows.reduce((a, r) => a + (r[k] || 0), 0);
     const msgs = sum("messages"), comp = sum("complaint");
     const busy = rows.reduce((a, r) => (r.messages || 0) > (a.messages || 0) ? r : a, {});
-    tb.append(el("tr", {}, ...[ "@" + handle, rows.length, fmt(msgs), fmt(comp), msgs ? Math.round(comp / msgs * 100) + "%" : "—", fmt(sum("withdrawal")), busy.date ? `${busy.date} (${fmt(busy.messages)})` : "—"]
+    tb.append(el("tr", {}, ...[ groupLabel(id, handle), rows.length, fmt(msgs), fmt(comp), msgs ? Math.round(comp / msgs * 100) + "%" : "—", fmt(sum("withdrawal")), busy.date ? `${busy.date} (${fmt(busy.messages)})` : "—"]
       .map((v, i) => el("td", {className: i ? "num" : "", textContent: String(v)}))));
   });
   t.append(tb); box.append(el("div", {className: "scroll"}, t));
@@ -492,14 +493,39 @@ function xsection(xp, xi, ex) {
 
 
 
+
+const KIND_COL = {Complaint: "var(--down)", Praise: "var(--up)", Question: "var(--signal)", Other: "var(--bar)"};
+function moodBlock(v) {
+  const box = $("v-moods"), note = $("v-mood-note"); box.replaceChildren();
+  const bm = v && v.by_mood;
+  if (!bm || !Object.values(bm).some(m => m.messages)) { note.textContent = "Appears once BTC prices and customer messages overlap (after a few scheduled runs)."; return; }
+  const th = v.mood_thresholds || {rising: 3, falling: -3};
+  note.textContent = `Rising = BTC up ${th.rising}% or more that day, falling = down ${Math.abs(th.falling)}% or more, normal = in between. Each message is sorted into complaint, praise, question or other.`;
+  [["rising", "BTC rising"], ["normal", "BTC normal"], ["falling", "BTC falling"]].forEach(([k, name]) => {
+    const m = bm[k] || {};
+    const card = el("div", {className: "mood " + k}, el("h5", {textContent: name}),
+      el("small", {textContent: m.messages ? `${m.days} days, ${fmt(m.messages)} messages, BTC ${m.avg_btc_change > 0 ? "+" : ""}${m.avg_btc_change}% a day on average` : "No days like this in the period"}));
+    if (m.messages) {
+      card.append(el("div", {className: "kbar"}, ...Object.entries(m.kinds).filter(([, v2]) => v2 > 0).map(([kk, v2]) => {
+        const sp = el("span", {style: `width:${v2 * 100}%;background:${KIND_COL[kk]}`}); sp.title = `${kk} ${Math.round(v2 * 100)}%`; return sp; })),
+        el("div", {className: "klegend"}, ...Object.entries(m.kinds).map(([kk, v2]) => el("span", {}, el("i", {style: `background:${KIND_COL[kk]}`}), `${kk} ${Math.round(v2 * 100)}%`))),
+        el("ol", {}, ...(m.top_labels || []).map(l => el("li", {textContent: `${l.label}: ${Math.round(l.share * 100)}%`}))));
+      const smp = m.samples && (m.samples.Complaint || m.samples.Question || m.samples.Praise);
+      if (smp) card.append(el("p", {textContent: "“" + smp + "”"}));
+    }
+    box.append(card);
+  });
+}
+
 /* ---------- what customers say (reviews + telegram, KNN + k-means) ---------- */
 function voiceSec(ex, v) {
   const kp = $("v-kpis"), ch = $("v-chart"), lb = $("v-labels"), sm = $("v-samples"), tp = $("v-topics"), me = $("v-method");
   if (!v) {
     [kp, ch, lb, sm, tp].forEach(x => x.replaceChildren());
     lb.append(el("p", {className: "empty", textContent: ex.apps ? "Not analysed yet. Run the 'Update app reviews and grouping' workflow." : "No app ids configured for this exchange (add \"apps\" in data/exchanges.json)."}));
-    me.textContent = ""; return;
+    me.textContent = ""; moodBlock(null); return;
   }
+  moodBlock(v);
   const top = (v.labels || []).filter(l => !["Praise", "Other"].includes(l.label))[0];
   kp.replaceChildren(...[
     [fmt(v.counts.reviews), "app reviews"], [v.avg_rating != null ? v.avg_rating.toFixed(1) + " ★" : "—", "average rating"],
@@ -553,14 +579,18 @@ function voiceSec(ex, v) {
 }
 
 /* ---------- community chat ---------- */
+function groupLabel(exId, key) {
+  const hit = Object.entries(S.linked[exId] || {}).find(([, g]) => g.group === key);
+  return hit ? `Comments on @${hit[0]}` : "@" + key;
+}
 const COMPLAINT_T = ["Withdrawals", "Deposits", "Login / account access", "Orders / liquidations", "Fear for funds / trust", "Compensation / refund", "Support complaints"];
 async function chat(ex) {
-  const groupsList = (ex.channels || []).filter(c => c.type === "group").map(c => c.handle);
+  const groupsList = [...new Set([...(ex.channels || []).filter(c => c.type === "group").map(c => c.handle), ...Object.values(S.linked[ex.id] || {}).map(g => g.group)])];
   const sel = $("chat-group"), list = $("chat-list"), kp = $("chat-kpis"), fl = $("chat-filter");
   if (!groupsList.length) { sel.replaceChildren(); kp.replaceChildren(); fl.replaceChildren(); list.replaceChildren(el("li", {className: "empty", textContent: "No community groups configured for this exchange."})); return; }
   const g = groupsList.includes(S.chatGroup[ex.id]) ? S.chatGroup[ex.id] : groupsList[0];
   S.chatGroup[ex.id] = g;
-  sel.replaceChildren(...groupsList.map(h => new Option("@" + h, h))); sel.value = g;
+  sel.replaceChildren(...groupsList.map(h => new Option(groupLabel(ex.id, h), h))); sel.value = g;
   sel.onchange = () => { S.chatGroup[ex.id] = sel.value; chat(ex); };
   const key = ex.id + "/" + g;
   if (!(key in S.chat)) { list.replaceChildren(el("li", {className: "empty", textContent: "Loading messages…"})); S.chat[key] = (await getJSON(`data/${ex.id}/chat/${g}.json`)) || []; if (S.current !== ex.id) return; }
@@ -676,12 +706,25 @@ function influencersView() {
     return el("li", {}, el("span", {className: "pill", textContent: "@" + p.channel}), el("a", {href: p.link, target: "_blank", rel: "noopener", textContent: (p.text || "(media post)").slice(0, 200)}),
       el("small", {textContent: `${day(p.date)}, ${fmt(p.views)} views, ${fmt(p.reactions)} reactions`}), el("div", {className: "tags2"}, ...tags));
   }) : [el("li", {className: "empty", textContent: "No posts yet."})]));
-  // discussion groups
-  const g = (S.groups || {}).influencers || {}; const gb = $("inf-groups"); gb.replaceChildren();
-  const discs = infl.filter(f => f.discussion);
-  if (!discs.length) gb.append(el("p", {className: "empty", textContent: "None added yet. Open an influencer's channel in Telegram, tap Comments or Discussion, and add that group's @name as \"discussion\" in data/influencers.json. Your Telegram account must join it."}));
-  else discs.forEach(f => { const rows2 = g[f.discussion] || []; const sum = k => rows2.reduce((a, r) => a + (r[k] || 0), 0);
-    gb.append(el("p", {}, el("b", {textContent: `@${f.discussion}`}), document.createTextNode(rows2.length ? `: ${fmt(sum("messages"))} messages, ${fmt(sum("complaint"))} complaint mentions, ${fmt(sum("withdrawal"))} withdrawal mentions over ${rows2.length} days.` : ": no data yet."))); });
+  // discussion / comment groups
+  inflComments(infl);
+}
+async function inflComments(infl) {
+  const gb = $("inf-groups"); gb.replaceChildren();
+  const g = (S.groups || {}).influencers || {};
+  const items = infl.map(f => ({f, key: f.discussion || ((S.linked.influencers || {})[f.handle] || {}).group})).filter(x => x.key);
+  if (!items.length) { gb.append(el("p", {className: "empty", textContent: "None of these channels has comments turned on, or the comment groups haven't been read yet. They're found automatically on the next 'Update Telegram data' run."})); return; }
+  const tbl = el("table", {className: "table"}, el("thead", {}, el("tr", {}, ...["Influencer", "Comments read", "Complaint mentions", "Complaint share", "Withdrawal mentions", "Latest complaint"].map(x => el("th", {textContent: x})))));
+  const tb = el("tbody"); tbl.append(tb); gb.append(el("div", {className: "scroll"}, tbl));
+  for (const {f, key} of items) {
+    const rows = g[key] || []; const sum = k => rows.reduce((a, r) => a + (r[k] || 0), 0);
+    if (!(key in S.inflChat)) S.inflChat[key] = (await getJSON(`data/influencers/chat/${key}.json`)) || [];
+    const comp = S.inflChat[key].filter(m => !m.admin && (m.themes || []).some(t2 => COMPLAINT_T.includes(t2)));
+    const last = comp[comp.length - 1];
+    tb.append(el("tr", {}, el("td", {textContent: (S.inflInfo[f.handle] || {}).title || f.name || "@" + f.handle}),
+      ...[fmt(sum("messages")), fmt(sum("complaint")), sum("messages") ? Math.round(sum("complaint") / sum("messages") * 100) + "%" : "—", fmt(sum("withdrawal"))].map(v => el("td", {className: "num", textContent: v})),
+      el("td", {textContent: last ? `“${last.text.slice(0, 120)}” (${day(last.at)})` : "—"})));
+  }
 }
 
 /* ---------- playbook ---------- */
@@ -768,6 +811,14 @@ function compare() {
     const pbs = checks.length ? Math.round(checks.filter(c => c.st === "pass").length / checks.length * 100) + "%" : "";
     const vv = S.data[exs[i].id].voice;
     [incs.length || "", a != null ? a : "", s2 != null ? (s2 / 60).toFixed(1) : "", pbs, vv && vv.avg_rating != null ? vv.avg_rating.toFixed(1) + " ★" : "", vv && vv.low_rating_share != null ? Math.round(vv.low_rating_share * 100) + "%" : "", (S.data[exs[i].id].status_incidents || []).length || "", (() => { const m = med((S.data[exs[i].id].status_incidents || []).map(r => r.minutes_to_resolve)); return m != null ? (m / 60).toFixed(1) : ""; })(), xp.length || "", xv, xp.length ? xp.filter(p => p.category === "incident" || p.category === "maintenance").length : ""].forEach(v => tr.append(el("td", {className: "num", textContent: String(v)}))); });
+  const tm = $("cmp-mood");
+  tm.replaceChildren(el("thead", {}, el("tr", {}, ...["Exchange", "BTC rising", "BTC normal", "BTC falling", "Top complaint when falling"].map(x => el("th", {textContent: x})))));
+  const bmB = el("tbody");
+  exs.forEach(ex => { const bm = (S.data[ex.id].voice || {}).by_mood || {};
+    const c = k => bm[k] && bm[k].messages ? Math.round(bm[k].kinds.Complaint * 100) + "%" : "";
+    const topF = ((bm.falling || {}).top_labels || []).find(l => !["Praise"].includes(l.label));
+    bmB.append(el("tr", {}, el("td", {textContent: ex.name}), ...["rising", "normal", "falling"].map(k => el("td", {className: "num", textContent: c(k)})), el("td", {textContent: topF ? topF.label : ""}))); });
+  tm.append(bmB);
   const dims = [...new Set(exs.flatMap(ex => (S.data[ex.id].scorecard || []).map(r => r.dimension)))];
   const t2 = $("cmp-score");
   t2.replaceChildren(el("thead", {}, el("tr", {}, el("th", {textContent: "Area"}), ...exs.map(ex => el("th", {textContent: ex.name})))));
